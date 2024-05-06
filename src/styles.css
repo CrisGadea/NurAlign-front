@@ -1,0 +1,14 @@
+/* You can add global styles to this file, and also import other style files */
+body{
+  background-color: #37367A;
+  color: #D9D9D9;
+}
+
+.nunito{
+  font-family: "Nunito", sans-serif;
+  font-optical-sizing: auto;
+  font-weight: 200px;
+  font-style: normal;
+  font-size: 16px;
+  line-height: 24px;
+}
