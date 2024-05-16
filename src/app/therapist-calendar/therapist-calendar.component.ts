@@ -19,7 +19,7 @@ export class TherapistCalendarComponent implements OnInit {
   ];
 
 
-  monthSelect: any[] = [];
+  monthSelect: any[];
   dateSelect: any;
   dateValue: any;
 
@@ -29,7 +29,7 @@ export class TherapistCalendarComponent implements OnInit {
   }
 
   ngOnInit(): void {
-    this.getDaysFromDate(1, 2024)
+    this.getDaysFromDate(11, 2020)
   }
 
   getDaysFromDate(month: number, year: number) {
