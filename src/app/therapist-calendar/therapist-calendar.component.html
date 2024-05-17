@@ -1,4 +1,5 @@
-<div class="wrapper-calendar">
+<div id="fondo">
+<div id="Calendario" class="wrapper-calendar">
 	<div class="header-calendar">
 		<div>
 			<button (click)="changeMonth(-1)" class="btn-prev">Antes</button>
@@ -13,12 +14,15 @@
 
     <li (click)="clickDay(day)" [style.gridColumnStart]="first ? day?.indexWeek : 'auto'"
          *ngFor="let day of monthSelect;let first = first">
-			<span>{{day?.value}}</span>
+			<div id="cuadraditos"><span >{{day?.value}}</span></div>
 		</li>
 	</ol>
 </div>
 
-<hr>
+
 <div>
-<!--	Fecha: {{dateValue | date}}-->
+
+</div>
+
+
 </div>
