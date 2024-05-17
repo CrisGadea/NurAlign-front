@@ -16,25 +16,62 @@
   border: solid 1px #eaeaea;
   /*box-shadow: 0 0 10px #e4e4e4;*/
 }
+.Turn
+{ cursor: pointer;
+
+  margin-top: 40px;
+  border-radius: 10px;
+  display: flex;
+  align-items: center;
+ justify-content: center;
+  margin-left: auto;
+  margin-right: auto;
+  
+  height: 40px;
+  
+width: 60vw;
+  background-color: #333B7B;
+}
+.TurnsAndCalendar
+{
+  display: flex;
+  justify-content: center;
+
+}
+
 #Calendario {
  /* 
  background-color: #888FC7;
  
  */
- background-color: #333B7B;
-  margin-top: 100px;
-border-radius: 20px;
-  margin-left: auto;
-  margin-right: auto;
+
+ background-color: #DFE3FF;
+  margin-top: 40px;
+border-radius: 5px;
+  
+
     text-align: center;
-    width: 900px;
-    height: 800px;
+    width: 60vw;
+   height: 70vh;
+   border-width: 1px;
+   border-color: #333B7B;
+
+  }
+  .flechita{
+    cursor: pointer;
+    background-color: #DFE3FF;
+  /*  border-width: 1px;
+    border-color: #333B7B;*/
+    border-radius: 5px;
+    width: 80px;
+height: auto;
 
   }
 
-  #cuadraditos
+  #boxes
   {
 
+    border-radius: 5px;
     display: flex;
     align-items: center;
    justify-content: center;
@@ -42,7 +79,8 @@ border-radius: 20px;
   color: #333B7B;
     border-style: solid;
     border-width: 1px;
-    height: 80px;
+
+    height: 7vh;
     font-size: 40px;
 
   }
@@ -63,27 +101,31 @@ border-radius: 20px;
   li:hover{
     font-weight: 600;
   }  
-  h2 {
+/*  h2 {
     margin-bottom: 4px;
     padding: 0;
-  }
+  }*/
   
   .first-day {
     grid-column-start: var(--first-day-start, 0);
   }
   
   .day-name {
-    background: #eee;
+    background-color: #888FC7;
+    margin: 0px;
+   color: #333B7B;
+ 
     font-weight: bold;
     font-size: 12px;
     margin-bottom: 2px;
     padding: 4px;
     text-align: center;
+    font-size: 30px;
   }
   
   .header-calendar {
     display: flex;
-   
+    color: #333B7B;
     height: 100px;
     justify-content: space-between;
     align-items: center;
@@ -103,4 +145,108 @@ border-radius: 20px;
     height: 80px;
     border: 0;
   }
+  .FutureTurns{
+    margin-top: 40px;
+    border-radius: 10px;
+    width: 30vw;
+background-color:   #DFE3FF;
+    height: 70vh;
+    border-width: 1px;
+    border-color: #333B7B;
+    color: #333B7B;
+  }
+  .TitleTurns
+  {
+    font-weight: bold;
+    font-size: 30px;
+    text-align: center;
+  }
+.ForFutureTurns
+{
+  list-style-type: none;
+  cursor:default;
+
+
+}
+
+
+  .TextFutureTurn
+  {
+
+  font-size: 20px;
+  text-decoration: none;
+  list-style-type: none;
+  margin-left: 20px;
+  }
+  @media (max-width: 500px)  {
+    .header-calendar h1 {
+
+      font-size: 20px;
+    }
+    
+   
+
+
+    .flechita{
+      background-color: #DFE3FF;
+    /*  border-width: 1px;
+      border-color: #333B7B;*/
+      border-radius: 5px;
+      width: 40px;
+  height: auto;
   
+    }
+
+    #boxes
+    {
+      font-size: 10px;
+      height: auto;
+    }
+
+    .header-calendar h1 {
+      width: 100%;
+      font-size: 20px;
+    }
+    .day-name{font-size: 10px;}
+   /* #Calendario{ 
+        height: 60vh;;
+    }*/
+  }
+
+
+
+
+  @media (min-width: 501px)and (max-width: 800px)  {
+    .header-calendar h1 {
+
+      font-size: 30px;
+    }
+    
+   
+
+
+    .flechita{
+      background-color: #DFE3FF;
+    /*  border-width: 1px;
+      border-color: #333B7B;*/
+      border-radius: 5px;
+      width: 60px;
+  height: auto;
+  
+    }
+
+    #boxes
+    {
+      font-size: 15px;
+      height: auto;
+    }
+
+    .header-calendar h1 {
+      width: 100%;
+      font-size: 20px;
+    }
+    .day-name{font-size: 15px;}
+   /* #Calendario{ 
+        height: 60vh;;
+    }*/
+  }

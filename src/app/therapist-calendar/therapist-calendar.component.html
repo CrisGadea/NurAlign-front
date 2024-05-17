@@ -1,12 +1,26 @@
 <div id="fondo">
+
+<div class="Turn">
+
+	<p>Solicitudes de Turno(1) </p>
+
+
+
+</div>
+
+<div class="TurnsAndCalendar">
+
 <div id="Calendario" class="wrapper-calendar">
 	<div class="header-calendar">
 		<div>
-			<button (click)="changeMonth(-1)" class="btn-prev"> </button>
+		<!--	<button (click)="changeMonth(-1)" class="btn-prev"> </button>-->
+			<a (click)="changeMonth(-1)" ><img class="flechita" src="../../assets/Image/flechita-izq.png"></a>
 		</div>
 		<h1>{{dateSelect | date:'MMMM, yyyy'}}</h1>
 		<div>
-			<button (click)="changeMonth(1)" class="btn-next">></button>
+
+			<a (click)="changeMonth(1)"> <img class="flechita" src="../../assets/Image/flechita-der.png"> </a>
+		<!--	<button (click)="changeMonth(1)" class="btn-next">></button>-->
 		</div>
 	</div>
 	<ol>
@@ -14,15 +28,23 @@
 
     <li (click)="clickDay(day)" [style.gridColumnStart]="first ? day?.indexWeek : 'auto'"
          *ngFor="let day of monthSelect;let first = first">
-			<div id="cuadraditos"><span >{{day?.value}}</span></div>
+			<div id="boxes"><span >{{day?.value}}</span></div>
 		</li>
 	</ol>
 </div>
 
 
-<div>
+<div class="FutureTurns">
+
+	<p class="TitleTurns">turnos:</p>
+	<li class="ForFutureTurns" *ngFor="let turno of TurnPacient">
+		<p class="TextFutureTurn">
+		Turno de {{ turno.nombre }}
+		el dia{{ turno.fecha }}
+		a las {{ turno.hora }}</p>
+	  </li>
 
 </div>
 
-
+</div>
 </div>

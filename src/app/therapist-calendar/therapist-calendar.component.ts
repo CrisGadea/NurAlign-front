@@ -7,6 +7,19 @@ import * as moment from 'moment'
   styleUrls: ['./therapist-calendar.component.css']
 })
 export class TherapistCalendarComponent implements OnInit {
+
+
+
+  TurnPacient = [
+    { nombre: 'Jose', fecha: '23/05/2024', hora: '15:00' },
+    { nombre: 'Maria', fecha: '24/05/2024', hora: '10:00' },
+    { nombre: 'Carlos', fecha: '25/05/2024', hora: '11:30' },
+    { nombre: 'Ana', fecha: '26/05/2024', hora: '13:00' },
+    { nombre: 'Luis', fecha: '27/05/2024', hora: '09:00' }
+  ];
+
+
+
   week: string[] = [
     "Lunes",
     "Martes",
