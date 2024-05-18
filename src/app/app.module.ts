@@ -19,13 +19,14 @@ import { FooterComponent } from './footer/footer.component';
     LoginComponent,
     RegisterComponent,
   
-   FooterComponent
+  
   ],
   imports: [
     BrowserModule,
     AppRoutingModule,
     HttpClientModule,
-  HeaderComponent,
+  HeaderComponent, 
+  FooterComponent,
   ],
   exports: [  // Exporta el componente aquí si lo necesitas en otro módulo
     LoginComponent
