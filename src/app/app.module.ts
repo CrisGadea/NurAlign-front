@@ -8,12 +8,9 @@ import { HomeComponent } from './home/home.component';
 import { LoginComponent } from './login/login.component';
 import { HttpClientModule } from '@angular/common/http';
 import { RegisterComponent } from './register/register.component';
-<<<<<<< HEAD
 import { HeaderComponent } from './header/header.component';
 import { FooterComponent } from './footer/footer.component';
-=======
 import { TherapistCalendarComponent } from './therapist-calendar/therapist-calendar.component';
->>>>>>> b6a9a23 (generate new component calendar)
 
 @NgModule({
   declarations: [
@@ -22,12 +19,9 @@ import { TherapistCalendarComponent } from './therapist-calendar/therapist-calen
     HomeComponent,
     LoginComponent,
     RegisterComponent,
-<<<<<<< HEAD
   
   
-=======
     TherapistCalendarComponent
->>>>>>> b6a9a23 (generate new component calendar)
   ],
   imports: [
     BrowserModule,
