@@ -1,0 +1,204 @@
+
+
+.contenedor {
+    display: grid;
+    grid-template-columns: 1fr 1fr 1fr;
+ 
+    text-align: center;
+    background-color: #DFE3FF;
+    height: 100vh;
+    align-items: center; 
+  
+  
+    font-family:nunito;
+ 
+}
+
+.cuadro {
+  position: relative;
+    background-color: #ffffff;
+ /*  border-style: ridge;*/
+    height: 40vh;
+    width: 70%;   border-radius: 10px;
+    color: black;
+  
+    border-style:ridge;overflow: hidden;
+}
+#cuadro1
+{
+   
+    justify-self: right; 
+
+}
+#cuadro2
+{justify-self: center; 
+   
+}
+#cuadro3
+{  justify-self: left;
+  
+}
+
+.header {
+
+    position: absolute;
+    display: flex;
+    justify-content: space-between;
+    width: 100%; /* Asegura que ocupe todo el ancho */
+    /* Espacio entre los elementos */
+    box-sizing: border-box; /* Incluye el padding en el ancho total */
+}
+
+
+
+
+
+  @media (max-width: 1200px) {
+    .contenedor {
+      grid-template-columns: 1fr; /* Una sola columna */
+      height: 100%;
+      padding-bottom: 100px;
+     
+    }
+   
+#cuadro1
+{
+    margin-top: 200px;
+    justify-self: center; 
+}
+#cuadro2
+{justify-self: center; 
+   
+}
+#cuadro3
+{ justify-self: center; 
+  
+}
+    .cuadro {
+   
+        background-color: #ffffff;
+        border-style: ridge;
+        height: 40vh;
+        width: 70%;   border-radius: 10px; margin-top: 10%;
+    }
+    
+
+  }
+
+  @media (max-width: 1050px) {
+    .contenedor {
+      grid-template-columns: 1fr; /* Una sola columna */
+      height: 100%;
+     
+    }
+    #cuadro1
+{
+    margin-top: 100px;
+    justify-self: center; 
+}
+    .cuadroHeader{background-color: #333B7B;}
+    .header{background-color: #333B7B;}
+    
+
+#cuadro1
+{
+
+    margin-top: 200px;
+}
+    .cuadro {
+   
+        background-color: #ffffff;
+        border-style: ridge;
+        height: 40vh;
+        width: 70%;   border-radius: 10px; margin-top: 10%;
+    }
+  
+
+
+  }
+
+ .cuadro #agenda
+  { 
+    width: 100%; /* La imagen ocupará el 100% del ancho del div */
+ 
+    display: block; 
+ 
+   
+
+  }
+  .cuadro #pacientes{ width: 100%; /* La imagen ocupará el 100% del ancho del div */
+    
+ 
+    display: block; 
+
+   
+  
+    }
+ .cuadro #informes{ width: 100%; /* La imagen ocupará el 100% del ancho del div */
+ 
+  display: block; 
+
+   
+    }
+   
+
+  
+  .cuadro h1 {
+      position: relative;
+      color:#ffffff;
+      z-index: 2; /* Hace que el texto esté encima de la imagen */
+  }
+  .cuadro .textoCuadroSecundario
+  {
+    margin-left: 10px; /* Ajusta el valor según tus necesidades */
+    margin-right: 10px; 
+    word-wrap: break-word;
+    margin-top: 10px;
+    font-size: 25px;
+  
+    position: relative;
+    color:#ffffff;
+    z-index: 2; 
+
+  }
+  
+  .cuadro .fondoCuadros {
+  
+      position: absolute;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      border-radius: 5px;
+      object-fit: cover; 
+      z-index: 1; /* Hace que la imagen esté detrás del texto */
+  
+  }
+  .cuadro::before {
+    content: "";
+    display: block;
+    position: absolute;
+    top: 0;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    background-color: #333B7B; /* Cambia al color deseado */
+    opacity: 0.75; /* Ajusta la opacidad según sea necesario */
+    z-index: 2; /* Coloca el pseudo-elemento sobre la imagen */   
+    border-radius: 10px;
+    border: none;
+    
+ 
+}
+
+.icon {
+  position: relative; 
+  z-index: 2; 
+  height: 75px;
+  width: 75px;
+}
+@media (max-width: 550px) {
+  .textoCuadroSecundario{font-size: 15px!important;}
+
+  
+}
