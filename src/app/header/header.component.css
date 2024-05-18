@@ -1,0 +1,40 @@
+.header {
+
+    position: absolute;
+    display: flex;
+    justify-content: space-between;
+    width: 100%; /* Asegura que ocupe todo el ancho */
+    /* Espacio entre los elementos */
+    box-sizing: border-box; /* Incluye el padding en el ancho total */
+}
+.cuadroHeader {
+ 
+    width: 25vw;
+    height: 65px;
+    background-color: #888FC7;
+
+    color: #ffffff;
+    font-family: nunito;
+    font-size: 25px;
+    border-bottom-right-radius: 70px;
+    display: flex; /* Utilizar flexbox */
+    justify-content: center; /* Centrar horizontalmente el contenido */
+    align-items: center; /* Centrar verticalmente el contenido */
+  }
+@media (max-width: 1050px) {  .header{background-color: #333B7B;}}
+.Isologotipo
+  {
+padding-top: 7px ;
+padding-right: 10px ;
+  }
+  .Isotipo
+  {
+padding-right: 8px;
+
+  }
+  @media (max-width: 550px) {
+    .Isologotipo{
+        margin-left: 10px;}
+        .cuadroHeader{display: none;}
+      
+  }

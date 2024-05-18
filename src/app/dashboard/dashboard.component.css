@@ -68,20 +68,7 @@
 }
 
 
-.cuadroHeader {
- 
-    width: 25vw;
-    height: 65px;
-    background-color: #888FC7;
 
-    color: #ffffff;
-    font-family: nunito;
-    font-size: 25px;
-    border-bottom-right-radius: 70px;
-    display: flex; /* Utilizar flexbox */
-    justify-content: center; /* Centrar horizontalmente el contenido */
-    align-items: center; /* Centrar verticalmente el contenido */
-  }
 
   @media (max-width: 1200px) {
     .contenedor {
@@ -188,16 +175,7 @@
 
 
   }
-  .Isologotipo
-  {
-padding-top: 7px ;
-padding-right: 10px ;
-  }
-  .Isotipo
-  {
-padding-right: 8px;
 
-  }
  .cuadro #agenda
   { 
     width: 100%; /* La imagen ocupará el 100% del ancho del div */
@@ -280,10 +258,6 @@ padding-right: 8px;
 }
 @media (max-width: 550px) {
   .textoCuadroSecundario{font-size: 15px!important;}
-.Isologotipo{
-  margin-left: 10px;}
-  .cuadroHeader{display: none;}
 
-  .Footer{font-size: 15px;}
   
 }
