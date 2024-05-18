@@ -51,7 +51,7 @@ border-radius: 5px;
   
 
     text-align: center;
-    width: 60vw;
+    width: 40vw;
    height: 70vh;
    border-width: 1px;
    border-color: #333B7B;
@@ -116,11 +116,11 @@ height: auto;
    color: #333B7B;
  
     font-weight: bold;
-    font-size: 12px;
+    
     margin-bottom: 2px;
     padding: 4px;
     text-align: center;
-    font-size: 30px;
+    font-size: 22px;
   }
   
   .header-calendar {
@@ -148,7 +148,7 @@ height: auto;
   .FutureTurns{
     margin-top: 40px;
     border-radius: 10px;
-    width: 30vw;
+    width: 40vw;
 background-color:   #DFE3FF;
     height: 70vh;
     border-width: 1px;
@@ -178,13 +178,38 @@ background-color:   #DFE3FF;
   list-style-type: none;
   margin-left: 20px;
   }
-  @media (max-width: 500px)  {
+  @media (max-width: 600px)  {
     .header-calendar h1 {
 
       font-size: 20px;
     }
     
-   
+    .TurnsAndCalendar
+    {
+      flex-direction: column;
+    }
+   #Calendario{
+    width: 80vw;
+    height: 30vh;
+    margin-left: auto;
+    margin-right: auto;
+   }
+   .FutureTurns{  
+
+  margin: auto;
+    width: 80vw;
+    height: 30vh;
+ 
+  }
+  .TitleTurns
+  {
+    font-size: 15px;
+  }
+  .TextFutureTurn
+  {
+
+    font-size: 12px;
+  }
 
 
     .flechita{
@@ -216,7 +241,7 @@ background-color:   #DFE3FF;
 
 
 
-  @media (min-width: 501px)and (max-width: 800px)  {
+  @media (min-width: 601px)and (max-width: 900px)  {
     .header-calendar h1 {
 
       font-size: 30px;
@@ -249,4 +274,16 @@ background-color:   #DFE3FF;
    /* #Calendario{ 
         height: 60vh;;
     }*/
+  }
+  @media (min-width: 1200px)
+  {
+
+    .TextFutureTurn
+    {
+  
+    font-size: 32px;
+    text-decoration: none;
+    list-style-type: none;
+    margin-left: 20px;
+    }
   }
