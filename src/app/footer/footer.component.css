@@ -24,7 +24,7 @@
   width: 100%;
   background-color: #DFE3FF;justify-content: flex-end;}
 .Footer {
-  font-size: 25px;
+  font-size: 18px;
     display: flex;
    position: relative;
     width: 20vw;
@@ -48,14 +48,14 @@
     #FooterR{
         display: flex;
        position: relative;
-       width: 100%; background-color: #333B7B;;justify-content: flex-end;}
+       width: 100%; ;justify-content: flex-end;}
        .Footer {
-         font-size: 25px;
+         font-size: 18px;
            display: flex;
           position: relative;
            width: 20vw;
            height: 65px;
-           background-color: #333B7B;;
+           background-color: #888FC7;
            border-top-left-radius: 70px;
            justify-content: center;
            align-items: center;
@@ -68,5 +68,31 @@
      
 
 
+
+}
+
+@media (max-width: 550px)
+{
+    #FooterR{
+        display: flex;
+       position: relative;
+       width: 100%; ;justify-content: flex-end;
+       background-color: #333B7B!important;}
+       .Footer {
+         font-size: 18px;
+           display: flex;
+          position: relative;
+           width: 20vw;
+           height: 65px;
+           background-color: #333B7B!important;
+           border-top-left-radius: 70px;
+           justify-content: center;
+           align-items: center;
+           color: #ffffff;
+           font-family: nunito;
+           z-index: 2;
+           right: 0;
+           bottom: 0;
+         }
 
 }

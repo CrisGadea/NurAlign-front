@@ -19,6 +19,7 @@ export class TherapistCalendarComponent implements OnInit {
   ];
 
 
+  
 
   week: string[] = [
     "Lunes",
