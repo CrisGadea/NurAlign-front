@@ -1,6 +1,6 @@
 import { Component } from '@angular/core';
-import { HeaderComponent } from '../header/header.component';
-import { FooterComponent } from '../footer/footer.component';
+import { HeaderVComponent } from '../header-v/header-v.component';
+import { FooterVComponent } from '../footer-v/footer-v.component';
 
 @Component({
   selector: 'app-dashboard',
@@ -8,8 +8,8 @@ import { FooterComponent } from '../footer/footer.component';
   styleUrls: ['./dashboard.component.css'],
   standalone:true,
   imports: [
-    HeaderComponent,
-    FooterComponent
+    HeaderVComponent,
+    FooterVComponent
   ]
 })
 export class DashboardComponent {
