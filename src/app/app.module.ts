@@ -11,6 +11,8 @@ import { RegisterComponent } from './register/register.component';
 import { HeaderComponent } from './header/header.component';
 import { FooterComponent } from './footer/footer.component';
 import { TherapistCalendarComponent } from './therapist-calendar/therapist-calendar.component';
+import { HeaderVComponent } from './header-v/header-v.component';
+import { FooterVComponent } from './footer-v/footer-v.component';
 
 @NgModule({
   declarations: [
@@ -21,7 +23,8 @@ import { TherapistCalendarComponent } from './therapist-calendar/therapist-calen
     RegisterComponent,
   
   
-    TherapistCalendarComponent
+    TherapistCalendarComponent,
+           
   ],
   imports: [
     BrowserModule,
@@ -29,6 +32,9 @@ import { TherapistCalendarComponent } from './therapist-calendar/therapist-calen
     HttpClientModule,
   HeaderComponent, 
   FooterComponent,
+  HeaderVComponent,
+  FooterVComponent,
+
   ],
   exports: [  // Exporta el componente aquí si lo necesitas en otro módulo
     LoginComponent
