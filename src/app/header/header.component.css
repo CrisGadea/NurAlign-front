@@ -14,5 +14,21 @@
   background-color: #DFE3FF;
 }
 
+.register-form label{
+  color: #333B7B;
+  font-weight: 700;
+  text-transform: uppercase;
+  padding: 5px 0;
+}
+
+.btn:hover {
+  background-color: #333B7B !important; 
+  color: #ffffff !important; 
+}
+
+.register-form .btn{
+  background-color: #888FC7;
+}
+
 /* MODAL REGISTRO END*/
 

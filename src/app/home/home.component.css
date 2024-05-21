@@ -26,7 +26,7 @@
   color: #ffffff !important; 
 }
 
-.login-form .btn, .register-form .btn{
+.login-form .btn{
   background-color: #888FC7;
 }
 
@@ -37,6 +37,29 @@
 .p-column-1{
   color: #333B7B;
   font-size: 24px;
+}
+
+.login-form label{
+  color: #333B7B;
+  font-weight: 700;
+  text-transform: uppercase;
+  padding: 10px 0;
+}
+
+.login-form span, .login-form a{
+  color: #333B7B;
+}
+
+.login-form a{
+  font-weight: 700;
+}
+a{
+  text-decoration: none;
+}
+
+a:hover{
+  text-decoration: underline;
+
 }
 
 /* PRIMERA SECTION END */
@@ -323,23 +346,48 @@
 
 /* GRAFICOS SECTION*/
 
-.graficos-section{
+.contale-section{
   background-color: #DFE3FF;
 }
 
-.graficos-section-title{
+.contale-section-title{
   display: flex;
   align-items: center;
   height: 100%;
 }
-.graficos-section-title h3{
+.contale-section-title h3{
   font-size: 40px;
   font-weight: 700;
   color: #888FC7;
   margin: auto;
 }
 
+.contale-section p, .sos-terapeuta-section p{
+  color: #000;
+}
+
 /*GRAFICOS SECTION ENDS*/
+
+/* SOS TERAPEUTA SECTION*/
+
+.sos-terapeuta-section{
+  background-color: #888FC7;
+}
+
+.sos-terapeuta-section-title{
+  display: flex;
+  align-items: center;
+  height: 100%;
+}
+
+.sos-terapeuta-section-title h3{
+  font-size: 40px;
+  font-weight: 700;
+  color: #333B7B;
+  margin: auto;
+}
+
+/* SOS TERAPEUTA SECTION END*/
 
 @media (max-width: 1100px) {
 
@@ -372,8 +420,6 @@
   }
 
   .login-form{
-      background-color: #DFE3FF;
-      border-radius: 10px;
       width: 100%;
   }
 }
