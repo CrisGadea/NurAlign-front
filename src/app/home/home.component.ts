@@ -81,5 +81,9 @@ export class HomeComponent implements AfterViewInit {
 
     sectionElement.forEach((el) => observer.observe(el));
   }
+
+  goToDashboard(){
+    window.location.href = '/dashboard';
+  }
   }
 
