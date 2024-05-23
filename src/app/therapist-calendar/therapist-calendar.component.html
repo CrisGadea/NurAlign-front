@@ -1,15 +1,10 @@
 
 <div id="fondo">
-<app-header-v></app-header-v>
-<div class="Turn">
-
-	<p>Solicitudes de Turno(1) </p>
-
-
-
-</div>
-
-<div class="TurnsAndCalendar">
+	<app-header-v></app-header-v>
+	<div class="Turn">
+		<p class="">Solicitudes de Turno(0)</p>
+	</div>
+	<div class="TurnsAndCalendar">
 
 <div id="Calendario" class="wrapper-calendar">
 	<div class="header-calendar">
@@ -38,11 +33,11 @@
 
 <div class="FutureTurns">
 
-	<p class="TitleTurns">turnos:</p>
+	<p class="TitleTurns">Turnos:</p>
 	<li class="ForFutureTurns" *ngFor="let turno of TurnPacient">
 		<a class="TextFutureTurn">
 		Turno de {{ turno.nombre }}
-		el dia{{ turno.fecha }}
+		el dia {{ turno.fecha }}
 		a las {{ turno.hora }}</a>
 	  </li>
 
