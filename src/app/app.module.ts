@@ -13,6 +13,7 @@ import { FooterComponent } from './footer/footer.component';
 import { TherapistCalendarComponent } from './therapist-calendar/therapist-calendar.component';
 import { HeaderVComponent } from './header-v/header-v.component';
 import { FooterVComponent } from './footer-v/footer-v.component';
+import { DashboardComponent } from './dashboard/dashboard.component';
 
 @NgModule({
   declarations: [
@@ -21,6 +22,7 @@ import { FooterVComponent } from './footer-v/footer-v.component';
     HomeComponent,
     LoginComponent,
     RegisterComponent,
+    DashboardComponent,
   
   
     TherapistCalendarComponent,

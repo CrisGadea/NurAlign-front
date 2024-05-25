@@ -1,6 +1,21 @@
 import { ComponentFixture, TestBed } from '@angular/core/testing';
+import { Component } from '@angular/core';
 
 import { DashboardComponent } from './dashboard.component';
+
+
+@Component({
+  selector: 'app-footer-v',
+  template: '<div>Mock footer</div>'
+})
+class MockFooterVComponent {}
+
+@Component({
+  selector: 'app-header-v',
+  template: '<div>Mock Header</div>'
+})
+class MockHeaderVComponent {}
+
 
 describe('DashboardComponent', () => {
   let component: DashboardComponent;
@@ -8,7 +23,7 @@ describe('DashboardComponent', () => {
 
   beforeEach(async () => {
     await TestBed.configureTestingModule({
-      imports: [DashboardComponent]
+      declarations: [DashboardComponent,MockHeaderVComponent, MockFooterVComponent ]
     })
     .compileComponents();
     
