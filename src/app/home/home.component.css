@@ -1,4 +1,440 @@
-.vinculo{
-  text-decoration: none;
+
+/* PRIMERA SECTION */
+
+.column-landing{
+  background-color: rgb(189, 196, 252, 0.7);
+  border-radius: 10px;
+  position: relative;
+  z-index: 1;
+  max-height: 800vh; 
+  width: 90%;
+  margin: auto;
+
+}
+
+.column-landing h1{
+  color:#333B7B;
+}
+
+.login-form{
+  background-color: #DFE3FF;
+  border-radius: 10px;
+  width: 90%;
+}
+.btn:hover {
+  background-color: #333B7B !important; 
+  color: #ffffff !important; 
+}
+
+.login-form .btn{
+  background-color: #888FC7;
+}
+
+.forgot-password span, .forgot-password a{
   color: #888FC7;
+}
+
+.p-column-1{
+  color: #333B7B;
+  font-size: 24px;
+}
+
+.login-form label{
+  color: #333B7B;
+  font-weight: 700;
+  text-transform: uppercase;
+  padding: 10px 0;
+}
+
+.login-form span, .login-form a{
+  color: #333B7B;
+}
+
+.login-form a{
+  font-weight: 700;
+}
+a{
+  text-decoration: none;
+}
+
+a:hover{
+  text-decoration: underline;
+
+}
+
+/* PRIMERA SECTION END */
+
+
+.container-fluid {
+  height: 100%;
+}
+
+.logo-playstore{
+  width: 40%;
+}
+
+.robotin{
+  width: 65px;
+  transition-duration: .5s;
+}
+
+.fixed-robot {
+  position: fixed;
+  bottom: 20px;
+  left: 20px;
+  display: flex;
+  align-items: flex-end;
+  z-index: 1000;
+  transition-duration: .5s;
+}
+
+.bot-image {
+  width: 80px;
+  margin-right: 10px;
+  transition-duration: .5s;
+}
+
+.chat-bubble1 {
+  position: relative;
+  background: white;
+  border-radius: 10px;
+  padding: 15px;
+  color: black;
+  font-size: 14px;
+  max-width: 300px;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+  margin-bottom: 35px;
+  margin-left: 72px;
+  animation-name: appear;
+  animation-duration: 5s;
+  transition-duration: 1s;
+}
+
+.chat-bubble1:after {
+  content: '';
+  position: absolute;
+  bottom: 0;
+  left: -3px;
+  width: 0;
+  height: 0;
+  border: 10px solid transparent;
+  border-top-color: white;
+  border-bottom: 0;
+  border-right: 0;
+  margin-left: -5px;
+  margin-bottom: 5px;
+  transition-duration: 1s;
+}
+
+.chat-bubble1:hover{
+  opacity: 0;
+  transition-duration: 1s;
+  }
+
+/* TEXT ANIMATION */
+
+.bubble-text {
+  font-size: 14px;
+  margin: 0;  
+  overflow: hidden;
+  white-space: nowrap;
+  opacity: 0;
+}
+
+.text1{
+  animation: 
+  typing 2s steps(40, end) forwards;
+}
+.text2{
+  animation: 
+  typing 2s steps(40, end) forwards;
+  animation-delay: 1.2s;
+}
+.text3{
+  animation: 
+  typing 2s steps(40, end) forwards;
+  animation-delay: 3s;
+}
+
+.text4{
+  animation: 
+  typing 2s steps(40, end) forwards;
+  animation-delay: 0;
+}
+
+.text5{
+  animation: 
+  typing 2s steps(40, end) forwards;
+  animation-delay: 2s;
+}
+
+.text6{
+  animation: 
+  typing 2s steps(40, end) forwards;
+  animation-delay: 4s;
+}
+
+.text7{
+  animation: 
+  typing 2s steps(40, end) forwards;
+  animation-delay: 6s;
+}
+
+.text8{
+  animation: 
+  typing 2s steps(40, end) forwards;
+  animation-delay: 8s;
+}
+
+.text9{
+  animation: 
+  typing 2s steps(40, end) forwards;
+  animation-delay: 10s;
+}
+
+.text10{
+  animation: 
+  typing 2s steps(40, end) forwards;
+  animation-delay: 10.5s;
+}
+
+@keyframes typing {
+  from { width: 0 ;
+  opacity: 1;}
+  to { width: 100% ;
+  opacity: 1;}
+}
+
+.blink {
+  animation: blinkAnimation 4s infinite;
+}
+
+@keyframes blinkAnimation {
+  0%, 33.33%, 100% {
+      opacity: 1;
+  }
+  16.66% {
+      opacity: 0;
+  }
+}
+/* TEXT ANIMATION END */
+
+/* FADE ANIMATION */
+
+.hidden-fade-in-left{
+  opacity: 0;
+  filter: blur(5px);
+  transform: translateX(-10%);
+  transition: all 1s;
+}
+
+.show-fade-in-left{
+  opacity: 1;
+  filter: blur(0);
+  transform: translateX(0);
+  transition: all 1s;
+}
+
+.hidden-fade-in-right{
+  opacity: 0;
+  filter: blur(5px);
+  transform: translateX(10%);
+  transition: all 1s;
+}
+
+.show-fade-in-right{
+  opacity: 1;
+  filter: blur(0);
+  transform: translateX(0);
+  transition: all 1s;
+}
+
+/* FADE ANIMATION END */
+
+/* NUESTRO OBJETIVO */
+.img-bg{
+  background-image: url('../../assets/Image/home/mano-celu.png');
+  background-size: cover;
+  background-position: center;
+  background-repeat: no-repeat;
+  height: 450px;
+}
+
+.nuestro-objetivo{
+  background: rgb(51, 59, 123, 0.3);
+  color: white;
+  padding: 20px;
+  border-radius: 10px;
+  text-align: center;
+  height: 50%;
+  margin: auto;
+  display: flex;
+  align-items: center;
+}
+
+.nuestro-objetivo p{
+  text-align: justify;
+}
+
+/* NUESTRO OBJETIVO END*/
+
+/* ROBOTIN SECTION*/
+
+.quien-es-robotin{
+  background-color: #333B7B;
+}
+
+.quien-es-robotin h2 {
+  font-weight: 700;
+  font-size: 45px;
+  color: #DFE3FF;
+}
+.absolute-robot{
+  position: absolute;
+  bottom: 0;
+  right: 0;
+  transition-duration: 2.5s;
+}
+
+.bot-section-image{
+  position: absolute;
+  width: 100px;
+  bottom: 0;
+  right: 0;
+  transition-duration: .5s;
+}
+
+.columna-robot{
+  position: relative;
+  height: 350px;
+}
+
+.chat-bubble-section {
+  position: relative;
+  background: white;
+  border-radius: 10px;
+  padding: 15px;
+  color: black;
+  font-size: 14px;
+  width: 400px;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+  margin-bottom: 35px;
+  animation-name: appear;
+  animation-duration: 5s;
+  margin: 0px 63px 98px auto;
+  transition-duration: 1s;
+  display: none;
+}
+
+.chat-bubble-section:after {
+  content: '';
+  position: absolute;
+  bottom: -21px;
+  right: 0px;
+  width: 0;
+  height: 0;
+  border: 23px solid transparent;
+  border-top-color: white;
+  border-bottom: 0;
+  border-right: 0;
+  margin-left: -5px;
+  margin-bottom: 5px;
+  transition-duration: 1s;
+}
+
+/* ROBOTIN SECTION END*/
+
+/* GRAFICOS SECTION*/
+
+.contale-section{
+  background-color: #DFE3FF;
+}
+
+.contale-section-title{
+  display: flex;
+  align-items: center;
+  height: 100%;
+}
+.contale-section-title h3{
+  font-size: 40px;
+  font-weight: 700;
+  color: #888FC7;
+  margin: auto;
+}
+
+.contale-section p, .sos-terapeuta-section p{
+  color: #000;
+}
+
+/*GRAFICOS SECTION ENDS*/
+
+/* SOS TERAPEUTA SECTION*/
+
+.sos-terapeuta-section{
+  background-color: #888FC7;
+}
+
+.sos-terapeuta-section-title{
+  display: flex;
+  align-items: center;
+  height: 100%;
+}
+
+.sos-terapeuta-section-title h3{
+  font-size: 40px;
+  font-weight: 700;
+  color: #333B7B;
+  margin: auto;
+}
+
+/* SOS TERAPEUTA SECTION END*/
+
+@media (max-width: 1100px) {
+
+  .p-column-1{
+      font-size: 24px;
+      padding: 10px 0;
+  }
+
+}
+
+@media (max-width: 991px) {
+  .quien-es-robotin h2 {
+      font-size: 27px;
+  }
+}
+@media (max-width: 767px) {
+
+  .column-container{
+      margin: 10px auto !important;
+  }
+
+  #rowR {
+      flex-direction: column;
+      flex-wrap: nowrap;
+  }
+
+  .p-column-1{
+      font-size: 24px;
+      padding: 10px 0;
+  }
+
+  .login-form{
+      width: 100%;
+  }
+}
+
+@media (max-width: 425px) {
+  .p-column-1{
+      font-size: 15px;
+      padding: 10px 0;
+  }
+  .chat-bubble-section{
+      width: 350px;
+      margin: 0px 10px 98px auto;
+  }
+  #chat-bubble-section p{
+      font-size: 12px;
+
+  }
 }

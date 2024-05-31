@@ -1,7 +1,7 @@
 import { ComponentFixture, TestBed } from '@angular/core/testing';
 import { Component } from '@angular/core';
 
-import { DashboardComponent } from './dashboard.component';
+import { TherapistCalendarComponent } from './therapist-calendar.component';
 
 
 @Component({
@@ -16,18 +16,15 @@ class MockFooterVComponent {}
 })
 class MockHeaderVComponent {}
 
+describe('TherapistCalendarComponent', () => {
+  let component: TherapistCalendarComponent;
+  let fixture: ComponentFixture<TherapistCalendarComponent>;
 
-describe('DashboardComponent', () => {
-  let component: DashboardComponent;
-  let fixture: ComponentFixture<DashboardComponent>;
-
-  beforeEach(async () => {
-    await TestBed.configureTestingModule({
-      declarations: [DashboardComponent,MockHeaderVComponent, MockFooterVComponent ]
-    })
-    .compileComponents();
-    
-    fixture = TestBed.createComponent(DashboardComponent);
+  beforeEach(() => {
+    TestBed.configureTestingModule({
+      declarations: [TherapistCalendarComponent, MockHeaderVComponent, MockFooterVComponent ]
+    });
+    fixture = TestBed.createComponent(TherapistCalendarComponent);
     component = fixture.componentInstance;
     fixture.detectChanges();
   });
@@ -35,4 +32,6 @@ describe('DashboardComponent', () => {
   it('should create', () => {
     expect(component).toBeTruthy();
   });
+
+
 });

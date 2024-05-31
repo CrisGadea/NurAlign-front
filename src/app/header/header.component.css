@@ -1,40 +1,34 @@
-.header {
-
-    position: absolute;
-    display: flex;
-    justify-content: space-between;
-    width: 100%; /* Asegura que ocupe todo el ancho */
-    /* Espacio entre los elementos */
-    box-sizing: border-box; /* Incluye el padding en el ancho total */
+  .logo-nuralign-header{
+    width: 200px;
 }
-.cuadroHeader {
- 
-    width: 25vw;
-    height: 65px;
-    background-color: #888FC7;
 
-    color: #ffffff;
-    font-family: nunito;
-    font-size: 25px;
-    border-bottom-right-radius: 70px;
-    display: flex; /* Utilizar flexbox */
-    justify-content: center; /* Centrar horizontalmente el contenido */
-    align-items: center; /* Centrar verticalmente el contenido */
-  }
-@media (max-width: 1050px) {  .header{background-color: #333B7B;}}
-.Isologotipo
-  {
-padding-top: 7px ;
-padding-right: 10px ;
-  }
-  .Isotipo
-  {
-padding-right: 8px;
+.spacer-header{
+  height: 83.14px;
+}
 
-  }
-  @media (max-width: 550px) {
-    .Isologotipo{
-        margin-left: 10px;}
-        .cuadroHeader{display: none;}
-      
-  }
+/* MODAL REGISTRO*/
+.modal-header, .modal-footer{
+  background-color: #333B7B;
+}
+.modal-body{
+  background-color: #DFE3FF;
+}
+
+.register-form label{
+  color: #333B7B;
+  font-weight: 700;
+  text-transform: uppercase;
+  padding: 5px 0;
+}
+
+.btn:hover {
+  background-color: #333B7B !important; 
+  color: #ffffff !important; 
+}
+
+.register-form .btn{
+  background-color: #888FC7;
+}
+
+/* MODAL REGISTRO END*/
+
