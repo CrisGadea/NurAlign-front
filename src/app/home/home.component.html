@@ -72,7 +72,7 @@
               <div class="p-3 d-flex flex-column m-auto column-landing h-100 position-relative">
                   <div class="col-12">
                   </div>
-                  <h1 class="h1-column-1 fw-bold text-uppercase m-0">¿Sufres trastorno de bipolaridad?</h1>
+                  <h1 class="h1-column-1 fw-bold text-uppercase m-0 pt-2">¿Sufres trastorno de bipolaridad?</h1>
                   <p class="p-column-1 m-0">Descarga nuestra app para empezar a monitorear tus emociones</p>
                   <div class="position-relative h-auto text-end">
                       <img class="logo-playstore" src="../../assets/Image/home/Google-Play-App-Store-Button.webp">
@@ -82,7 +82,7 @@
           <div class="col m-auto h-75 column-container">
               <div class="p-3 m-auto column-landing h-100 d-flex flex-column">
                   <div class="text-center">
-                      <h1 class="m-0">¡BIENVENIDO!</h1>
+                      <h2 class="m-0 pt-2">¿Sos terapeuta? Inicia sesion</h2>
                   </div>
                   <div class="login-form h-75 p-3 m-auto d-flex align-items-center justify-content-center">
                       <form class="w-100" action="#" method="post">
@@ -107,22 +107,17 @@
       </div>
   </div>
 </div>
-
 <div class="container-fluid img-bg" id="nuestra-mision">
-  <div class="row h-100">
-      <div class="col-5 d-none d-md-block">
-          
-      </div>
-      <div class="col-md-5 nuestro-objetivo hidden-fade-in-right">
-          <p>En NurAlign nuestra misión es mejorar la calidad de vida de las personas con trastorno bipolar mediante el uso de tecnología avanzada y accesible. Nuestra aplicación está diseñada para ser una herramienta integral que permite a los usuarios llevar un registro detallado y preciso de sus fluctuaciones emocionales a lo largo del tiempo.</p>
-      </div>
-  </div>
+    <div class="row h-100 nuestro-objetivo">
+        <img class="img-fluid icono1 hidden-fade-in-left" src="../../assets/Image/home/mejorartuvida.png">
+        <img class="img-fluid icono2 hidden-fade-in-right" src="../../assets/Image/home/feliztriste.png">
+    </div>
 </div>
 <div class="quien-es-robotin" id="quien-es-robotin">
   <div class="container">
       <div class="row">
           <div class="col-12 columna-robot">
-              <div class="d-none d-md-flex col-4 col-lg-5 align-items-center h-100">
+              <div class="d-none d-md-flex col-4 col-lg-5 align-items-center h-100 hidden-fade-in-left">
                   <h2>UN COMPAÑERO QUE TE AYUDA EN TU CAMINO</h2>
               </div>
               <div class="fixed-robot hidden-fade-in-left" id="robotin">
@@ -151,7 +146,7 @@
       </div>
   </div>
 </div>
-<div class="contale-section">
+<div class="contale-section py-4">
   <div class="container">
       <div class="row d-flex align-items-center">
           <div class="col-12 col-md-6 py-4 order-1 order-md-0 hidden-fade-in-left">
@@ -164,7 +159,8 @@
       </div>
   </div>
 </div>
-<div class="sos-terapeuta-section" id="sos-terapeuta">
+<div class="sos-terapeuta-section py-4
+" id="sos-terapeuta">
     <div class="container">
         <div class="row d-flex align-items-center">
             <div class="col-12 col-md-6 py-4 order-1 order-md-1 hidden-fade-in-left">
@@ -177,4 +173,16 @@
         </div>
     </div>
 </div>
+ <!-- Swiper JS -->
+ <script src="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.js"></script>
+
+ <!-- Initialize Swiper -->
+ <script>
+   var swiper = new Swiper(".mySwiper", {
+     navigation: {
+       nextEl: ".swiper-button-next",
+       prevEl: ".swiper-button-prev",
+     },
+   });
+ </script>
 <app-footer></app-footer>

@@ -12,8 +12,12 @@
 
 }
 
-.column-landing h1{
+.column-landing h1, .column-landing h2 {
   color:#333B7B;
+}
+
+.column-landing h2{
+  font-size: 30px;
 }
 
 .login-form{
@@ -226,6 +230,7 @@ a:hover{
   filter: blur(5px);
   transform: translateX(-10%);
   transition: all 1s;
+  transition-delay: .4s;
 }
 
 .show-fade-in-left{
@@ -233,6 +238,7 @@ a:hover{
   filter: blur(0);
   transform: translateX(0);
   transition: all 1s;
+  transition-delay: .4s;
 }
 
 .hidden-fade-in-right{
@@ -240,6 +246,7 @@ a:hover{
   filter: blur(5px);
   transform: translateX(10%);
   transition: all 1s;
+  transition-delay: .4s;
 }
 
 .show-fade-in-right{
@@ -247,6 +254,7 @@ a:hover{
   filter: blur(0);
   transform: translateX(0);
   transition: all 1s;
+  transition-delay: .4s;
 }
 
 /* FADE ANIMATION END */
@@ -255,25 +263,59 @@ a:hover{
 .img-bg{
   background-image: url('../../assets/Image/home/mano-celu.png');
   background-size: cover;
-  background-position: center;
+  background-position: left;
+  background-position-y: bottom;
   background-repeat: no-repeat;
-  height: 450px;
+  height: 500px;
 }
 
 .nuestro-objetivo{
-  background: rgb(51, 59, 123, 0.3);
-  color: white;
-  padding: 20px;
-  border-radius: 10px;
-  text-align: center;
-  height: 50%;
-  margin: auto;
-  display: flex;
-  align-items: center;
+  position: relative;
 }
 
-.nuestro-objetivo p{
-  text-align: justify;
+.nuestro-objetivo .icono1{
+  position: absolute;
+  top: 50px;
+  left: 40px;
+  width: 500px;
+}
+
+.nuestro-objetivo .icono2{
+  position: absolute;
+  bottom: 50px;
+  right: 60px;
+  width: 30%;
+  transition-delay: .5s;
+}
+@media (max-width: 767px) {
+  .nuestro-objetivo .icono1{
+    position: absolute;
+    top: 60px;
+    left: 20px;
+    width: 400px;
+  }
+  
+  .nuestro-objetivo .icono2{
+    position: absolute;
+    bottom: 80px;
+    right: 20px;
+    width: 200px;
+  }
+}
+@media (max-width: 425px) {
+  .nuestro-objetivo .icono1{
+    position: absolute;
+    top: 60px;
+    left: 40px;
+    width: 300px;
+  }
+  
+  .nuestro-objetivo .icono2{
+    position: absolute;
+    bottom: 80px;
+    right: 20px;
+    width: 200px;
+  }
 }
 
 /* NUESTRO OBJETIVO END*/
