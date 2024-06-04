@@ -1,4 +1,9 @@
 
+.pym-para-header{
+  padding-top: 83.14px;
+  margin-top: -83.14px;
+}
+
 /* PRIMERA SECTION */
 
 .column-landing{
@@ -266,58 +271,17 @@ a:hover{
   background-position: left;
   background-position-y: bottom;
   background-repeat: no-repeat;
-  height: 500px;
+  height: 550px;
 }
 
-.nuestro-objetivo{
-  position: relative;
+.objetivo-column1{
+  background-color: rgb(51, 59, 123, .5);
 }
 
-.nuestro-objetivo .icono1{
-  position: absolute;
-  top: 50px;
-  left: 40px;
-  width: 500px;
+.card-custom{
+  max-width: 400px;
+  background-color: #dfe3ff;
 }
-
-.nuestro-objetivo .icono2{
-  position: absolute;
-  bottom: 50px;
-  right: 60px;
-  width: 30%;
-  transition-delay: .5s;
-}
-@media (max-width: 767px) {
-  .nuestro-objetivo .icono1{
-    position: absolute;
-    top: 60px;
-    left: 20px;
-    width: 400px;
-  }
-  
-  .nuestro-objetivo .icono2{
-    position: absolute;
-    bottom: 80px;
-    right: 20px;
-    width: 200px;
-  }
-}
-@media (max-width: 425px) {
-  .nuestro-objetivo .icono1{
-    position: absolute;
-    top: 60px;
-    left: 40px;
-    width: 300px;
-  }
-  
-  .nuestro-objetivo .icono2{
-    position: absolute;
-    bottom: 80px;
-    right: 20px;
-    width: 200px;
-  }
-}
-
 /* NUESTRO OBJETIVO END*/
 
 /* ROBOTIN SECTION*/
@@ -413,7 +377,7 @@ a:hover{
 /* SOS TERAPEUTA SECTION*/
 
 .sos-terapeuta-section{
-  background-color: #888FC7;
+  background-color: #727dd1;
 }
 
 .sos-terapeuta-section-title{
@@ -425,8 +389,12 @@ a:hover{
 .sos-terapeuta-section-title h3{
   font-size: 40px;
   font-weight: 700;
-  color: #333B7B;
+  color: #DFE3FF;
   margin: auto;
+}
+
+.sos-terapeuta-p p{
+  color:#ffffff;
 }
 
 /* SOS TERAPEUTA SECTION END*/
