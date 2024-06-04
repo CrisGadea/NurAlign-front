@@ -14,6 +14,13 @@ import { TherapistCalendarComponent } from './therapist-calendar/therapist-calen
 import { HeaderVComponent } from './header-v/header-v.component';
 import { FooterVComponent } from './footer-v/footer-v.component';
 import { DashboardComponent } from './dashboard/dashboard.component';
+import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
+import { SideNavComponent } from './side-nav/side-nav.component';
+
+import { MatSidenavModule } from '@angular/material/sidenav';
+import { MatToolbarModule } from '@angular/material/toolbar';
+import { MatIconModule } from '@angular/material/icon';
+import { MatListModule } from '@angular/material/list';
 
 @NgModule({
   declarations: [
@@ -23,9 +30,11 @@ import { DashboardComponent } from './dashboard/dashboard.component';
     LoginComponent,
     RegisterComponent,
     DashboardComponent,
+
   
   
     TherapistCalendarComponent,
+            SideNavComponent,
            
   ],
   imports: [
@@ -36,6 +45,11 @@ import { DashboardComponent } from './dashboard/dashboard.component';
   FooterComponent,
   HeaderVComponent,
   FooterVComponent,
+  BrowserAnimationsModule,
+  MatSidenavModule,
+  MatToolbarModule,
+  MatIconModule,
+  MatListModule,
 
   ],
   exports: [  // Exporta el componente aquí si lo necesitas en otro módulo

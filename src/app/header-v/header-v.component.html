@@ -1,6 +1,26 @@
-
-<div class="header">  
-    <div class="cuadroHeader">Bienvenido PepeLuis</div><div class="Isologotipo">
-       <img class="Isotipo"  src="../../assets/Image/Isotipo.png"> <img class="isotipo" 
-       src="../../assets/Image/LogoTipo.png"></div></div>
-     
+<div class="header">
+  <div class="cuadroHeader"><button mat-icon-button (click)="sidenav.toggle()">
+        <mat-icon>menu</mat-icon>
+      </button> <label class="bienvenida">Bienvenido PepeLuis</label></div>
+    <div class="Isologotipo">
+      <img class="Isotipo" src="../../assets/Image/Isotipo.png">
+      <img class="isotipo" src="../../assets/Image/LogoTipo.png">
+    </div>
+  </div>
+  
+  <mat-sidenav-container class="contenidosidebar">
+    <mat-sidenav #sidenav mode="side" opened class="columnabar">
+      <mat-nav-list>
+        <a mat-list-item href="#">Enlace 1</a>
+        <a mat-list-item href="#">Enlace 2</a>
+        <a mat-list-item href="#">Enlace 3</a>
+      </mat-nav-list>
+    </mat-sidenav>
+    <mat-sidenav-content>
+   
+      <div class="main-content">
+        Agrega tu contenido principal aquí
+      </div>
+    </mat-sidenav-content>
+  </mat-sidenav-container>
+  
