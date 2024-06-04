@@ -21,6 +21,7 @@ import { MatSidenavModule } from '@angular/material/sidenav';
 import { MatToolbarModule } from '@angular/material/toolbar';
 import { MatIconModule } from '@angular/material/icon';
 import { MatListModule } from '@angular/material/list';
+import { MatButtonModule } from '@angular/material/button';
 
 @NgModule({
   declarations: [
@@ -30,6 +31,7 @@ import { MatListModule } from '@angular/material/list';
     LoginComponent,
     RegisterComponent,
     DashboardComponent,
+    HeaderVComponent,
 
   
   
@@ -43,13 +45,14 @@ import { MatListModule } from '@angular/material/list';
     HttpClientModule,
   HeaderComponent, 
   FooterComponent,
-  HeaderVComponent,
+
   FooterVComponent,
   BrowserAnimationsModule,
   MatSidenavModule,
   MatToolbarModule,
   MatIconModule,
   MatListModule,
+  MatButtonModule
 
   ],
   exports: [  // Exporta el componente aquí si lo necesitas en otro módulo

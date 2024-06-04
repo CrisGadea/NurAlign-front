@@ -3,8 +3,8 @@
 }
 
 #fondo{
-
-  position: absolute;
+  z-index: 2;
+  position: absolute!important;
   width: 100%;
   height: 100%;
  /* height: 100%;*/
@@ -41,6 +41,7 @@ width: 60vw;
 }
 
 #Calendario {
+  margin-left: 250px;
  /* 
  background-color: #888FC7;
  
@@ -147,6 +148,7 @@ height: auto;
     border: 0;
   }
   .FutureTurns{
+   
     margin-top: 40px;
     border-radius: 10px;
     width: 40vw;
@@ -160,7 +162,7 @@ background-color:   #DFE3FF;
   {
     font-weight: bold;
     font-size: 30px;
-    text-align: center;
+    margin-left: 200px;
   }
 .ForFutureTurns
 {
