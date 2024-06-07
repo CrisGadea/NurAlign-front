@@ -3,7 +3,6 @@ import { BrowserModule } from '@angular/platform-browser';
 
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
-import { UserComponent } from './user/user.component';
 import { HomeComponent } from './home/home.component';
 
 import { HttpClientModule } from '@angular/common/http';
@@ -18,7 +17,6 @@ import { DashboardComponent } from './shared/modules/dashboard/dashboard.compone
 @NgModule({
   declarations: [
     AppComponent,
-    UserComponent,
     HomeComponent,
   
     DashboardComponent,

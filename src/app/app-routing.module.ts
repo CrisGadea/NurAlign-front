@@ -8,7 +8,6 @@ import { TherapistCalendarComponent } from './shared/modules/therapist-calendar/
 const routes: Routes = [
   { path: '', component: HomeComponent },
   {path:'Calendar',component:TherapistCalendarComponent},
-
   {path:'dashboard', component:DashboardComponent},
   { path: '**', component: HomeComponent },
 ];
