@@ -1,6 +1,6 @@
 
 <div id="fondo">
-	<app-header-v></app-header-v>
+	<!--<app-header-v></app-header-v>-->
 	<div class="Turn">
 		<p class="">Solicitudes de Turno(0)</p>
 	</div>
@@ -31,6 +31,7 @@
 </div>
 
 
+
 <div class="FutureTurns">
 
 	<p class="TitleTurns">Turnos:</p>
@@ -44,5 +45,25 @@
 </div>
 
 </div>
+
+
+<div class="popup" [ngClass]="{ 'show': isPopupVisible }">
+    <div class="popup-content">
+      <span class="close" (click)="closePopup()">&times;</span>
+      <h2>turnos de la fecha: {{ popupDate }}</h2>
+
+	  <li class="ForFutureTurns" *ngFor="let turno of popUpTurnByFecha">
+		<a>
+		Turno de {{ turno.nombre }}
+		el dia {{ turno.fecha }}
+		a las {{ turno.hora }}</a>
+	  </li>
+
+
+    
+    </div>
+  </div>
+
+  
 <app-footer-v></app-footer-v>
 </div>
