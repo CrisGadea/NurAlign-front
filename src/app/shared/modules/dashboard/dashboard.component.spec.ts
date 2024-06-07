@@ -5,13 +5,13 @@ import { DashboardComponent } from './dashboard.component';
 
 
 @Component({
-  selector: 'app-footer-v',
+  selector: 'app-footer-session',
   template: '<div>Mock footer</div>'
 })
 class MockFooterVComponent {}
 
 @Component({
-  selector: 'app-header-v',
+  selector: 'app-header-session',
   template: '<div>Mock Header</div>'
 })
 class MockHeaderVComponent {}

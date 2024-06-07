@@ -1,4 +1,4 @@
-import { Injectable } from '@angular/core';
+/*import { Injectable } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
 
 @Injectable({
@@ -12,3 +12,4 @@ export class LoginService {
     return this.http.post('http://localhost:8080/api/login',data);
   }
 }
+*/

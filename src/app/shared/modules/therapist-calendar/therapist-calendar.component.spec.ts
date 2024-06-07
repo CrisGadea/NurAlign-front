@@ -1,6 +1,20 @@
-/*import { ComponentFixture, TestBed } from '@angular/core/testing';
+import { ComponentFixture, TestBed } from '@angular/core/testing';
+import { Component } from '@angular/core';
 
 import { TherapistCalendarComponent } from './therapist-calendar.component';
+
+
+@Component({
+  selector: 'app-footer-session',
+  template: '<div>Mock footer</div>'
+})
+class MockFooterVComponent {}
+
+@Component({
+  selector: 'app-header-session',
+  template: '<div>Mock Header</div>'
+})
+class MockHeaderVComponent {}
 
 describe('TherapistCalendarComponent', () => {
   let component: TherapistCalendarComponent;
@@ -8,7 +22,7 @@ describe('TherapistCalendarComponent', () => {
 
   beforeEach(() => {
     TestBed.configureTestingModule({
-      declarations: [TherapistCalendarComponent]
+      declarations: [TherapistCalendarComponent, MockHeaderVComponent, MockFooterVComponent ]
     });
     fixture = TestBed.createComponent(TherapistCalendarComponent);
     component = fixture.componentInstance;
@@ -18,4 +32,6 @@ describe('TherapistCalendarComponent', () => {
   it('should create', () => {
     expect(component).toBeTruthy();
   });
-});*/
+
+
+});
