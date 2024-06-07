@@ -11,11 +11,16 @@ export class TherapistCalendarComponent implements OnInit {
 
 
   TurnPacient = [
-    { nombre: 'Jose', fecha: '23/05/2024', hora: '15:00' },
+    { nombre: 'Jose', fecha: '19/04/2024', hora: '15:00' },
     { nombre: 'Maria', fecha: '24/05/2024', hora: '10:00' },
-    { nombre: 'Carlos', fecha: '25/05/2024', hora: '11:30' },
+    { nombre: 'Carlos', fecha: '19/04/2024', hora: '11:30' },
     { nombre: 'Ana', fecha: '26/05/2024', hora: '13:00' },
-    { nombre: 'Luis', fecha: '27/05/2024', hora: '09:00' }
+    { nombre: 'Luis', fecha: '27/05/2024', hora: '09:00' },
+    { nombre: 'Jose', fecha: '24/05/2024', hora: '15:00' },
+    { nombre: 'Maria', fecha: '20/05/2024', hora: '10:00' },
+    { nombre: 'Carlos', fecha: '20/05/2024', hora: '11:30' },
+    { nombre: 'Ana', fecha: '19/05/2024', hora: '13:00' },
+    { nombre: 'Luis', fecha: '19/04/2024', hora: '09:00' }
   ];
 
 
@@ -34,6 +39,9 @@ export class TherapistCalendarComponent implements OnInit {
   monthSelect: any[] = [];
   dateSelect: any;
   dateValue: any;
+  popupDate: string = ''; 
+  isPopupVisible: boolean = false; 
+  popUpTurnByFecha:any[]= [];
 
   constructor() { }
 
@@ -80,11 +88,45 @@ export class TherapistCalendarComponent implements OnInit {
       this.getDaysFromDate(nextDate.month() + 1, nextDate.year());
     }
   }
+/*
+  clickDay(day: { value: number }): void {
+    const monthYear = this.dateSelect.format('YYYY-MM');
+    const parse = `${monthYear}-${day.value}`;
+    const objectDate = moment(parse);
+    this.dateValue = objectDate;
+  }*/
 
   clickDay(day: { value: number }): void {
     const monthYear = this.dateSelect.format('YYYY-MM');
     const parse = `${monthYear}-${day.value}`;
     const objectDate = moment(parse);
     this.dateValue = objectDate;
+    this.popupDate = objectDate.format('DD-MM-YYYY');
+    
+    
+    for (let i = 0; i < this.TurnPacient.length; i++) {
+      const turno = this.TurnPacient[i];
+      const fechaTurno = moment(turno.fecha, 'DD/MM/YYYY').format('DD/MM/YYYY');
+      this.popupDate = objectDate.format('DD/MM/YYYY'); // Cambia el formato a 'DD/MM/YYYY'
+
+    if(fechaTurno === this.popupDate)
+      {
+        this.popUpTurnByFecha.push(turno);
+
+      }
+    }
+
+    this.isPopupVisible = true; 
+
   }
+  
+
+
+
+  closePopup(): void {
+    this.popUpTurnByFecha = []; // Vaciar el array popUpTurnByFecha
+    this.isPopupVisible = false; // Cerrar el pop-up
+  }
+
+
 }
