@@ -266,7 +266,7 @@ a:hover{
 
 /* NUESTRO OBJETIVO */
 .img-bg{
-  background-image: url('../../assets/Image/home/mano-celu.png');
+  background-image: url('src/assets/Image/home/mano-celu.png');
   background-size: cover;
   background-position: left;
   background-position-y: bottom;
