@@ -1,9 +1,7 @@
 
 <div id="fondo">
 	<app-header-session></app-header-session>
-	<div class="Turn">
-		<p class="">Solicitudes de Turno(0)</p>
-	</div>
+
 	<div class="TurnsAndCalendar">
 
 <div id="Calendario" class="wrapper-calendar">
@@ -58,11 +56,47 @@
 		el dia {{ turno.fecha }}
 		a las {{ turno.hora }}</a>
 	  </li>
+	  <div>
+		<form [formGroup]="turnForm" (ngSubmit)="generateTurn()">
+			<mat-form-field>
+				<mat-label>Nombre del paciente</mat-label>
+				<input matInput formControlName="namePacient">
+			  </mat-form-field>
+			  <mat-form-field>
+				<mat-label>Select</mat-label>
+				<mat-select formControlName="turnTime">
+				  <mat-option value="00:00">00:00</mat-option>
+				  <mat-option value="01:00">01:00</mat-option>
+				  <mat-option value="02:00">02:00</mat-option>
+				  <mat-option value="03:00">03:00</mat-option>
+				  <mat-option value="04:00">04:00</mat-option>
+				  <mat-option value="05:00">05:00</mat-option>
+				  <mat-option value="06:00">06:00</mat-option>
+				  <mat-option value="07:00">07:00</mat-option>
+				  <mat-option value="08:00">08:00</mat-option>
+				  <mat-option value="09:00">09:00</mat-option>
+				  <mat-option value="10:00">10:00</mat-option>
+				  <mat-option value="11:00">11:00</mat-option>
+				  <mat-option value="12:00">12:00</mat-option>
+				  <mat-option value="13:00">13:00</mat-option>
+				  <mat-option value="14:00">14:00</mat-option>
+				  <mat-option value="15:00">15:00</mat-option>
+				  <mat-option value="16:00">16:00</mat-option>
+				  <mat-option value="17:00">17:00</mat-option>
+				  <mat-option value="18:00">18:00</mat-option>
+				  <mat-option value="19:00">19:00</mat-option>
+				  <mat-option value="20:00">20:00</mat-option>
+				  <mat-option value="21:00">21:00</mat-option>
+				  <mat-option value="22:00">22:00</mat-option>
+				  <mat-option value="23:00">23:00</mat-option>
+			
+			
+				</mat-select>
+			  </mat-form-field>
+			  <button mat-flat-button color="accent" type="submit">Accent</button>
+		</form>
+	  </div>
 
-
-    
-    </div>
-  </div>
 
   
 <app-footer-session></app-footer-session>

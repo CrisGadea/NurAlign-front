@@ -13,6 +13,14 @@ import { TherapistCalendarComponent } from './shared/modules/therapist-calendar/
 import { HeaderSessionComponent } from './shared/header-session/header-session.component';
 import { FooterSessionComponent } from './shared/footer-session/footer-session.component';
 import { DashboardComponent } from './shared/modules/dashboard/dashboard.component';
+import {MatIconModule} from '@angular/material/icon';
+import {MatDividerModule} from '@angular/material/divider';
+import {MatButtonModule} from '@angular/material/button';
+import {MatSelectModule} from '@angular/material/select';
+import {MatInputModule} from '@angular/material/input';
+import {MatFormFieldModule} from '@angular/material/form-field';
+import { NoopAnimationsModule } from '@angular/platform-browser/animations';
+import { FormsModule, ReactiveFormsModule } from '@angular/forms'; 
 
 @NgModule({
   declarations: [
@@ -33,6 +41,13 @@ import { DashboardComponent } from './shared/modules/dashboard/dashboard.compone
   FooterComponent,
   HeaderSessionComponent,
   FooterSessionComponent,
+  MatButtonModule,
+   MatDividerModule,
+  MatIconModule,
+  MatFormFieldModule, 
+  MatInputModule, 
+  MatSelectModule, NoopAnimationsModule,
+  FormsModule,ReactiveFormsModule
 
   ],
  
