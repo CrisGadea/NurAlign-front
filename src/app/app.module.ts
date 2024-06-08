@@ -3,29 +3,34 @@ import { BrowserModule } from '@angular/platform-browser';
 
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
-import { UserComponent } from './user/user.component';
-import { HomeComponent } from './home/home.component';
-import { LoginComponent } from './login/login.component';
+import { HomeComponent } from './shared/modules/home/home.component';
+
 import { HttpClientModule } from '@angular/common/http';
-import { RegisterComponent } from './register/register.component';
-import { HeaderComponent } from './header/header.component';
-import { FooterComponent } from './footer/footer.component';
-import { TherapistCalendarComponent } from './therapist-calendar/therapist-calendar.component';
-import { HeaderVComponent } from './header-v/header-v.component';
-import { FooterVComponent } from './footer-v/footer-v.component';
-import { DashboardComponent } from './dashboard/dashboard.component';
+
+import { HeaderComponent } from './shared/header/header.component';
+import { FooterComponent } from './shared/footer/footer.component';
+import { TherapistCalendarComponent } from './shared/modules/therapist-calendar/therapist-calendar.component';
+import { HeaderSessionComponent } from './shared/header-session/header-session.component';
+import { FooterSessionComponent } from './shared/footer-session/footer-session.component';
+import { DashboardComponent } from './shared/modules/dashboard/dashboard.component';
+import {MatIconModule} from '@angular/material/icon';
+import {MatDividerModule} from '@angular/material/divider';
+import {MatButtonModule} from '@angular/material/button';
+import {MatSelectModule} from '@angular/material/select';
+import {MatInputModule} from '@angular/material/input';
+import {MatFormFieldModule} from '@angular/material/form-field';
+import { NoopAnimationsModule } from '@angular/platform-browser/animations';
+import { FormsModule, ReactiveFormsModule } from '@angular/forms'; 
 
 @NgModule({
   declarations: [
     AppComponent,
-    UserComponent,
     HomeComponent,
-    LoginComponent,
-    RegisterComponent,
+  
     DashboardComponent,
+    
   
-  
-    TherapistCalendarComponent,
+    TherapistCalendarComponent
            
   ],
   imports: [
@@ -34,13 +39,18 @@ import { DashboardComponent } from './dashboard/dashboard.component';
     HttpClientModule,
   HeaderComponent, 
   FooterComponent,
-  HeaderVComponent,
-  FooterVComponent,
+  HeaderSessionComponent,
+  FooterSessionComponent,
+  MatButtonModule,
+   MatDividerModule,
+  MatIconModule,
+  MatFormFieldModule, 
+  MatInputModule, 
+  MatSelectModule, NoopAnimationsModule,
+  FormsModule,ReactiveFormsModule
 
   ],
-  exports: [  // Exporta el componente aquí si lo necesitas en otro módulo
-    LoginComponent
-  ],
+ 
   providers: [],
   bootstrap: [AppComponent]
 })

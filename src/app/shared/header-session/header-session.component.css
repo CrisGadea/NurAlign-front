@@ -1,0 +1,32 @@
+
+.logo-nuralign-header{
+  width: 200px;
+}
+
+.spacer-header{
+height: 83.14px;
+}
+
+.offcanvas-body, .navbar{
+  background-color: #333b7b;
+}
+
+.navbar-toggler-icon{
+  filter: invert(100%);
+}
+
+.offcanvas{
+  width: 20%;
+}
+
+.navbar-toggler:focus{
+  box-shadow: none;
+}
+
+.nav-link{
+  color: #888fc7;
+}
+
+#navbarNavAltMarkup{
+  background-color:#37367a;
+}
