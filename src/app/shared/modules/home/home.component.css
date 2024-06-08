@@ -1,4 +1,9 @@
 
+.pym-para-header{
+  padding-top: 83.14px;
+  margin-top: -83.14px;
+}
+
 /* PRIMERA SECTION */
 
 .column-landing{
@@ -12,8 +17,12 @@
 
 }
 
-.column-landing h1{
+.column-landing h1, .column-landing h2 {
   color:#333B7B;
+}
+
+.column-landing h2{
+  font-size: 30px;
 }
 
 .login-form{
@@ -226,6 +235,7 @@ a:hover{
   filter: blur(5px);
   transform: translateX(-10%);
   transition: all 1s;
+  transition-delay: .4s;
 }
 
 .show-fade-in-left{
@@ -233,6 +243,7 @@ a:hover{
   filter: blur(0);
   transform: translateX(0);
   transition: all 1s;
+  transition-delay: .4s;
 }
 
 .hidden-fade-in-right{
@@ -240,6 +251,7 @@ a:hover{
   filter: blur(5px);
   transform: translateX(10%);
   transition: all 1s;
+  transition-delay: .4s;
 }
 
 .show-fade-in-right{
@@ -247,35 +259,29 @@ a:hover{
   filter: blur(0);
   transform: translateX(0);
   transition: all 1s;
+  transition-delay: .4s;
 }
 
 /* FADE ANIMATION END */
 
 /* NUESTRO OBJETIVO */
 .img-bg{
-  background-image: url('../../../../assets/Image/home/mano-celu.png');
+  background-image: url('src/assets/Image/home/mano-celu.png');
   background-size: cover;
-  background-position: center;
+  background-position: left;
+  background-position-y: bottom;
   background-repeat: no-repeat;
-  height: 450px;
+  height: 550px;
 }
 
-.nuestro-objetivo{
-  background: rgb(51, 59, 123, 0.3);
-  color: white;
-  padding: 20px;
-  border-radius: 10px;
-  text-align: center;
-  height: 50%;
-  margin: auto;
-  display: flex;
-  align-items: center;
+.objetivo-column1{
+  background-color: rgb(51, 59, 123, .5);
 }
 
-.nuestro-objetivo p{
-  text-align: justify;
+.card-custom{
+  max-width: 400px;
+  background-color: #dfe3ff;
 }
-
 /* NUESTRO OBJETIVO END*/
 
 /* ROBOTIN SECTION*/
@@ -371,7 +377,7 @@ a:hover{
 /* SOS TERAPEUTA SECTION*/
 
 .sos-terapeuta-section{
-  background-color: #888FC7;
+  background-color: #727dd1;
 }
 
 .sos-terapeuta-section-title{
@@ -383,8 +389,12 @@ a:hover{
 .sos-terapeuta-section-title h3{
   font-size: 40px;
   font-weight: 700;
-  color: #333B7B;
+  color: #DFE3FF;
   margin: auto;
+}
+
+.sos-terapeuta-p p{
+  color:#ffffff;
 }
 
 /* SOS TERAPEUTA SECTION END*/

@@ -50,7 +50,7 @@
 <div class="popup" [ngClass]="{ 'show': isPopupVisible }">
     <div class="popup-content">
       <span class="close" (click)="closePopup()">&times;</span>
-      <h2>turnos de la fecha: {{ popupDate }}</h2>
+      <h2>Turnos del día: {{ popupDate }}</h2>
 
 	  <li class="ForFutureTurns" *ngFor="let turno of popUpTurnByFecha">
 		<a>
