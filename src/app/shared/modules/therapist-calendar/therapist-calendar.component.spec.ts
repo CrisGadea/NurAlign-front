@@ -45,7 +45,7 @@ describe('TherapistCalendarComponent', () => {
     fixture.detectChanges();
   });
 
-  it('should create', () => {
+  it('deberia crearComponente', () => {
     expect(component).toBeTruthy();
   });
 
