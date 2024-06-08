@@ -1,13 +1,22 @@
 import { Component, OnInit } from '@angular/core';
+import { FormBuilder, Validators } from '@angular/forms';
 import * as moment from 'moment'
+import { TherapistCalendarService } from 'src/app/core/services/therapist-calendar.service';
 
 @Component({
   selector: 'app-therapist-calendar',
   templateUrl: './therapist-calendar.component.html',
-  styleUrls: ['./therapist-calendar.component.css']
+  styleUrls: ['./therapist-calendar.component.css'],
+
 })
 export class TherapistCalendarComponent implements OnInit {
 
+  turnForm = this.fb.group({
+    therapistId: ['',Validators.required],
+    namePacient: ['',Validators.required],
+    effectiveDate: ['',Validators.required],
+    turnTime: ['',Validators.required],
+  });
 
 
   TurnPacient = [
@@ -41,9 +50,12 @@ export class TherapistCalendarComponent implements OnInit {
   dateValue: any;
   popupDate: string = ''; 
   isPopupVisible: boolean = false; 
+  isPopupVisible2: boolean = false; 
   popUpTurnByFecha:any[]= [];
 
-  constructor() { }
+  constructor(private service:TherapistCalendarService, private fb: FormBuilder) {
+    
+   }
 
   ngOnInit(): void {
     const currentDate = moment();
@@ -128,5 +140,32 @@ export class TherapistCalendarComponent implements OnInit {
     this.isPopupVisible = false; // Cerrar el pop-up
   }
 
+
+
+  generateTurn():void
+  {
+    console.log(this.turnForm.value.namePacient);
+    this.turnForm.value.effectiveDate = moment(this.popupDate, 'DD-MM-YYYY').format('YYYY-MM-DD');
+
+
+    console.log(this.turnForm.value.effectiveDate);
+
+    console.log(this.turnForm.value.turnTime);
+    if (this.turnForm?.valid) {
+      this.service.generateTurn(this.turnForm.value).subscribe(
+          turn => {
+            alert("Turno creado con exito");
+            window.location.reload();
+          },
+          error => {
+            alert('No se puede crear el Turno, verifique los datos ingresados')
+            console.error('Error creating turn', error)
+          }
+      );
+
+    }
+
+
+  }
 
 }
