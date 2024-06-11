@@ -166,6 +166,7 @@ background-color:   #DFE3FF;
 {
   list-style-type: none;
   cursor:default;
+  font-size: 20px;
 
 
 }
@@ -313,7 +314,10 @@ background-color:   #DFE3FF;
     overflow: auto;
     background-color: rgba(0, 0, 0, 0.4);
     padding-top: 60px;
+    align-items: center;
+    justify-content: center; /* Centra horizontalmente el contenido */
   }
+  
   
   .popup.show {
     display: block;
@@ -352,13 +356,27 @@ background-color:   #DFE3FF;
     align-items: flex-start;
   }
   */
+.tituloDelCalendario
+{margin-top: 30px;
+  font-weight: bold;
+  text-align: center;
+  color: #333B7B;
+}
+.botondeSubmit {
+  background-color: #333B7B; /* Color de fondo */
+  color: #ffffff; /* Color del texto */
+  border-radius: 5px; /* Bordes redondeados */
+  border: none; /* Sin borde */
+  padding: 10px 20px; /* Espaciado interno */
+  font-size: 16px; /* Tamaño del texto */
+  cursor: pointer; /* Cambia el cursor al pasar sobre el botón */
+  transition: background-color 0.3s; /* Transición suave para el cambio de color de fondo */
+}
 
-  .botondeSubmit
-  {
-    background-color: #333B7B!important;
-    border-radius: 5px;
-    border-style: none;
-  }
+.botondeSubmit:hover {
+  background-color: #1E2555; /* Cambia el color de fondo al pasar el mouse */
+}
+
 /*
 
 
