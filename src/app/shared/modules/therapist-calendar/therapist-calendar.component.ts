@@ -21,17 +21,7 @@ export class TherapistCalendarComponent implements OnInit {
   turns:any =[]; 
 
   TurnPacient = [
-    { nombre: 'Jose', fecha: '19/04/2024', hora: '15:00' },
-    { nombre: 'Maria', fecha: '24/05/2024', hora: '10:00' },
-    { nombre: 'Carlos', fecha: '19/04/2024', hora: '11:30' },
-    { nombre: 'Ana', fecha: '26/05/2024', hora: '13:00' },
-    { nombre: 'Luis', fecha: '27/05/2024', hora: '09:00' },
-    { nombre: 'Jose', fecha: '24/05/2024', hora: '15:00' },
-    { nombre: 'Maria', fecha: '20/05/2024', hora: '10:00' },
-    { nombre: 'Carlos', fecha: '20/05/2024', hora: '11:30' },
-    { nombre: 'Ana', fecha: '19/05/2024', hora: '13:00' },
-    { nombre: 'Luis', fecha: '19/04/2024', hora: '09:00' }
-  ];
+    { namePacient: '', effectiveDate: '', turnTime: '' }];
 
 
   
@@ -60,9 +50,11 @@ export class TherapistCalendarComponent implements OnInit {
 
   ngOnInit(): void {
 
-   this.turns= this.service.getTurns(10).subscribe(
+   this.turns= this.service.getTurns(6).subscribe(
       data => {
         console.log(data);
+        
+        this.TurnPacient = data;
       },
       error => {
         console.error("no se encontro los turnos del terapeuta",error);
@@ -72,6 +64,11 @@ export class TherapistCalendarComponent implements OnInit {
     //se le suma uno para que el rango sea de 1 a 12
     this.getDaysFromDate(currentDate.month() + 1, currentDate.year());
   }
+
+
+
+
+  
 
   getDaysFromDate(month: number, year: number): void {
   //obtiene el primer dia del mes
@@ -121,7 +118,7 @@ export class TherapistCalendarComponent implements OnInit {
     
     for (let i = 0; i < this.TurnPacient.length; i++) {
       const turno = this.TurnPacient[i];
-      const fechaTurno = moment(turno.fecha, 'DD/MM/YYYY').format('DD/MM/YYYY');
+      const fechaTurno = moment(turno.effectiveDate, 'DD/MM/YYYY').format('DD/MM/YYYY');
       this.popupDate = objectDate.format('DD/MM/YYYY'); // Cambia el formato a 'DD/MM/YYYY'
 
     if(fechaTurno === this.popupDate)
@@ -142,84 +139,6 @@ export class TherapistCalendarComponent implements OnInit {
     this.popUpTurnByFecha = []; // Vaciar el array popUpTurnByFecha
     this.isPopupVisible = false; // Cerrar el pop-up
   }
-
-
-/*
-  generateTurn(): void {
-    // Verifica si el formulario es válido
-    if (this.turnForm.valid) {
-      // Construye el objeto con los datos que deseas enviar
-      const turnData = {
-        therapistId: this.turnForm.value.therapistId,
-        namePacient: this.turnForm.value.namePacient,
-        effectiveDate: this.turnForm.value.effectiveDate,
-        turnTime: this.turnForm.value.turnTime
-      };
-  
-      // Llama al servicio generateTurn con los datos específicos
-      this.service.generateTurn(turnData).subscribe(
-        turn => {
-          alert("Turno creado con éxito");
-          window.location.reload();
-        },
-        error => {
-          alert('No se puede crear el Turno, verifique los datos ingresados');
-          console.error('Error creating turn', error);
-        }
-      );
-    }
-  }*/
-  
-
-
- /* generateTurn():void
-  {
-   // const formValues = this.turnForm.value;
-   console.log(this.turnForm.value.namePacient);
- this.turnForm.value.effectiveDate = moment(this.popupDate, 'DD-MM-YYYY').format('YYYY-MM-DD');
-   //const effectiveDateFormatted = moment(this.popupDate, 'DD-MM-YYYY').format('YYYY-MM-DD');
- /*
-   const turnData = {
-      therapistId: 90,  // Asigna el valor directamente si es constante
-      namePacient: formValues.namePacient,
-      effectiveDate: effectiveDateFormatted,
-      turnTime: formValues.turnTime
-    };*/
-  /* console.log(this.turnForm.value.effectiveDate);
-
-  console.log(this.turnForm.value.turnTime);
-  console.log(this.turnForm.value.therapistId='2');
-
-
-  
-    if (this.turnForm?.valid) { console.log("funciono");
-      this.service.generateTurn(this.turnForm.value).subscribe(
-          turn => {
-           
-            alert("Turno creado con exito");
-            window.location.reload();
-          },
-          error => {
-            console.log("no funciono");
-            alert('No se puede crear el Turno, verifique los datos ingresados')
-            console.error('Error creating turn', error)
-          }
-      );
-
-    } else {
-      console.log("Formulario no válido:", this.turnForm);
-      console.log("Controles del formulario:", this.turnForm.controls);
-    }
-
-
-  }
-*/
-
-
-
-
-
-
 
 
   generateTurn(): void {
