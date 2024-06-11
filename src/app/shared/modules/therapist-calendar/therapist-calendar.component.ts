@@ -18,6 +18,7 @@ export class TherapistCalendarComponent implements OnInit {
     turnTime: ['',Validators.required],
   });
 
+  turns:any =[]; 
 
   TurnPacient = [
     { nombre: 'Jose', fecha: '19/04/2024', hora: '15:00' },
@@ -58,6 +59,15 @@ export class TherapistCalendarComponent implements OnInit {
    }
 
   ngOnInit(): void {
+
+   this.turns= this.service.getTurns(10).subscribe(
+      data => {
+        console.log(data);
+      },
+      error => {
+        console.error("no se encontro los turnos del terapeuta",error);
+      }
+    );
     const currentDate = moment();
     //se le suma uno para que el rango sea de 1 a 12
     this.getDaysFromDate(currentDate.month() + 1, currentDate.year());
@@ -100,13 +110,6 @@ export class TherapistCalendarComponent implements OnInit {
       this.getDaysFromDate(nextDate.month() + 1, nextDate.year());
     }
   }
-/*
-  clickDay(day: { value: number }): void {
-    const monthYear = this.dateSelect.format('YYYY-MM');
-    const parse = `${monthYear}-${day.value}`;
-    const objectDate = moment(parse);
-    this.dateValue = objectDate;
-  }*/
 
   clickDay(day: { value: number }): void {
     const monthYear = this.dateSelect.format('YYYY-MM');
@@ -141,31 +144,127 @@ export class TherapistCalendarComponent implements OnInit {
   }
 
 
+/*
+  generateTurn(): void {
+    // Verifica si el formulario es válido
+    if (this.turnForm.valid) {
+      // Construye el objeto con los datos que deseas enviar
+      const turnData = {
+        therapistId: this.turnForm.value.therapistId,
+        namePacient: this.turnForm.value.namePacient,
+        effectiveDate: this.turnForm.value.effectiveDate,
+        turnTime: this.turnForm.value.turnTime
+      };
+  
+      // Llama al servicio generateTurn con los datos específicos
+      this.service.generateTurn(turnData).subscribe(
+        turn => {
+          alert("Turno creado con éxito");
+          window.location.reload();
+        },
+        error => {
+          alert('No se puede crear el Turno, verifique los datos ingresados');
+          console.error('Error creating turn', error);
+        }
+      );
+    }
+  }*/
+  
 
-  generateTurn():void
+
+ /* generateTurn():void
   {
-    console.log(this.turnForm.value.namePacient);
-    this.turnForm.value.effectiveDate = moment(this.popupDate, 'DD-MM-YYYY').format('YYYY-MM-DD');
+   // const formValues = this.turnForm.value;
+   console.log(this.turnForm.value.namePacient);
+ this.turnForm.value.effectiveDate = moment(this.popupDate, 'DD-MM-YYYY').format('YYYY-MM-DD');
+   //const effectiveDateFormatted = moment(this.popupDate, 'DD-MM-YYYY').format('YYYY-MM-DD');
+ /*
+   const turnData = {
+      therapistId: 90,  // Asigna el valor directamente si es constante
+      namePacient: formValues.namePacient,
+      effectiveDate: effectiveDateFormatted,
+      turnTime: formValues.turnTime
+    };*/
+  /* console.log(this.turnForm.value.effectiveDate);
+
+  console.log(this.turnForm.value.turnTime);
+  console.log(this.turnForm.value.therapistId='2');
 
 
-    console.log(this.turnForm.value.effectiveDate);
-
-    console.log(this.turnForm.value.turnTime);
-    if (this.turnForm?.valid) {
+  
+    if (this.turnForm?.valid) { console.log("funciono");
       this.service.generateTurn(this.turnForm.value).subscribe(
           turn => {
+           
             alert("Turno creado con exito");
             window.location.reload();
           },
           error => {
+            console.log("no funciono");
             alert('No se puede crear el Turno, verifique los datos ingresados')
             console.error('Error creating turn', error)
           }
       );
 
+    } else {
+      console.log("Formulario no válido:", this.turnForm);
+      console.log("Controles del formulario:", this.turnForm.controls);
     }
 
 
   }
+*/
+
+
+
+
+
+
+
+
+  generateTurn(): void {
+    const formValues = this.turnForm.value;
+    formValues.effectiveDate = moment(this.popupDate, 'DD-MM-YYYY').format('YYYY-MM-DD');
+
+    const therapistId = '6'; // Ajusta esto al valor correcto según tu lógica
+    const effectiveDate = moment(this.popupDate, 'DD-MM-YYYY').format('YYYY-MM-DD');
+
+    // Usa patchValue para actualizar los valores en el formulario
+    this.turnForm.patchValue({
+        therapistId: therapistId,
+        effectiveDate: effectiveDate
+    });
+
+
+
+    console.log(formValues.namePacient);
+   // console.log(formValues.effectiveDate);//falla
+    console.log(formValues.turnTime);
+    //console.log(formValues.therapistId='6');//falla
+
+    if (this.turnForm.valid) {
+      console.log("Formulario válido. Enviando datos...");
+      this.service.generateTurn(this.turnForm.value).subscribe(
+        turn => {
+          alert("Turno creado con éxito");
+          window.location.reload();
+        },
+        error => {
+          alert('No se puede crear el Turno, verifique los datos ingresados');
+          console.error('Error creating turn', error);
+        }
+      );
+    } else {
+      console.log("Formulario no válido:", this.turnForm);
+      console.log("Controles del formulario:", this.turnForm.controls);
+      Object.keys(this.turnForm.controls).forEach(key => {
+        const control = this.turnForm.get(key);
+        if (control) {
+          console.log(`${key} - Valido: ${control.valid} - Valor: ${control.value}`);
+        }
+      });
+    }
+  }
+
 
 }

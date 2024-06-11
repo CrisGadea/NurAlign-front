@@ -344,14 +344,22 @@ background-color:   #DFE3FF;
   }
 
 
-
+/*
 
   :host {
     display: flex;
     flex-direction: column;
     align-items: flex-start;
   }
-  
+  */
+
+  .botondeSubmit
+  {
+    background-color: #333B7B!important;
+    border-radius: 5px;
+    border-style: none;
+  }
+/*
 
 
 
@@ -374,4 +382,4 @@ background-color:   #DFE3FF;
     display: flex;
     justify-content: center;
     width: 120px;
-  }
+  }*/
