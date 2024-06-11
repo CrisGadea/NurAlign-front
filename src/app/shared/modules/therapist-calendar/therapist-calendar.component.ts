@@ -18,19 +18,13 @@ export class TherapistCalendarComponent implements OnInit {
     turnTime: ['',Validators.required],
   });
 
+  turns:any =[]; 
+
+  UltimosTurnos = [
+    { namePacient: '', effectiveDate: '', turnTime: '' }];
 
   TurnPacient = [
-    { nombre: 'Jose', fecha: '19/04/2024', hora: '15:00' },
-    { nombre: 'Maria', fecha: '24/05/2024', hora: '10:00' },
-    { nombre: 'Carlos', fecha: '19/04/2024', hora: '11:30' },
-    { nombre: 'Ana', fecha: '26/05/2024', hora: '13:00' },
-    { nombre: 'Luis', fecha: '27/05/2024', hora: '09:00' },
-    { nombre: 'Jose', fecha: '24/05/2024', hora: '15:00' },
-    { nombre: 'Maria', fecha: '20/05/2024', hora: '10:00' },
-    { nombre: 'Carlos', fecha: '20/05/2024', hora: '11:30' },
-    { nombre: 'Ana', fecha: '19/05/2024', hora: '13:00' },
-    { nombre: 'Luis', fecha: '19/04/2024', hora: '09:00' }
-  ];
+    { namePacient: '', effectiveDate: '', turnTime: '' }];
 
 
   
@@ -58,10 +52,28 @@ export class TherapistCalendarComponent implements OnInit {
    }
 
   ngOnInit(): void {
+
+   this.turns= this.service.getTurns(6).subscribe(
+      data => {
+        console.log(data);
+        
+        this.TurnPacient = data;
+        this.dameTurnosFuturos();
+      },
+      error => {
+        console.error("no se encontro los turnos del terapeuta",error);
+      }
+    );
     const currentDate = moment();
     //se le suma uno para que el rango sea de 1 a 12
     this.getDaysFromDate(currentDate.month() + 1, currentDate.year());
+    
   }
+
+
+
+
+  
 
   getDaysFromDate(month: number, year: number): void {
   //obtiene el primer dia del mes
@@ -100,13 +112,32 @@ export class TherapistCalendarComponent implements OnInit {
       this.getDaysFromDate(nextDate.month() + 1, nextDate.year());
     }
   }
-/*
-  clickDay(day: { value: number }): void {
-    const monthYear = this.dateSelect.format('YYYY-MM');
-    const parse = `${monthYear}-${day.value}`;
-    const objectDate = moment(parse);
-    this.dateValue = objectDate;
-  }*/
+
+  dameTurnosFuturos(): void {
+    const diaActual = moment();
+    this.UltimosTurnos = []; // Limpiamos el array antes de agregar nuevos turnos
+
+    // Filtrar los turnos futuros
+    const turnosFuturos = this.TurnPacient.filter(turno => {
+        const fechaTurno = moment(turno.effectiveDate, 'YYYY-MM-DD');
+        return fechaTurno.isAfter(diaActual);
+    });
+
+    // Ordenar los turnos futuros por fecha
+    turnosFuturos.sort((a, b) => {
+        const fechaTurnoA = moment(a.effectiveDate, 'YYYY-MM-DD');
+        const fechaTurnoB = moment(b.effectiveDate, 'YYYY-MM-DD');
+        return fechaTurnoA.diff(fechaTurnoB);
+    });
+
+    // Limitar la cantidad de turnos agregados a 10
+    const cantidadTurnos = Math.min(turnosFuturos.length, 10);
+    for (let i = 0; i < cantidadTurnos; i++) {
+        this.UltimosTurnos.push(turnosFuturos[i]);
+    }
+}
+
+
 
   clickDay(day: { value: number }): void {
     const monthYear = this.dateSelect.format('YYYY-MM');
@@ -118,7 +149,7 @@ export class TherapistCalendarComponent implements OnInit {
     
     for (let i = 0; i < this.TurnPacient.length; i++) {
       const turno = this.TurnPacient[i];
-      const fechaTurno = moment(turno.fecha, 'DD/MM/YYYY').format('DD/MM/YYYY');
+      const fechaTurno = moment(turno.effectiveDate, 'YYYY-MM-DD').format('DD/MM/YYYY');
       this.popupDate = objectDate.format('DD/MM/YYYY'); // Cambia el formato a 'DD/MM/YYYY'
 
     if(fechaTurno === this.popupDate)
@@ -141,31 +172,49 @@ export class TherapistCalendarComponent implements OnInit {
   }
 
 
+  generateTurn(): void {
+    const formValues = this.turnForm.value;
+    formValues.effectiveDate = moment(this.popupDate, 'DD-MM-YYYY').format('YYYY-MM-DD');
 
-  generateTurn():void
-  {
-    console.log(this.turnForm.value.namePacient);
-    this.turnForm.value.effectiveDate = moment(this.popupDate, 'DD-MM-YYYY').format('YYYY-MM-DD');
+    const therapistId = '6'; // Ajusta esto al valor correcto según tu lógica
+    const effectiveDate = moment(this.popupDate, 'DD-MM-YYYY').format('YYYY-MM-DD');
+
+    // Usa patchValue para actualizar los valores en el formulario
+    this.turnForm.patchValue({
+        therapistId: therapistId,
+        effectiveDate: effectiveDate
+    });
 
 
-    console.log(this.turnForm.value.effectiveDate);
 
-    console.log(this.turnForm.value.turnTime);
-    if (this.turnForm?.valid) {
+    console.log(formValues.namePacient);
+   // console.log(formValues.effectiveDate);//falla
+    console.log(formValues.turnTime);
+    //console.log(formValues.therapistId='6');//falla
+
+    if (this.turnForm.valid) {
+      console.log("Formulario válido. Enviando datos...");
       this.service.generateTurn(this.turnForm.value).subscribe(
-          turn => {
-            alert("Turno creado con exito");
-            window.location.reload();
-          },
-          error => {
-            alert('No se puede crear el Turno, verifique los datos ingresados')
-            console.error('Error creating turn', error)
-          }
+        turn => {
+          alert("Turno creado con éxito");
+          window.location.reload();
+        },
+        error => {
+          alert('No se puede crear el Turno, verifique los datos ingresados');
+          console.error('Error creating turn', error);
+        }
       );
-
+    } else {
+      console.log("Formulario no válido:", this.turnForm);
+      console.log("Controles del formulario:", this.turnForm.controls);
+      Object.keys(this.turnForm.controls).forEach(key => {
+        const control = this.turnForm.get(key);
+        if (control) {
+          console.log(`${key} - Valido: ${control.valid} - Valor: ${control.value}`);
+        }
+      });
     }
-
-
   }
+
 
 }

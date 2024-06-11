@@ -1,7 +1,7 @@
 
 <div id="fondo">
 	<app-header-session></app-header-session>
-
+<h3 class="tituloDelCalendario">Seleccione un día para agregar o ver  turnos </h3>
 	<div class="TurnsAndCalendar">
 
 <div id="Calendario" class="wrapper-calendar">
@@ -33,11 +33,11 @@
 <div class="FutureTurns">
 
 	<p class="TitleTurns">Turnos:</p>
-	<li class="ForFutureTurns" *ngFor="let turno of TurnPacient">
+	<li class="ForFutureTurns" *ngFor="let turno of UltimosTurnos">
 		<a class="TextFutureTurn">
-		Turno de {{ turno.nombre }}
-		el dia {{ turno.fecha }}
-		a las {{ turno.hora }}</a>
+		Turno de {{ turno.namePacient }}
+		el dia {{ turno.effectiveDate }}
+		a las {{ turno.turnTime }}</a>
 	  </li>
 
 </div>
@@ -52,9 +52,9 @@
 
 	  <li class="ForFutureTurns" *ngFor="let turno of popUpTurnByFecha">
 		<a>
-		Turno de {{ turno.nombre }}
-		el dia {{ turno.fecha }}
-		a las {{ turno.hora }}</a>
+			Turno de {{ turno.namePacient }}
+		el dia {{ turno.effectiveDate }}
+		a las {{ turno.turnTime }}</a>
 	  </li>
 	  <div>
 		<form [formGroup]="turnForm" (ngSubmit)="generateTurn()">
@@ -93,11 +93,11 @@
 			
 				</mat-select>
 			  </mat-form-field>
-			  <button mat-flat-button color="accent" type="submit">Accent</button>
+			  <button class="botondeSubmit" type="submit">Crear Turno</button>
 		</form>
 	  </div>
 
 
   
-<app-footer-session></app-footer-session>
+
 </div>

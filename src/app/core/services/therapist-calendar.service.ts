@@ -17,6 +17,11 @@ export class TherapistCalendarService {
     let headers = new HttpHeaders().set('Content-Type', 'application/json');
     return this.http.post(this.apiUrl + '/TurnTherapist', params, {headers: headers});
    
+    
+  }
+  getTurns(therapistId:any):Observable<any>
+  {
+    return this.http.get(this.apiUrl + '/TurnTherapist/Therapist/'+therapistId);
   }
 
 }
