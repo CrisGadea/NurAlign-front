@@ -20,6 +20,9 @@ export class TherapistCalendarComponent implements OnInit {
 
   turns:any =[]; 
 
+  UltimosTurnos = [
+    { namePacient: '', effectiveDate: '', turnTime: '' }];
+
   TurnPacient = [
     { namePacient: '', effectiveDate: '', turnTime: '' }];
 
@@ -55,6 +58,7 @@ export class TherapistCalendarComponent implements OnInit {
         console.log(data);
         
         this.TurnPacient = data;
+        this.dameTurnosFuturos();
       },
       error => {
         console.error("no se encontro los turnos del terapeuta",error);
@@ -63,6 +67,7 @@ export class TherapistCalendarComponent implements OnInit {
     const currentDate = moment();
     //se le suma uno para que el rango sea de 1 a 12
     this.getDaysFromDate(currentDate.month() + 1, currentDate.year());
+    
   }
 
 
@@ -108,6 +113,32 @@ export class TherapistCalendarComponent implements OnInit {
     }
   }
 
+  dameTurnosFuturos(): void {
+    const diaActual = moment();
+    this.UltimosTurnos = []; // Limpiamos el array antes de agregar nuevos turnos
+
+    // Filtrar los turnos futuros
+    const turnosFuturos = this.TurnPacient.filter(turno => {
+        const fechaTurno = moment(turno.effectiveDate, 'YYYY-MM-DD');
+        return fechaTurno.isAfter(diaActual);
+    });
+
+    // Ordenar los turnos futuros por fecha
+    turnosFuturos.sort((a, b) => {
+        const fechaTurnoA = moment(a.effectiveDate, 'YYYY-MM-DD');
+        const fechaTurnoB = moment(b.effectiveDate, 'YYYY-MM-DD');
+        return fechaTurnoA.diff(fechaTurnoB);
+    });
+
+    // Limitar la cantidad de turnos agregados a 10
+    const cantidadTurnos = Math.min(turnosFuturos.length, 10);
+    for (let i = 0; i < cantidadTurnos; i++) {
+        this.UltimosTurnos.push(turnosFuturos[i]);
+    }
+}
+
+
+
   clickDay(day: { value: number }): void {
     const monthYear = this.dateSelect.format('YYYY-MM');
     const parse = `${monthYear}-${day.value}`;
@@ -118,7 +149,7 @@ export class TherapistCalendarComponent implements OnInit {
     
     for (let i = 0; i < this.TurnPacient.length; i++) {
       const turno = this.TurnPacient[i];
-      const fechaTurno = moment(turno.effectiveDate, 'DD/MM/YYYY').format('DD/MM/YYYY');
+      const fechaTurno = moment(turno.effectiveDate, 'YYYY-MM-DD').format('DD/MM/YYYY');
       this.popupDate = objectDate.format('DD/MM/YYYY'); // Cambia el formato a 'DD/MM/YYYY'
 
     if(fechaTurno === this.popupDate)
