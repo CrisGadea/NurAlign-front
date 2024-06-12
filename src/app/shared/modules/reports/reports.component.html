@@ -1,0 +1,15 @@
+<app-header-session></app-header-session>
+
+<p>reports works!</p>
+<div class="contenedor">
+  <mat-list>
+    <h1 class="descargas" id="titulo">Mis informes Generados</h1>
+    <div class="descargas" *ngFor="let nombre of descargas">
+      <div class="textodesc">
+        <a>{{nombre}}.pdf</a>
+        <img class="icon" src="../../../../assets/Image/informsDowload/download.png" alt="">
+      </div>
+      <mat-divider></mat-divider>
+    </div>
+  </mat-list>
+</div>

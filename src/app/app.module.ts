@@ -20,7 +20,18 @@ import {MatSelectModule} from '@angular/material/select';
 import {MatInputModule} from '@angular/material/input';
 import {MatFormFieldModule} from '@angular/material/form-field';
 import { NoopAnimationsModule } from '@angular/platform-browser/animations';
-import { FormsModule, ReactiveFormsModule } from '@angular/forms'; 
+import { FormsModule, ReactiveFormsModule } from '@angular/forms';
+import { PacientsComponent } from './shared/modules/pacients/pacients.component';
+import {MatCardModule} from '@angular/material/card';
+import {MatCheckboxModule} from '@angular/material/checkbox';
+import {MatDatepickerModule} from '@angular/material/datepicker';
+import { MatNativeDateModule } from '@angular/material/core';
+import { ReportsComponent } from './shared/modules/reports/reports.component';
+
+import {MatListModule} from '@angular/material/list';
+
+
+
 
 @NgModule({
   declarations: [
@@ -30,7 +41,10 @@ import { FormsModule, ReactiveFormsModule } from '@angular/forms';
     DashboardComponent,
     
   
-    TherapistCalendarComponent
+    TherapistCalendarComponent,
+              PacientsComponent,
+              ReportsComponent,
+       
            
   ],
   imports: [
@@ -46,8 +60,14 @@ import { FormsModule, ReactiveFormsModule } from '@angular/forms';
   MatIconModule,
   MatFormFieldModule, 
   MatInputModule, 
-  MatSelectModule, NoopAnimationsModule,
-  FormsModule,ReactiveFormsModule
+  MatSelectModule,
+   NoopAnimationsModule,
+  FormsModule,
+  ReactiveFormsModule,
+  MatCardModule,
+  MatCheckboxModule,
+  MatDatepickerModule,MatNativeDateModule,
+  MatDividerModule,MatDividerModule,MatListModule
 
   ],
  
