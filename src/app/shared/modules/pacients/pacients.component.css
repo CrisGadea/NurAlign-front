@@ -1,0 +1,36 @@
+.contenido {
+    margin-top: 30px;
+    font-weight: bold;
+    text-align: center;
+    color: #333B7B;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+  }
+  
+  .ContenedorPacientes {
+    width: 80%;
+    margin-top: 15px;
+    margin-bottom: 15px;
+    display: flex;
+    flex-direction: row;
+    
+    align-items: center;
+  }
+  
+  .contenedorcards {
+    width: 100%;
+   
+    display: flex;
+    flex-direction: row;
+    align-items: center; justify-content: space-around;
+  }
+  
+  .botonGen {
+    color: #333B7B !important;
+  }
+  
+  .pacientenombre {
+    width: 100px;
+  }
+  .paciente{width: 100%;}

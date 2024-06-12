@@ -1,0 +1,27 @@
+<app-header-session></app-header-session>
+<div class="contenido">
+  <div>
+    <p>pacients works!asdffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffff</p>
+  </div>
+  <div class="ContenedorPacientes" *ngFor="let paciente of pacientes">
+    <mat-card class="paciente">
+      <mat-card-content>
+        <section class="example-section contenedorcards">
+          <div class="pacientenombre">
+            <a>{{ paciente.nombre }}</a>
+          </div>
+          <div>
+            <mat-checkbox class="example-margin" [(ngModel)]="paciente.HorasSuenio">Horas de sueño</mat-checkbox>
+            <mat-checkbox class="example-margin" [(ngModel)]="paciente.Animo">Estado de ánimo</mat-checkbox>
+            <mat-checkbox class="example-margin" [(ngModel)]="paciente.PostSession">Estado de ánimo sesión</mat-checkbox>
+            <mat-checkbox class="example-margin" [(ngModel)]="paciente.Medicacion">Medicación</mat-checkbox>
+          </div>
+          <div>
+            <!-- Cambiado a un enlace (<a>) con un atributo routerLink para redireccionar -->
+            <a mat-stroked-button class="botonGen" [routerLink]="['/graficas']">Generar Gráficas</a>
+          </div>
+        </section>
+      </mat-card-content>
+    </mat-card>
+  </div>
+</div>

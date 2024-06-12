@@ -4,11 +4,14 @@ import { HomeComponent } from './shared/modules/home/home.component';
 
 import { DashboardComponent } from './shared/modules/dashboard/dashboard.component';
 import { TherapistCalendarComponent } from './shared/modules/therapist-calendar/therapist-calendar.component';
+import { PacientsComponent } from './shared/modules/pacients/pacients.component';
+
 
 const routes: Routes = [
   { path: '', component: HomeComponent },
   {path:'Calendar',component:TherapistCalendarComponent},
   {path:'dashboard', component:DashboardComponent},
+  {path:'pacients', component:PacientsComponent},
   { path: '**', component: HomeComponent },
 ];
 
