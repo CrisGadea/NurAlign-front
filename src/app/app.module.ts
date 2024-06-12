@@ -24,6 +24,13 @@ import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { PacientsComponent } from './shared/modules/pacients/pacients.component';
 import {MatCardModule} from '@angular/material/card';
 import {MatCheckboxModule} from '@angular/material/checkbox';
+import {MatDatepickerModule} from '@angular/material/datepicker';
+import { MatNativeDateModule } from '@angular/material/core';
+import { ReportsComponent } from './shared/modules/reports/reports.component';
+
+import {MatListModule} from '@angular/material/list';
+
+
 
 
 @NgModule({
@@ -36,6 +43,7 @@ import {MatCheckboxModule} from '@angular/material/checkbox';
   
     TherapistCalendarComponent,
               PacientsComponent,
+              ReportsComponent,
        
            
   ],
@@ -58,6 +66,8 @@ import {MatCheckboxModule} from '@angular/material/checkbox';
   ReactiveFormsModule,
   MatCardModule,
   MatCheckboxModule,
+  MatDatepickerModule,MatNativeDateModule,
+  MatDividerModule,MatDividerModule,MatListModule
 
   ],
  

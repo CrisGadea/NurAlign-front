@@ -1,41 +1,67 @@
-.contenido {
-    margin-top: 30px;
-    font-weight: bold;
-    text-align: center;
-    color: #333B7B;
+
+.contenido{
+
+    margin-top: 5em;
+    margin-left: auto;
+    margin-right: auto;
+    height: 80%;
+    width: 70%;
+
+
+}
+.pacientesdeplegable
+{margin-top: 2em;
+
+  color: #333b7b;
+font-size: 25px;
+
+}
+.cardcontenido
+{
+   display: flex;
+   flex-direction: column;
+ /* Centra horizontalmente */
+  align-items: center; 
+    height: 60vh;
+
+}
+:host {
     display: flex;
     flex-direction: column;
+    align-items: flex-start;
+  }
+  .opcionMultiple {
+    width: 450px;
+  }
+  
+
+
+
+  .example-h2 {
+    margin: 10px;
+  }
+  
+  .example-section {
+    display: flex;
+    
+    align-content: center;
     align-items: center;
+    height: 60px;
+  }
+  
+  .example-margin {
+    margin: 0 10px;
+
+    
   }
 
-  .tituloListadoPacientes{
-    font-size: 25px;
+  #btn-tracker-submit
+  {
+    background-color: #333b7b;  color: #ffffff
+    ;
+    border-radius: 5px;
+    width: 10em;
+    height: 3em;
+
   }
-  
-  .ContenedorPacientes {
-    width: 80%;
-    margin-top: 10px;
-    margin-bottom: 10px;
-    display: flex;
-    flex-direction: row;
-    
-    align-items: center;
-  }
-  
-  .contenedorcards {
-    width: 100%;
-   
-    display: flex;
-    flex-direction: row;
-    align-items: center; justify-content: space-around;
-  }
-  
-  .botonGen {
-    color: #333B7B !important;
-  }
-  
-  .pacientenombre {
-    font-size: 18px;
-    width: 100px;
-  }
-  .paciente{width: 100%;}
+  .pickerday{  width: 450px;}
