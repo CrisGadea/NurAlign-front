@@ -7,11 +7,15 @@
     flex-direction: column;
     align-items: center;
   }
+
+  .tituloListadoPacientes{
+    font-size: 25px;
+  }
   
   .ContenedorPacientes {
     width: 80%;
-    margin-top: 15px;
-    margin-bottom: 15px;
+    margin-top: 10px;
+    margin-bottom: 10px;
     display: flex;
     flex-direction: row;
     
@@ -31,6 +35,7 @@
   }
   
   .pacientenombre {
+    font-size: 18px;
     width: 100px;
   }
   .paciente{width: 100%;}
