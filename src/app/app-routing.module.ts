@@ -6,6 +6,7 @@ import { DashboardComponent } from './shared/modules/dashboard/dashboard.compone
 import { TherapistCalendarComponent } from './shared/modules/therapist-calendar/therapist-calendar.component';
 import { PacientsComponent } from './shared/modules/pacients/pacients.component';
 import { ReportsComponent } from './shared/modules/reports/reports.component';
+import { SleepChartComponent } from './shared/modules/sleep-chart/sleep-chart.component';
 
 
 const routes: Routes = [
@@ -14,6 +15,7 @@ const routes: Routes = [
   {path:'dashboard', component:DashboardComponent},
   {path:'report', component:PacientsComponent},
   {path:'reports', component:ReportsComponent},
+  {path:'sleep', component:SleepChartComponent},
   { path: '**', component: HomeComponent },
 ];
 

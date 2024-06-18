@@ -29,6 +29,8 @@ import { MatNativeDateModule } from '@angular/material/core';
 import { ReportsComponent } from './shared/modules/reports/reports.component';
 
 import {MatListModule} from '@angular/material/list';
+import { SleepChartComponent } from './shared/modules/sleep-chart/sleep-chart.component';
+import { MoodChartComponent } from './shared/modules/mood-chart/mood-chart.component';
 
 
 
@@ -44,6 +46,8 @@ import {MatListModule} from '@angular/material/list';
     TherapistCalendarComponent,
               PacientsComponent,
               ReportsComponent,
+              SleepChartComponent,
+              MoodChartComponent,
        
            
   ],
