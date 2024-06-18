@@ -8,6 +8,7 @@ import { PacientsComponent } from './shared/modules/pacients/pacients.component'
 import { ReportsComponent } from './shared/modules/reports/reports.component';
 import { SleepChartComponent } from './shared/modules/sleep-chart/sleep-chart.component';
 import { MoodChartComponent } from './shared/modules/mood-chart/mood-chart.component';
+import { SesionChartComponent } from './shared/modules/sesion-chart/sesion-chart.component';
 
 
 const routes: Routes = [
@@ -18,6 +19,7 @@ const routes: Routes = [
   {path:'reports', component:ReportsComponent},
   {path:'sleep', component:SleepChartComponent},
   {path:'mood', component:MoodChartComponent},
+  {path:'sesion',component:SesionChartComponent},
   { path: '**', component: HomeComponent },
 ];
 
