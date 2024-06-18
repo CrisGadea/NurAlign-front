@@ -32,6 +32,7 @@ import {MatListModule} from '@angular/material/list';
 import { SleepChartComponent } from './shared/modules/sleep-chart/sleep-chart.component';
 import { MoodChartComponent } from './shared/modules/mood-chart/mood-chart.component';
 import { SesionChartComponent } from './shared/modules/sesion-chart/sesion-chart.component';
+import { MedicationChartComponent } from './shared/modules/medication-chart/medication-chart.component';
 
 
 
@@ -50,6 +51,7 @@ import { SesionChartComponent } from './shared/modules/sesion-chart/sesion-chart
               SleepChartComponent,
               MoodChartComponent,
               SesionChartComponent,
+              MedicationChartComponent,
        
            
   ],
