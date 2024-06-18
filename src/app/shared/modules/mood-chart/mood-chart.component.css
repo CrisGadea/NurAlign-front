@@ -1,0 +1,9 @@
+.chart-container {
+    position: relative;
+    width: 600px;  /* Ajusta el ancho según tus necesidades */
+    height: 400px; /* Ajusta la altura según tus necesidades */
+  }
+  
+  canvas {
+    display: block;
+  }
