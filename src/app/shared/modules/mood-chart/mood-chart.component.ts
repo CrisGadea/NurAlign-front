@@ -16,7 +16,7 @@ export class MoodChartComponent {
       datasets: [
         {
           label: 'Animo Elevado',
-          data: [0, 5, 3, 1, 2, 4, 1],
+          data: [0.1, 5, 3, 1, null, 4, 1],
           backgroundColor: 'rgba(108, 245, 109, 0.3)',
           borderColor: 'rgba(108, 245, 109, 1)',
           fill: true,
@@ -67,7 +67,7 @@ export class MoodChartComponent {
     };
 
     new Chart(ctx, {
-      type: 'line',
+      type: 'bar',
       data: data,
       options: options
     });
