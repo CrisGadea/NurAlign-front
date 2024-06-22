@@ -9,46 +9,59 @@ export class GeneratorPdfService {
 
   constructor() { }
 
-  generatePdfFromEntities(entities: any[]) {
-    const pdf = new jsPDF();
+  generatePdfFromEntities(moodTracker: any[],sleepTracker: any[],sessionTherapy: any[]) {
+      const pdf = new jsPDF();
+    const pageHeight = pdf.internal.pageSize.height;
+    const marginTop = 20; // Margen superior
+    const marginBottom = 20; // Margen inferior
+    let yPos = marginTop;
+
+    // Function to check and add new page if needed
+    const checkPageHeight = (additionalHeight = 10) => {
+      if (yPos + additionalHeight > pageHeight - marginBottom) {
+        pdf.addPage();
+        yPos = marginTop;
+      }
+    };
 
     // Configurar colores y estilos
     pdf.setTextColor(0, 0, 0); // Texto en color negro
     pdf.setFillColor(255, 255, 255); // Fondo blanco
     pdf.rect(0, 0, pdf.internal.pageSize.width, pdf.internal.pageSize.height, 'F'); // Dibuja un rectángulo blanco que cubre toda la página
 
-    let yPos = 10; // Posición inicial del texto
+    pdf.setFontSize(14);
+    pdf.text(`Paciente: pepe`, 10, yPos);
+    yPos += 10;
 
-    entities.forEach((entity, index) => {
-      // Puedes personalizar el estilo del encabezado aquí
-      pdf.setFontSize(14);
-      pdf.text(`Paciente ID: pepe`, 10, yPos);
-      yPos += 10;
+    console.log(moodTracker);
+    console.log(sleepTracker);
+    console.log(sessionTherapy);
 
-      pdf.setFontSize(12);
-      pdf.text(`Fecha efectiva: ${entity.effectiveDate}`, 10, yPos);
+    // Función para añadir datos al PDF
+    const addDataToPdf = (title: string, data: any[]) => {
+      if (!Array.isArray(data)) {
+        console.error(`${title} is not an array`);
+        return;
+      }
+      pdf.text(`${title}:`, 10, yPos);
       yPos += 10;
+      data.forEach((item, index) => {
+        for (const key in item) {
+          if (item.hasOwnProperty(key)) {
+            pdf.text(`${key}: ${item[key]}`, 10, yPos);
+            yPos += 10;
+            checkPageHeight();
+          }
+        }
+        yPos += 10; // Espacio entre objetos
+        checkPageHeight();
+      });
+    };
 
-      pdf.text(`Valor más alto: ${entity.highestValue}`, 10, yPos);
-      yPos += 10;
-      pdf.text(`Notas más altas: ${entity.highestNotes}`, 10, yPos);
-      yPos += 10;
-
-      pdf.text(`Valor más bajo: ${entity.lowestValue}`, 10, yPos);
-      yPos += 10;
-      pdf.text(`Notas más bajas: ${entity.lowestNotes}`, 10, yPos);
-      yPos += 10;
-
-      pdf.text(`Valor ansioso: ${entity.anxiousValue}`, 10, yPos);
-      yPos += 10;
-      pdf.text(`Notas ansiosas: ${entity.anxiousNotes}`, 10, yPos);
-      yPos += 10;
-
-      pdf.text(`Valor irritable: ${entity.irritableValue}`, 10, yPos);
-      yPos += 10;
-      pdf.text(`Notas irritables: ${entity.irritableNotes}`, 10, yPos);
-      yPos += 20; // Espacio entre entradas
-    });
+    // Añadir moodTracker, sleepTracker y sessionTherapy al PDF
+    addDataToPdf('Mood Tracker', moodTracker);
+    addDataToPdf('Sleep Tracker', sleepTracker);
+    addDataToPdf('Session Therapy', sessionTherapy);
 
     // Save the PDF
     pdf.save('archivo.pdf');
