@@ -28,13 +28,15 @@ import {MatDatepickerModule} from '@angular/material/datepicker';
 import { MatNativeDateModule } from '@angular/material/core';
 import { ReportsComponent } from './shared/modules/reports/reports.component';
 
+
 import {MatListModule} from '@angular/material/list';
 import { SleepChartComponent } from './shared/modules/sleep-chart/sleep-chart.component';
 import { MoodChartComponent } from './shared/modules/mood-chart/mood-chart.component';
 import { SesionChartComponent } from './shared/modules/sesion-chart/sesion-chart.component';
 import { MedicationChartComponent } from './shared/modules/medication-chart/medication-chart.component';
+import { AllChartsComponent } from './shared/modules/all-charts/all-charts.component';
 
-
+import{MatRadioModule} from '@angular/material/radio'
 
 
 @NgModule({
@@ -52,6 +54,7 @@ import { MedicationChartComponent } from './shared/modules/medication-chart/medi
               MoodChartComponent,
               SesionChartComponent,
               MedicationChartComponent,
+              AllChartsComponent,
        
            
   ],
@@ -75,7 +78,7 @@ import { MedicationChartComponent } from './shared/modules/medication-chart/medi
   MatCardModule,
   MatCheckboxModule,
   MatDatepickerModule,MatNativeDateModule,
-  MatDividerModule,MatDividerModule,MatListModule
+  MatDividerModule,MatDividerModule,MatListModule,MatRadioModule,
 
   ],
  

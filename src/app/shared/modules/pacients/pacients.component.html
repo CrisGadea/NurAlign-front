@@ -1,43 +1,59 @@
 <app-header-session></app-header-session>
 
-
 <div class="contenido">
-<mat-card class="cardcontenido">
+  <mat-card class="cardcontenido">
+    <mat-card-content>
+      <h1 class="pacientesdeplegable">Genere Graficos o Informes</h1>
+    </mat-card-content>
+    <br>
 
+    <mat-form-field class="opcionMultiple">
+      <mat-label>Pacientes</mat-label>
+      <mat-select>
+        <div *ngFor="let nombre of nombresPacientes">
+          <mat-option value="{{nombre}}">{{nombre}}</mat-option>
+        </div>
+      </mat-select>
+    </mat-form-field>
 
+    <section class="example-section">
+      <div>
+        <mat-checkbox class="example-margin" [(ngModel)]="horassuenio">Horas de sueño</mat-checkbox>
+        <mat-checkbox class="example-margin" [(ngModel)]="estadodanimo">Estados de animo</mat-checkbox>
+      </div>
+      <div>
+        <mat-checkbox class="example-margin" [(ngModel)]="estadoanimosesion">Estados de animo de session</mat-checkbox>
+        <mat-checkbox class="example-margin" [(ngModel)]="medicacion">Medicacion</mat-checkbox>
+      </div>
+    </section>
 
+    <div class="date-picker-container">
+      <mat-form-field class="pickerday">
+        <mat-label>Seleccione la fecha inicial</mat-label>
+        <input matInput [matDatepicker]="picker1" [(ngModel)]="startDate" />
+        <mat-hint>MM/DD/YYYY</mat-hint>
+        <mat-datepicker-toggle matIconSuffix [for]="picker1"></mat-datepicker-toggle>
+        <mat-datepicker #picker1></mat-datepicker>
+      </mat-form-field>
 
-    <mat-card-content><h1 class="pacientesdeplegable">Pacientes</h1></mat-card-content><br>
+      <mat-form-field class="pickerday">
+        <mat-label>Seleccione la fecha de fin</mat-label>
+        <input matInput [matDatepicker]="picker2" [(ngModel)]="endDate" />
+        <mat-hint>MM/DD/YYYY</mat-hint>
+        <mat-datepicker-toggle matIconSuffix [for]="picker2"></mat-datepicker-toggle>
+        <mat-datepicker #picker2></mat-datepicker>
+      </mat-form-field>
+    </div>
 
-<mat-form-field class="opcionMultiple">
-  <mat-label>Select</mat-label>
-  <mat-select>
-    <div *ngFor="let nombre of nombresPacientes">
-    <mat-option value="{{nombre}}">{{nombre}}</mat-option></div>
-  </mat-select>
-</mat-form-field>
+    <section class="radio-section">
+      <mat-radio-group [(ngModel)]="reportType">
+        <mat-radio-button class="example-margin" value="informe">Generar Informe</mat-radio-button>
+        <mat-radio-button class="example-margin" value="grafico">Generar Gráfico</mat-radio-button>
+      </mat-radio-group>
+    </section>
 
-<section class="example-section">
-  <div>
-  <mat-checkbox class="example-margin" [(ngModel)]="horassuenio">Horas de sueño</mat-checkbox>
-  <mat-checkbox class="example-margin" [(ngModel)]="estadodanimo">Estados de animo</mat-checkbox>
-  </div>
-  <div>
-  <mat-checkbox class="example-margin" [(ngModel)]="estadoanimosesion">Estados de animo de session</mat-checkbox>
-  <mat-checkbox class="example-margin" [(ngModel)]="medicacion">Medicacion</mat-checkbox>
-  </div>
-</section>
-
-
-<mat-form-field class="pickerday">
-  <mat-label>Choose a date</mat-label>
-  <input matInput [matDatepicker]="picker">
-  <mat-hint>MM/DD/YYYY</mat-hint>
-  <mat-datepicker-toggle matIconSuffix [for]="picker"></mat-datepicker-toggle>
-  <mat-datepicker #picker></mat-datepicker>
-</mat-form-field>
-<div class="text-center">
-<button id="btn-tracker-submit" [routerLink]="['/reports']"(click)="generarYDescargarPdf()" >Accent</button></div>
+    <div class="text-center">
+      <button id="btn-tracker-submit" [routerLink]="['/reports']" (click)="generar()">Accent</button>
+    </div>
   </mat-card>
-
 </div>

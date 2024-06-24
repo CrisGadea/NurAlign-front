@@ -17,6 +17,10 @@ export class PacientsComponent implements OnInit  {
   medicacion = false;
   labelPosition: 'before' | 'after' = 'after';
   disabled = false;
+  reportType: string = '';  
+
+  startDate: Date | null = null;
+  endDate: Date | null = null;
 
   moodTracker: any[] = [];
   sleepTracker: any[] = [];
@@ -31,6 +35,39 @@ export class PacientsComponent implements OnInit  {
  
   }
 
+
+  generar()
+  {
+
+    if(this.reportType=="informe")
+      {
+        this.generarYDescargarPdf();
+      }
+    if(this.reportType=="grafico")
+      {
+      }
+
+
+  }
+
+  validarFecha(algunarray: any[]) {
+    if (!this.startDate || !this.endDate) {
+      // Si no se han seleccionado fechas, retornar el array sin cambios
+      return algunarray;
+    }
+
+    // Convertir las fechas seleccionadas a objetos Date
+    const start = new Date(this.startDate);
+    const end = new Date(this.endDate);
+
+    // Filtrar el array por las fechas startDate y endDate
+    return algunarray.filter(item => {
+      const effectiveDate = new Date(item.effectiveDate); // Convertir effectiveDate a Date
+
+      // Filtrar si effectiveDate está entre start y end (inclusivo)
+      return effectiveDate >= start && effectiveDate <= end;
+    });
+  }
 
   generarYDescargarPdf() {
     let moodTrackerPromise: Promise<any>;
@@ -67,9 +104,9 @@ export class PacientsComponent implements OnInit  {
     
         forkJoin([moodTrackerPromise, sleepTrackerPromise, therapySessionPromise]).subscribe(
           ([moodTrackerData, sleepTrackerData, therapySessionData]) => {
-            this.moodTracker = moodTrackerData ? moodTrackerData : [];
-            this.sleepTracker = sleepTrackerData ? sleepTrackerData : [];
-            this.sessionTherapy = therapySessionData ? therapySessionData : [];
+         //  this.moodTracker = moodTrackerData ? this.validarFecha(moodTrackerData) : [];
+            this.sleepTracker = sleepTrackerData ? this.validarFecha(sleepTrackerData) : [];
+            this.sessionTherapy = therapySessionData ? this.validarFecha(therapySessionData) : [];
       
             // Generar el PDF utilizando los datos obtenidos (puede ser vacío si no hay datos)
             this.generatorPdfService.generatePdfFromEntities(this.moodTracker, this.sleepTracker, this.sessionTherapy);
@@ -80,14 +117,7 @@ export class PacientsComponent implements OnInit  {
             this.generatorPdfService.generatePdfFromEntities(this.moodTracker, this.sleepTracker, this.sessionTherapy);
           }
         );
-       
-   /* if(this.horassuenio) 
-      { this.informService.getSleepTracker(6).subscribe((data) => {  this.sleepTracker=data; });}
-    if(this.estadoanimosesion)
-      { this.informService.getTherapySession(6).subscribe((data)=>{this.sessionTherapy=data}); }
-*/
-  //  this.generatorPdfService.generatePdfFromEntities(this.moodTracker, this.sleepTracker, this.sessionTherapy );
-  }}
+         }}
 
 
 

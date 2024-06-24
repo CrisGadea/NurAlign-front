@@ -10,6 +10,7 @@ import { SleepChartComponent } from './shared/modules/sleep-chart/sleep-chart.co
 import { MoodChartComponent } from './shared/modules/mood-chart/mood-chart.component';
 import { SesionChartComponent } from './shared/modules/sesion-chart/sesion-chart.component';
 import { MedicationChartComponent } from './shared/modules/medication-chart/medication-chart.component';
+import { AllChartsComponent } from './shared/modules/all-charts/all-charts.component';
 
 
 const routes: Routes = [
@@ -22,6 +23,7 @@ const routes: Routes = [
   {path:'mood', component:MoodChartComponent},
   {path:'sesion',component:SesionChartComponent},
   {path:'medication',component:MedicationChartComponent},
+  {path:'allcharts',component:AllChartsComponent},
   { path: '**', component: HomeComponent },
 ];
 

@@ -1,0 +1,43 @@
+<app-header-session></app-header-session>
+
+
+<div class="contenido">
+<mat-card class="cardcontenido">
+
+
+
+
+    <mat-card-content><h1 class="pacientesdeplegable">Pacientes</h1></mat-card-content><br>
+
+<mat-form-field class="opcionMultiple">
+  <mat-label>Select</mat-label>
+  <mat-select>
+    <div *ngFor="let nombre of nombresPacientes">
+    <mat-option value="{{nombre}}">{{nombre}}</mat-option></div>
+  </mat-select>
+</mat-form-field>
+
+<section class="example-section">
+  <div>
+  <mat-checkbox class="example-margin" [(ngModel)]="horassuenio">Horas de sueño</mat-checkbox>
+  <mat-checkbox class="example-margin" [(ngModel)]="estadodanimo">Estados de animo</mat-checkbox>
+  </div>
+  <div>
+  <mat-checkbox class="example-margin" [(ngModel)]="estadoanimosesion">Estados de animo de session</mat-checkbox>
+  <mat-checkbox class="example-margin" [(ngModel)]="medicacion">Medicacion</mat-checkbox>
+  </div>
+</section>
+
+
+<mat-form-field class="pickerday">
+  <mat-label>Choose a date</mat-label>
+  <input matInput [matDatepicker]="picker">
+  <mat-hint>MM/DD/YYYY</mat-hint>
+  <mat-datepicker-toggle matIconSuffix [for]="picker"></mat-datepicker-toggle>
+  <mat-datepicker #picker></mat-datepicker>
+</mat-form-field>
+<div class="text-center">
+<button id="btn-tracker-submit" [routerLink]="['/reports']"(click)="generatePDF()" >Accent</button></div>
+  </mat-card>
+
+</div>
