@@ -2,6 +2,10 @@ import { Component, OnInit } from '@angular/core';
 import { GeneratorPdfService } from 'src/app/core/services/generatorPdf.service';
 import { InformService } from 'src/app/core/services/inform.service';
 import { forkJoin } from 'rxjs';
+import { Router } from '@angular/router';
+import { ChartsGeneratorService } from 'src/app/core/services/chartsGenerator.service';
+import { map, tap } from 'rxjs/operators';
+
 
 @Component({
   selector: 'app-pacients',
@@ -29,12 +33,13 @@ export class PacientsComponent implements OnInit  {
 
 
 
-  constructor(private generatorPdfService: GeneratorPdfService,
-              private informService: InformService) { }
+  constructor(  private router: Router,
+    private generatorPdfService: GeneratorPdfService,
+              private informService: InformService,
+              private chartsGeneratorService: ChartsGeneratorService ) { }
   ngOnInit(): void {
  
   }
-
 
   generar()
   {
@@ -45,9 +50,58 @@ export class PacientsComponent implements OnInit  {
       }
     if(this.reportType=="grafico")
       {
+
+        this.CargaDatosGrafico();
+   
+
+      
+
+      //this.router.navigate(['/allcharts']);
+    
       }
 
 
+  }
+  CargaDatosGrafico() {
+    // Configurar todos los datos en el servicio ChartsGeneratorService
+    this.chartsGeneratorService.setData('horassuenio', this.horassuenio);
+    this.chartsGeneratorService.setData('estadodanimo', this.estadodanimo);
+    this.chartsGeneratorService.setData('estadoanimosesion', this.estadoanimosesion);
+    this.chartsGeneratorService.setData('medicacion', this.medicacion);
+  
+    // Crear un array de observables para combinar
+    const observables = [];
+  
+    // Ejemplo: Obtener datos de sleepTracker
+    if (this.horassuenio) {
+      observables.push(this.informService.getSleepTracker(6).pipe(
+        map(data => this.validarFecha(data)),
+        tap(filteredData => this.chartsGeneratorService.setSleepTrackerData(filteredData))
+      ));
+    }
+  
+    // Ejemplo: Obtener datos de therapySession
+    if (this.estadoanimosesion) {
+      observables.push(this.informService.getTherapySession(6).pipe(
+        map(data => this.validarFecha(data)),
+        tap(filteredData => this.chartsGeneratorService.setSessionTherapyData(filteredData))
+      ));
+    }
+  
+    // Ejemplo: Obtener datos de moodTracker (si es necesario)
+    // Puedes agregar más lógica según los datos que necesites obtener
+  
+    // Combinar todos los observables usando forkJoin
+    forkJoin(observables).subscribe(
+      (results: any[]) => {
+        // Una vez que todos los datos están listos, navegar a la página /allcharts
+        this.router.navigate(['/allcharts']);
+      },
+      (error) => {
+        console.error("Error obteniendo datos:", error);
+        // Manejar errores si es necesario
+      }
+    );
   }
 
   validarFecha(algunarray: any[]) {
@@ -55,16 +109,12 @@ export class PacientsComponent implements OnInit  {
       // Si no se han seleccionado fechas, retornar el array sin cambios
       return algunarray;
     }
-
-    // Convertir las fechas seleccionadas a objetos Date
+  
     const start = new Date(this.startDate);
     const end = new Date(this.endDate);
-
-    // Filtrar el array por las fechas startDate y endDate
+  
     return algunarray.filter(item => {
-      const effectiveDate = new Date(item.effectiveDate); // Convertir effectiveDate a Date
-
-      // Filtrar si effectiveDate está entre start y end (inclusivo)
+      const effectiveDate = new Date(item.effectiveDate);
       return effectiveDate >= start && effectiveDate <= end;
     });
   }

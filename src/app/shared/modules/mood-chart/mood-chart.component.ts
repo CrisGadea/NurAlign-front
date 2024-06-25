@@ -1,14 +1,26 @@
-import { Component } from '@angular/core';
+import { CommonModule } from '@angular/common';
+import { Component, OnInit } from '@angular/core';
 import { Chart, ChartOptions } from 'chart.js/auto';
+import { ChartsGeneratorService } from 'src/app/core/services/chartsGenerator.service';
 
 @Component({
   selector: 'app-mood-chart',
   templateUrl: './mood-chart.component.html',
-  styleUrls: ['./mood-chart.component.css']
+  styleUrls: ['./mood-chart.component.css'],
+  imports: [CommonModule],
+  standalone: true
 })
-export class MoodChartComponent {
+export class MoodChartComponent implements OnInit {
 
-  ngOnInit(){
+  
+
+  constructor(private chartsGeneratorService: ChartsGeneratorService) {} 
+  ngOnInit() {
+
+
+
+
+    
     const ctx = document.getElementById('myChart') as HTMLCanvasElement;
 
     const data = {
@@ -16,29 +28,29 @@ export class MoodChartComponent {
       datasets: [
         {
           label: 'Animo Elevado',
-          data: [0.1, 5, 3, 1, null, 4, 1],
-          backgroundColor: 'rgba(108, 245, 109, 0.3)',
+          data: [2, 5, 3, 1, 4, 4, 1],
+          backgroundColor: 'rgba(108, 245, 109, 1)',
           borderColor: 'rgba(108, 245, 109, 1)',
           fill: true,
         },
         {
           label: 'Animo Irritable',
           data: [2, 2, 4, 5, 1, 4, 3],
-          backgroundColor: 'rgba(245, 174, 108, 0.3)',
+          backgroundColor: 'rgba(245, 174, 108, 1)',
           borderColor: 'rgba(245, 174, 108, 1)',
           fill: true,
         },
         {
           label: 'Animo Ancioso',
           data: [5, 4, 3, 2, 4, 1, 5],
-          backgroundColor: 'rgba(252, 126, 158,0.3)',
+          backgroundColor: 'rgba(252, 126, 158,1)',
           borderColor: 'rgba(252, 126, 158, 1)',
           fill: true,
         },
         {
           label: 'Animo deprimido',
           data: [5, 1, 5, 1, 1, 3, 2],
-          backgroundColor: 'rgba(126, 145, 252, 0.3)', /* Light Sky Blue */
+          backgroundColor: 'rgba(126, 145, 252, 1)', /* Light Sky Blue */
           borderColor: 'rgba(126, 145, 252, 1)',
           fill: true,
         }
@@ -47,6 +59,7 @@ export class MoodChartComponent {
 
     const options: ChartOptions = {
       responsive: true,
+      maintainAspectRatio: false,
       scales: {
         x: {
           beginAtZero: true
@@ -73,4 +86,3 @@ export class MoodChartComponent {
     });
   }
 }
-

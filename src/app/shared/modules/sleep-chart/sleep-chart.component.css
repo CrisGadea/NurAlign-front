@@ -1,0 +1,10 @@
+.sleepChart {
+    margin-left: auto;
+    margin-right: auto;
+    height: 400px; /* Ajusta la altura según tus necesidades */
+  }
+  
+  canvas {
+    display: block;
+  }
+  

@@ -50,10 +50,6 @@ import{MatRadioModule} from '@angular/material/radio'
     TherapistCalendarComponent,
               PacientsComponent,
               ReportsComponent,
-              SleepChartComponent,
-              MoodChartComponent,
-              SesionChartComponent,
-              MedicationChartComponent,
               AllChartsComponent,
        
            
@@ -66,6 +62,10 @@ import{MatRadioModule} from '@angular/material/radio'
   FooterComponent,
   HeaderSessionComponent,
   FooterSessionComponent,
+  SleepChartComponent,
+  MoodChartComponent,
+  SesionChartComponent,
+
   MatButtonModule,
    MatDividerModule,
   MatIconModule,

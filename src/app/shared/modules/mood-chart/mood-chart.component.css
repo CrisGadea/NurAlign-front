@@ -1,7 +1,10 @@
-.chart-container {
+#chart-container {
     position: relative;
-    width: 600px;  /* Ajusta el ancho según tus necesidades */
+    width: 80%;
+  /* Ajusta el ancho según tus necesidades */
     height: 400px; /* Ajusta la altura según tus necesidades */
+   margin-left: auto;
+    margin-right: auto;
   }
   
   canvas {

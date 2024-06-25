@@ -1,21 +1,35 @@
+import { CommonModule } from '@angular/common';
 import { Component } from '@angular/core';
+import {Input, OnInit } from '@angular/core';
 import { Chart } from 'chart.js/auto';
+import { ChartsGeneratorService } from 'src/app/core/services/chartsGenerator.service';
 
 @Component({
   selector: 'app-sesion-chart',
   templateUrl: './sesion-chart.component.html',
-  styleUrls: ['./sesion-chart.component.css']
+  styleUrls: ['./sesion-chart.component.css'],  imports:[CommonModule],
+  standalone:true
 })
-export class SesionChartComponent {
-
-
+export class SesionChartComponent implements OnInit {
+  sessionTherapy: any[] = [];
+  fechas: string[] = [];
+constructor(private chartsGeneratorService: ChartsGeneratorService) {} 
+  
   ngOnInit() {
-    const ctx = document.getElementById('myChart') as HTMLCanvasElement;
+
+    
+    console.log(this.chartsGeneratorService.getSessionTherapyData());
+
+    this.sessionTherapy = this.chartsGeneratorService.getSessionTherapyData(); // Obtener sessionTherapyData
+    this.fechas = this.sessionTherapy.map(item => item.effectiveDate);
+    console.log(this.chartsGeneratorService.getSessionTherapyData());
+
+    const ctx = document.getElementById('myChart2') as HTMLCanvasElement;
 
     const myChart = new Chart(ctx, {
       type: 'line',
       data: {
-        labels: ['11/6', '12/6', '13/6', '14/6', '15/6', '16/6','17/6', '18/6', '19/6', '20/6', '21/6', '22/6'],
+        labels: this.fechas,
         datasets: [{
           label: 'Estado de animo Post Session',
           data: [5, 2, 4, 5, 0, 2, 3, 5, 4, 5, 4, 5],
@@ -35,6 +49,7 @@ export class SesionChartComponent {
         }
       }
     });
+
   }
 
 }

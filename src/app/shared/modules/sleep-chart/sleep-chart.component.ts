@@ -1,45 +1,57 @@
-import { Component } from '@angular/core';
+import { CommonModule } from '@angular/common';
+import { Component, OnInit } from '@angular/core';
 import Chart from 'chart.js/auto';
+import { ChartsGeneratorService } from 'src/app/core/services/chartsGenerator.service';
 
 @Component({
   selector: 'app-sleep-chart',
   templateUrl: './sleep-chart.component.html',
-  styleUrls: ['./sleep-chart.component.css']
+  styleUrls: ['./sleep-chart.component.css'],
+  imports: [CommonModule],
+  standalone: true
 })
-export class SleepChartComponent {
+export class SleepChartComponent implements OnInit {
+  sleepTracker: any[] = [];
+  fechas: string[] = [];
+  horasSueno: number[] = [];
+
+  constructor(private chartsGeneratorService: ChartsGeneratorService) {} 
+
+  ngOnInit() {
+    console.log(this.chartsGeneratorService.getSessionTherapyData());
+
+    this.sleepTracker = this.chartsGeneratorService.getSleepTrackerData(); // Obtener sessionTherapyData
+    this.fechas = this.sleepTracker.map(item => item.effectiveDate);
+    console.log(this.chartsGeneratorService.getSessionTherapyData());
+    this.horasSueno = this.sleepTracker.map(item => item.sleepHours);
 
 
 
-  ngOnInit(){
 
-    const ctx = document.getElementById('myChart');
-  //"ctx" hace referencia al id del componente canvas
-  
-    const myChart = new Chart("ctx", {
-        type: 'bar',
-        data: {
-            labels: ['11/6', '12/6', '13/6', '14/6', '15/6', '16/6','17/6', '18/6', '19/6', '20/6', '21/6', '22/6'],
-            datasets: [{
-                label: 'horas de sueño',
-                data: [8, 10, 4, 7, 6, 9,8, 10, 4, 7, 6, 9],
-                backgroundColor: [
-                  'rgba(54, 162, 235, 1)',
 
-                ],
-                borderColor: [
-                  'rgba(54, 162, 235, 1)',
+    const ctx = document.getElementById('myChart3') as HTMLCanvasElement;
 
-                ],
-                borderWidth: 1
-            }]
-        },
-        options: {
-            scales: {
-                y: {
-                    beginAtZero: true
-                }
-            }
+    const myChart = new Chart(ctx, {
+      type: 'bar',
+      data: {
+        labels: this.fechas,
+        datasets: [{
+          label: 'Horas de sueño',
+          data: this.horasSueno,
+          backgroundColor: 'rgba(54, 162, 235, 1)',
+          borderColor: 'rgba(54, 162, 235, 1)',
+          borderWidth: 1
+        }]
+      },
+      options: {
+        responsive: true,
+        maintainAspectRatio: false,
+        scales: {
+          y: {
+            beginAtZero: true
+          }
         }
+      }
     });
   }
 }
