@@ -6,14 +6,15 @@ import { DashboardComponent } from './shared/modules/dashboard/dashboard.compone
 import { TherapistCalendarComponent } from './shared/modules/therapist-calendar/therapist-calendar.component';
 import { PacientsComponent } from './shared/modules/pacients/pacients.component';
 import { ReportsComponent } from './shared/modules/reports/reports.component';
+import { LoginGuard } from './shared/modules/home/login.guard';
 
 
 const routes: Routes = [
   { path: '', component: HomeComponent },
-  {path:'calendar',component:TherapistCalendarComponent},
-  {path:'dashboard', component:DashboardComponent},
-  {path:'report', component:PacientsComponent},
-  {path:'reports', component:ReportsComponent},
+  {path:'calendar',component:TherapistCalendarComponent, canActivate: [LoginGuard]},
+  {path:'dashboard', component:DashboardComponent, canActivate: [LoginGuard]},
+  {path:'report', component:PacientsComponent, canActivate: [LoginGuard]},
+  {path:'reports', component:ReportsComponent, canActivate: [LoginGuard]},
   { path: '**', component: HomeComponent },
 ];
 

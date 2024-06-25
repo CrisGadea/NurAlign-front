@@ -1,5 +1,6 @@
 import { Component } from '@angular/core';
 import { CommonModule } from '@angular/common';
+import { LoginService } from 'src/app/core/services/login.service';
 
 @Component({
   selector: 'app-header-session',
@@ -9,5 +10,11 @@ import { CommonModule } from '@angular/common';
   standalone:true
 })
 export class HeaderSessionComponent {
+
+  constructor(private loginService: LoginService) { }
+
+  logout(){
+    this.loginService.logout();
+  }
 
 }
