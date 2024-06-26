@@ -46,6 +46,7 @@ export class TherapistCalendarComponent implements OnInit {
   isPopupVisible: boolean = false; 
   isPopupVisible2: boolean = false; 
   popUpTurnByFecha:any[]= [];
+  userId!: string | null;
 
   constructor(private service:TherapistCalendarService, private fb: FormBuilder) {
     
@@ -53,7 +54,10 @@ export class TherapistCalendarComponent implements OnInit {
 
   ngOnInit(): void {
 
-   this.turns= this.service.getTurns(6).subscribe(
+      this.userId = localStorage.getItem('userId');
+   console.log(this.userId);
+ 
+   this.turns= this.service.getTurns(this.userId).subscribe(
       data => {
         console.log(data);
         

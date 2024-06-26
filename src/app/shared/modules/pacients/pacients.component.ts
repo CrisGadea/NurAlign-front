@@ -22,6 +22,7 @@ export class PacientsComponent implements OnInit  {
   labelPosition: 'before' | 'after' = 'after';
   disabled = false;
   reportType: string = '';  
+  
 
   startDate: Date | null = null;
   endDate: Date | null = null;
@@ -29,6 +30,7 @@ export class PacientsComponent implements OnInit  {
   moodTracker: any[] = [];
   sleepTracker: any[] = [];
   sessionTherapy: any[] = [];
+  userId!: string | null;
      
 
 
@@ -38,7 +40,8 @@ export class PacientsComponent implements OnInit  {
               private informService: InformService,
               private chartsGeneratorService: ChartsGeneratorService ) { }
   ngOnInit(): void {
- 
+    this.userId = localStorage.getItem('userId');
+ console.log(this.userId);
   }
 
   generar()
