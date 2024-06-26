@@ -6,6 +6,7 @@ import { DashboardComponent } from './shared/modules/dashboard/dashboard.compone
 import { TherapistCalendarComponent } from './shared/modules/therapist-calendar/therapist-calendar.component';
 import { PacientsComponent } from './shared/modules/pacients/pacients.component';
 import { ReportsComponent } from './shared/modules/reports/reports.component';
+import { AllChartsComponent } from './shared/modules/all-charts/all-charts.component';
 import { LoginGuard } from './shared/modules/home/login.guard';
 
 
@@ -15,6 +16,7 @@ const routes: Routes = [
   {path:'dashboard', component:DashboardComponent, canActivate: [LoginGuard]},
   {path:'report', component:PacientsComponent, canActivate: [LoginGuard]},
   {path:'reports', component:ReportsComponent, canActivate: [LoginGuard]},
+  {path:'allcharts',component:AllChartsComponent},
   { path: '**', component: HomeComponent },
 ];
 
