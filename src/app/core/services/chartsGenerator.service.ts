@@ -8,6 +8,7 @@ export class ChartsGeneratorService {
     private data: any = {};
     private sessionTherapyData: any[] = [];
     private sleepTrackerData: any[] = [];
+    private moodTrackerData: any[] = [];
 
     setData(key: string, value: any) {
       this.data[key] = value;
@@ -29,6 +30,25 @@ export class ChartsGeneratorService {
       return this.sleepTrackerData;
 
      }
+
+
+
+     setMoodTrackerData(data: any[]) 
+     {
+       this.moodTrackerData = data;
+ 
+     }
+ 
+ 
+     getMoodTrackerData(): any[]
+      {
+       return this.moodTrackerData;
+ 
+      }
+
+
+
+
     setSessionTherapyData(data: any[]) {
      
       this.sessionTherapyData = data;

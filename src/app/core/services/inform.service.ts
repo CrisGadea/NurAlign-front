@@ -15,7 +15,7 @@ export class InformService{
 
     getMoodTracker(patientId:any):Observable<any>
     {
-    return this.http.get(this.apiUrl + '/moodTracker/patientId/'+patientId);
+    return this.http.get(this.apiUrl + '/moodTracker/patients/'+patientId);
     }
 
 
@@ -28,7 +28,7 @@ export class InformService{
 
     getTherapySession(patientId:any):Observable<any>
     {
-    return this.http.get(this.apiUrl + '/therapySession/'+patientId);
+    return this.http.get(this.apiUrl + '/therapySession/patient/'+patientId);
     }
 
 

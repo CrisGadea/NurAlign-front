@@ -71,15 +71,23 @@ export class PacientsComponent implements OnInit  {
   
     // Crear un array de observables para combinar
     const observables = [];
-  
+   
     // Ejemplo: Obtener datos de sleepTracker
+    if (this.estadodanimo) {
+      observables.push(this.informService.getMoodTracker(6).pipe(
+        map(data => this.validarFecha(data)),
+        tap(filteredData => this.chartsGeneratorService.setMoodTrackerData(filteredData))
+      ));
+    }
+
+
     if (this.horassuenio) {
       observables.push(this.informService.getSleepTracker(6).pipe(
         map(data => this.validarFecha(data)),
         tap(filteredData => this.chartsGeneratorService.setSleepTrackerData(filteredData))
       ));
     }
-  
+
     // Ejemplo: Obtener datos de therapySession
     if (this.estadoanimosesion) {
       observables.push(this.informService.getTherapySession(6).pipe(
@@ -106,26 +114,30 @@ export class PacientsComponent implements OnInit  {
 
   validarFecha(algunarray: any[]) {
     if (!this.startDate || !this.endDate) {
-      // Si no se han seleccionado fechas, retornar el array sin cambios
-      return algunarray;
+      // Si no se han seleccionado fechas, ordenar el array sin filtrar por fechas
+      return algunarray.sort((a, b) => new Date(a.effectiveDate).getTime() - new Date(b.effectiveDate).getTime());
     }
-  
+
     const start = new Date(this.startDate);
     const end = new Date(this.endDate);
-  
-    return algunarray.filter(item => {
-      const effectiveDate = new Date(item.effectiveDate);
-      return effectiveDate >= start && effectiveDate <= end;
-    });
+
+    return algunarray
+      .filter((item) => {
+        const effectiveDate = new Date(item.effectiveDate);
+        return effectiveDate >= start && effectiveDate <= end;
+      })
+      .sort((a, b) => new Date(a.effectiveDate).getTime() - new Date(b.effectiveDate).getTime());
   }
 
   generarYDescargarPdf() {
     let moodTrackerPromise: Promise<any>;
     let sleepTrackerPromise: Promise<any>;
     let therapySessionPromise: Promise<any>;
+
+   
     //creo las promesas
     if (this.estadodanimo) {
-      moodTrackerPromise = this.informService.getMoodTracker(1).toPromise();
+      moodTrackerPromise = this.informService.getMoodTracker(6).toPromise();
     } else {
       moodTrackerPromise = Promise.resolve(null);
     }
@@ -154,7 +166,8 @@ export class PacientsComponent implements OnInit  {
     
         forkJoin([moodTrackerPromise, sleepTrackerPromise, therapySessionPromise]).subscribe(
           ([moodTrackerData, sleepTrackerData, therapySessionData]) => {
-         //  this.moodTracker = moodTrackerData ? this.validarFecha(moodTrackerData) : [];
+            console.log(moodTrackerData);  console.log(moodTrackerData);  console.log(moodTrackerData);  console.log(moodTrackerData);  console.log(moodTrackerData);
+           this.moodTracker = moodTrackerData ? this.validarFecha(moodTrackerData) : [];   
             this.sleepTracker = sleepTrackerData ? this.validarFecha(sleepTrackerData) : [];
             this.sessionTherapy = therapySessionData ? this.validarFecha(therapySessionData) : [];
       

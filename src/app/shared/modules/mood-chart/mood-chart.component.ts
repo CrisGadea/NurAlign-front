@@ -11,45 +11,55 @@ import { ChartsGeneratorService } from 'src/app/core/services/chartsGenerator.se
   standalone: true
 })
 export class MoodChartComponent implements OnInit {
+  moodTracker: any[] = [];
+  fechas: string[] = [];
 
+  animoElevado:number[]=[];
+  animoDeprimido:number[]=[];
+  animoAnsioso:number[]=[];
+  animoIrritable:number[]=[];
   
 
   constructor(private chartsGeneratorService: ChartsGeneratorService) {} 
   ngOnInit() {
 
-
-
+this.moodTracker=this.chartsGeneratorService.getMoodTrackerData();
+this.fechas=this.moodTracker.map(item => item.effectiveDate);
+this.animoElevado=this.moodTracker.map(item=>item.highestValue);
+this.animoDeprimido=this.moodTracker.map(item=>item.lowestValue);
+this.animoAnsioso=this.moodTracker.map(item=>item.anxiousValue);
+this.animoIrritable=this.moodTracker.map(item=>item.irritableValue);
 
     
     const ctx = document.getElementById('myChart') as HTMLCanvasElement;
 
     const data = {
-      labels: ['13/6', '14/6', '15/6', '16/6', '17/6', '18/6', '19/6'],
+      labels: this.fechas,
       datasets: [
         {
           label: 'Animo Elevado',
-          data: [2, 5, 3, 1, 4, 4, 1],
+          data: this.animoElevado,
           backgroundColor: 'rgba(108, 245, 109, 1)',
           borderColor: 'rgba(108, 245, 109, 1)',
           fill: true,
         },
         {
           label: 'Animo Irritable',
-          data: [2, 2, 4, 5, 1, 4, 3],
+          data: this.animoDeprimido,
           backgroundColor: 'rgba(245, 174, 108, 1)',
           borderColor: 'rgba(245, 174, 108, 1)',
           fill: true,
         },
         {
           label: 'Animo Ancioso',
-          data: [5, 4, 3, 2, 4, 1, 5],
+          data: this.animoAnsioso,
           backgroundColor: 'rgba(252, 126, 158,1)',
           borderColor: 'rgba(252, 126, 158, 1)',
           fill: true,
         },
         {
           label: 'Animo deprimido',
-          data: [5, 1, 5, 1, 1, 3, 2],
+          data: this.animoIrritable,
           backgroundColor: 'rgba(126, 145, 252, 1)', /* Light Sky Blue */
           borderColor: 'rgba(126, 145, 252, 1)',
           fill: true,

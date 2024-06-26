@@ -15,7 +15,9 @@ export class GeneratorPdfService {
     const marginTop = 20; // Margen superior
     const marginBottom = 20; // Margen inferior
     let yPos = marginTop;
-
+console.log(sleepTracker);
+console.log(moodTracker);
+console.log(moodTracker);
     // Function to check and add new page if needed
     const checkPageHeight = (additionalHeight = 10) => {
       if (yPos + additionalHeight > pageHeight - marginBottom) {
@@ -53,7 +55,7 @@ export class GeneratorPdfService {
         for (const key in item) {
           if (item.hasOwnProperty(key) && fieldMapping[key]) {
             let value = item[key];
-            if (key === 'moodLevel') {
+            if (key === 'highestValue' || key === 'lowestValue' || key === 'anxiousValue' || key === 'irritableValue') {
               value = this.darFormatoAnimo(value); // Traducir nivel de ánimo
             }
       
@@ -72,11 +74,20 @@ export class GeneratorPdfService {
     };
     
     // Añadir moodTracker, sleepTracker y sessionTherapy al PDF
-  if(moodTracker.length!==0){
-    addDataToPdf('Seguimiento estado de animo', moodTracker, {
-      effectiveDate: 'Fecha',
-    });}
-    if(sleepTracker.length!==0){
+    if (Array.isArray(moodTracker) && moodTracker.length !== 0) {
+      addDataToPdf('Seguimiento estado de animo', moodTracker, {
+        effectiveDate: 'Fecha',
+        highestValue: 'Animo elevado',
+        lowestValue: 'Animo Deprimido',
+        anxiousValue: 'Animo Ansioso',
+        irritableValue: 'Animo Irritable',
+        highestNotes: 'Notas Animo elevado',
+        lowestNotes: 'Notas Animo Deprimido',
+        irritableNotes: 'Notas Animo Ansioso',
+        anxiousNotes: 'Notas Animo Irritable'
+      });
+    }
+    if(Array.isArray(sleepTracker) && sleepTracker.length!==0){
     addDataToPdf('Seguimiento sueño', sleepTracker, {
       effectiveDate: 'Fecha',
       bedTime:'Cuando se fue a dormir',
@@ -84,9 +95,10 @@ export class GeneratorPdfService {
       anxiousFlag:' Estuvo ansioso',
       negativeThoughtsFlag:'Pensamientos negativos',
       sleepStraightFlag:'Durmio bien',
+      sleepNotes:'Notas Paciente'
 
     });}
-    if(sessionTherapy.length!==0){
+    if(Array.isArray(sessionTherapy) && sessionTherapy.length!==0){
     addDataToPdf('Seguimiento terapia', sessionTherapy, {
       effectiveDate: 'Fecha',
       sessionTime: 'Duración de la sesión',
@@ -95,7 +107,7 @@ export class GeneratorPdfService {
       sessionFeel:'Conclucion de la sesion'
     });}
     // Save the PDF
-    pdf.save('archivo.pdf');
+    pdf.save('Informe de Carlos.pdf');
   }
 
 

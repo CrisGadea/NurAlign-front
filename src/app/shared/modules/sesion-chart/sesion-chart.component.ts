@@ -13,15 +13,20 @@ import { ChartsGeneratorService } from 'src/app/core/services/chartsGenerator.se
 export class SesionChartComponent implements OnInit {
   sessionTherapy: any[] = [];
   fechas: string[] = [];
+  animoSesion:number[]=[];
+
+  
+
 constructor(private chartsGeneratorService: ChartsGeneratorService) {} 
   
   ngOnInit() {
 
-    
+   
     console.log(this.chartsGeneratorService.getSessionTherapyData());
 
     this.sessionTherapy = this.chartsGeneratorService.getSessionTherapyData(); // Obtener sessionTherapyData
     this.fechas = this.sessionTherapy.map(item => item.effectiveDate);
+    this.animoSesion=this.sessionTherapy.map(item=>parseInt(item.sessionFeel,10));
     console.log(this.chartsGeneratorService.getSessionTherapyData());
 
     const ctx = document.getElementById('myChart2') as HTMLCanvasElement;
@@ -32,7 +37,7 @@ constructor(private chartsGeneratorService: ChartsGeneratorService) {}
         labels: this.fechas,
         datasets: [{
           label: 'Estado de animo Post Session',
-          data: [5, 2, 4, 5, 0, 2, 3, 5, 4, 5, 4, 5],
+          data: this.animoSesion,
           backgroundColor: 'rgba(54, 162, 235, 0.5)', // Sombreado bajo la línea
           borderColor: 'rgba(54, 162, 235, 1)',
           fill: true, // Habilitar sombreado

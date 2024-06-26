@@ -15,14 +15,14 @@ export class SleepChartComponent implements OnInit {
   fechas: string[] = [];
   horasSueno: number[] = [];
 
+
   constructor(private chartsGeneratorService: ChartsGeneratorService) {} 
 
   ngOnInit() {
-    console.log(this.chartsGeneratorService.getSessionTherapyData());
+    
 
     this.sleepTracker = this.chartsGeneratorService.getSleepTrackerData(); // Obtener sessionTherapyData
     this.fechas = this.sleepTracker.map(item => item.effectiveDate);
-    console.log(this.chartsGeneratorService.getSessionTherapyData());
     this.horasSueno = this.sleepTracker.map(item => item.sleepHours);
 
 
@@ -53,5 +53,4 @@ export class SleepChartComponent implements OnInit {
         }
       }
     });
-  }
-}
+  }}
