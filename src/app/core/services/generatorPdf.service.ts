@@ -58,6 +58,11 @@ console.log(moodTracker);
             if (key === 'highestValue' || key === 'lowestValue' || key === 'anxiousValue' || key === 'irritableValue') {
               value = this.darFormatoAnimo(value); // Traducir nivel de ánimo
             }
+            if(key==='sessionFeel')
+              {
+              value=this.darFormatoAnimo(parseInt(value));
+
+              }
       
 
 
@@ -104,7 +109,7 @@ console.log(moodTracker);
       sessionTime: 'Duración de la sesión',
       preSessionNotes:'Notas previas a la sesion',
       postSessionNotes:'Notas post-sesion',
-      sessionFeel:'Conclucion de la sesion'
+      sessionFeel:'Animo de la sesion'
     });}
     // Save the PDF
     pdf.save('Informe de Carlos.pdf');
