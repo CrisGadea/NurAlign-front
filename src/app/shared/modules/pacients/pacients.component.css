@@ -1,67 +1,70 @@
-
-.contenido{
-
-    margin-top: 5em;
-    margin-left: auto;
-    margin-right: auto;
-    height: 80%;
-    width: 70%;
-
-
+.contenido {
+  margin-top: 5em;
+  margin-left: auto;
+  margin-right: auto;
+  height: 80%;
+  width: 70%;
 }
-.pacientesdeplegable
-{margin-top: 2em;
 
+.pacientesdeplegable {
+  margin-top: 2em;
   color: #333b7b;
-font-size: 25px;
-
+  font-size: 25px;
 }
-.cardcontenido
-{
-   display: flex;
-   flex-direction: column;
- /* Centra horizontalmente */
-  align-items: center; 
-    height: 60vh;
 
+.cardcontenido {
+  display: flex;
+  flex-direction: column;
+  align-items: center; /* Centra horizontalmente */
+  height: 60vh;
 }
+
 :host {
-    display: flex;
-    flex-direction: column;
-    align-items: flex-start;
-  }
-  .opcionMultiple {
-    width: 450px;
-  }
-  
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+}
 
+.opcionMultiple {
+  width: 450px;
+}
 
+.example-h2 {
+  margin: 10px;
+}
 
-  .example-h2 {
-    margin: 10px;
-  }
-  
-  .example-section {
-    display: flex;
-    
-    align-content: center;
-    align-items: center;
-    height: 60px;
-  }
-  
-  .example-margin {
-    margin: 0 10px;
+.example-section {
+  display: flex;
+  align-content: center;
+  align-items: center;
+  height: 60px;
+}
 
-    
-  }
+.example-margin {
+  margin: 0 10px;
+}
 
-  #btn-tracker-submit
-  {
-    background-color: #333b7b;  color: #ffffff
-    ;
-    border-radius: 5px;
-    width: 10em;
-    height: 3em;
+#btn-tracker-submit {
+  background-color: #333b7b;
+  color: #ffffff;
+  border-radius: 5px;
+  width: 10em;
+  height: 3em;
+}
 
-  }
-  .pickerday{  width: 450px;}
+.pickerday {
+  width: 300px;
+}
+
+.date-picker-container {
+  display: flex;
+  justify-content: space-between;
+  width: 800px;
+}
+
+.radio-section {
+  margin: 20px 0;
+  display: flex;
+  justify-content: center;
+  width: 100%;
+}

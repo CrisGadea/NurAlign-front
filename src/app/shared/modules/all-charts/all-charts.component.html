@@ -1,0 +1,16 @@
+<app-header-session></app-header-session>
+
+
+<div class="graficos" *ngIf="estadodanimo">
+  <p class="titulografico">Grafico de fluctuaciones de estado de animo</p>
+<app-mood-chart></app-mood-chart>
+</div>
+<div class="graficos"*ngIf="estadoanimosesion" >
+  <p class="titulografico">Grafico de estado de animo de la sesion de terapia</p>
+<app-sesion-chart></app-sesion-chart></div>
+
+<div class="graficos" *ngIf="horassuenio">
+  <p class="titulografico">Grafico de horas de sueño</p>
+<app-sleep-chart></app-sleep-chart>
+
+</div>
