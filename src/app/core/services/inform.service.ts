@@ -13,6 +13,12 @@ export class InformService{
 
     constructor(private http:HttpClient)  {  }
 
+ getPatientsAllPatients(therapistId:any):Observable<any>
+  {
+    return this.http.get(this.apiUrl + '/patients/therapist/'+therapistId);
+  }
+
+
     getMoodTracker(patientId:any):Observable<any>
     {
     return this.http.get(this.apiUrl + '/moodTracker/patients/'+patientId);

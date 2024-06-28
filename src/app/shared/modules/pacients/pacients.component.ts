@@ -22,10 +22,13 @@ export class PacientsComponent implements OnInit  {
   labelPosition: 'before' | 'after' = 'after';
   disabled = false;
   reportType: string = '';  
+  selectedPatient: any;
   
 
   startDate: Date | null = null;
   endDate: Date | null = null;
+
+  pacientes: any[] = [];
 
   moodTracker: any[] = [];
   sleepTracker: any[] = [];
@@ -42,7 +45,22 @@ export class PacientsComponent implements OnInit  {
   ngOnInit(): void {
     this.userId = localStorage.getItem('userId');
  console.log(this.userId);
+ this.loadPatients();
+ 
   }
+  loadPatients() {
+    if (this.userId) {
+      this.informService.getPatientsAllPatients(this.userId).subscribe(
+        (data: any) => {
+          this.pacientes = data; // Guardar la lista de pacientes en la variable pacientes
+          
+          console.log('Lista de pacientes:', this.pacientes);
+        },
+        error => {
+          console.error('Error al obtener la lista de pacientes:', error);
+        }
+      );
+    }}
 
   generar()
   {
@@ -71,13 +89,14 @@ export class PacientsComponent implements OnInit  {
     this.chartsGeneratorService.setData('estadodanimo', this.estadodanimo);
     this.chartsGeneratorService.setData('estadoanimosesion', this.estadoanimosesion);
     this.chartsGeneratorService.setData('medicacion', this.medicacion);
+    const pacienteId = this.selectedPatient.id;
   
     // Crear un array de observables para combinar
     const observables = [];
    
     // Ejemplo: Obtener datos de sleepTracker
     if (this.estadodanimo) {
-      observables.push(this.informService.getMoodTracker(6).pipe(
+      observables.push(this.informService.getMoodTracker(pacienteId).pipe(
         map(data => this.validarFecha(data)),
         tap(filteredData => this.chartsGeneratorService.setMoodTrackerData(filteredData))
       ));
@@ -85,7 +104,7 @@ export class PacientsComponent implements OnInit  {
 
 
     if (this.horassuenio) {
-      observables.push(this.informService.getSleepTracker(6).pipe(
+      observables.push(this.informService.getSleepTracker(pacienteId).pipe(
         map(data => this.validarFecha(data)),
         tap(filteredData => this.chartsGeneratorService.setSleepTrackerData(filteredData))
       ));
@@ -93,7 +112,7 @@ export class PacientsComponent implements OnInit  {
 
     // Ejemplo: Obtener datos de therapySession
     if (this.estadoanimosesion) {
-      observables.push(this.informService.getTherapySession(6).pipe(
+      observables.push(this.informService.getTherapySession(pacienteId).pipe(
         map(data => this.validarFecha(data)),
         tap(filteredData => this.chartsGeneratorService.setSessionTherapyData(filteredData))
       ));
@@ -136,17 +155,17 @@ export class PacientsComponent implements OnInit  {
     let moodTrackerPromise: Promise<any>;
     let sleepTrackerPromise: Promise<any>;
     let therapySessionPromise: Promise<any>;
-
+    const pacienteId = this.selectedPatient.id;
    
     //creo las promesas
     if (this.estadodanimo) {
-      moodTrackerPromise = this.informService.getMoodTracker(6).toPromise();
+      moodTrackerPromise = this.informService.getMoodTracker(pacienteId).toPromise();
     } else {
       moodTrackerPromise = Promise.resolve(null);
     }
 
     if(this.horassuenio)
-      {sleepTrackerPromise=this.informService.getSleepTracker(6).toPromise();
+      {sleepTrackerPromise=this.informService.getSleepTracker(pacienteId).toPromise();
       }else{
         sleepTrackerPromise=Promise.resolve(null);
 
@@ -156,7 +175,7 @@ export class PacientsComponent implements OnInit  {
 
       if(this.estadoanimosesion)
         {
-          therapySessionPromise=this.informService.getTherapySession(6).toPromise();
+          therapySessionPromise=this.informService.getTherapySession(pacienteId).toPromise();
         }else
         {
           therapySessionPromise=Promise.resolve(null);
