@@ -37,6 +37,7 @@ import { MedicationChartComponent } from './shared/modules/medication-chart/medi
 import { AllChartsComponent } from './shared/modules/all-charts/all-charts.component';
 
 import{MatRadioModule} from '@angular/material/radio'
+import { DatePipe } from '@angular/common';
 
 
 @NgModule({
@@ -82,7 +83,7 @@ import{MatRadioModule} from '@angular/material/radio'
 
   ],
  
-  providers: [],
+  providers: [DatePipe],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

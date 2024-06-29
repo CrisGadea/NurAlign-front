@@ -38,5 +38,25 @@ export class InformService{
     }
 
 
+    getMoodTrackerByIdAndRange(patientId: any, fromDate: string, toDate: string): Observable<any> {
+      const params = { fromDate, toDate };
+      return this.http.get(this.apiUrl + `/moodTracker/patients/range/${patientId}`, { params });
+    }
+    
+    getSleepTrackerByIdAndRange(patientId: any, fromDate: string, toDate: string): Observable<any>
+    {
+      const params = { fromDate, toDate };
+      return this.http.get(this.apiUrl + `/sleepTracker/patients/range/${patientId}`, { params });
+
+    }
+
+    getTherapySessionByIdAndRange(patientId: any, fromDate: string, toDate: string): Observable<any>
+    {
+      const params = { fromDate, toDate };
+      return this.http.get(this.apiUrl + `/therapySession/patients/range/${patientId}`, { params });
+
+    }
+
+
 }
 
