@@ -64,8 +64,18 @@ export class PacientsComponent implements OnInit  {
       );
     }}
 
+    isFormValid(): boolean {
+      const checkboxesValid = this.horassuenio || this.estadodanimo || this.estadoanimosesion || this.medicacion;
+      return this.selectedPatient && this.startDate && this.endDate && this.reportType && checkboxesValid;
+    }
+  
   generar()
   {
+
+    if (!this.isFormValid()) {
+      alert("Por favor, complete todos los campos obligatorios.");
+      return;
+    }
 
     if(this.reportType=="informe")
       {
@@ -86,13 +96,9 @@ export class PacientsComponent implements OnInit  {
 
   }
   CargaDatosGrafico() {
-    // Configurar todos los datos en el servicio ChartsGeneratorService
-    this.chartsGeneratorService.setData('horassuenio', this.horassuenio);
-    this.chartsGeneratorService.setData('estadodanimo', this.estadodanimo);
-    this.chartsGeneratorService.setData('estadoanimosesion', this.estadoanimosesion);
-    this.chartsGeneratorService.setData('medicacion', this.medicacion);
+    this.SetearDatos();
+    
     const pacienteId = this.selectedPatient.id;
-  
     const formattedStartDate = this.datePipe.transform(this.startDate, 'yyyy-MM-dd')!;
     const formattedEndDate = this.datePipe.transform(this.endDate, 'yyyy-MM-dd')!;
   
@@ -132,7 +138,7 @@ export class PacientsComponent implements OnInit  {
       }
     );
   }
-
+/*
   validarFecha(algunarray: any[]) {
     if (!this.startDate || !this.endDate) {
       // Si no se han seleccionado fechas, ordenar el array sin filtrar por fechas
@@ -148,7 +154,7 @@ export class PacientsComponent implements OnInit  {
         return effectiveDate >= start && effectiveDate <= end;
       })
       .sort((a, b) => new Date(a.effectiveDate).getTime() - new Date(b.effectiveDate).getTime());
-  }
+  }*/
 
   generarYDescargarPdf() {
     const pacienteId = this.selectedPatient.id;
@@ -188,8 +194,15 @@ export class PacientsComponent implements OnInit  {
 
 
 
-
+ SetearDatos() {
+  this.chartsGeneratorService.setData('horassuenio', this.horassuenio);
+  this.chartsGeneratorService.setData('estadodanimo', this.estadodanimo);
+  this.chartsGeneratorService.setData('estadoanimosesion', this.estadoanimosesion);
+  this.chartsGeneratorService.setData('medicacion', this.medicacion);
+}
 
 }
+
+
 
 

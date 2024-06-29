@@ -9,14 +9,14 @@
 
     <mat-form-field class="opcionMultiple">
       <mat-label>Pacientes</mat-label>
-      <mat-select [(ngModel)]="selectedPatient">
+      <mat-select [(ngModel)]="selectedPatient" required >
         <mat-option *ngFor="let paciente of pacientes" [value]="paciente">
           {{ paciente.name }}
         </mat-option>
       </mat-select>
     </mat-form-field>
 
-    <section class="example-section">
+    <section class="example-section"required >
       <div>
         <mat-checkbox class="example-margin" [(ngModel)]="horassuenio">Horas de sueño</mat-checkbox>
         <mat-checkbox class="example-margin" [(ngModel)]="estadodanimo">Estados de animo</mat-checkbox>
@@ -30,7 +30,7 @@
     <div class="date-picker-container">
       <mat-form-field class="pickerday">
         <mat-label>Seleccione la fecha inicial</mat-label>
-        <input matInput [matDatepicker]="picker1" [(ngModel)]="startDate" />
+        <input matInput [matDatepicker]="picker1" [(ngModel)]="startDate" required />
         <mat-hint>MM/DD/YYYY</mat-hint>
         <mat-datepicker-toggle matIconSuffix [for]="picker1"></mat-datepicker-toggle>
         <mat-datepicker #picker1></mat-datepicker>
@@ -38,7 +38,7 @@
 
       <mat-form-field class="pickerday">
         <mat-label>Seleccione la fecha de fin</mat-label>
-        <input matInput [matDatepicker]="picker2" [(ngModel)]="endDate" />
+        <input matInput [matDatepicker]="picker2" [(ngModel)]="endDate" required />
         <mat-hint>MM/DD/YYYY</mat-hint>
         <mat-datepicker-toggle matIconSuffix [for]="picker2"></mat-datepicker-toggle>
         <mat-datepicker #picker2></mat-datepicker>
@@ -46,14 +46,14 @@
     </div>
 
     <section class="radio-section">
-      <mat-radio-group [(ngModel)]="reportType">
+      <mat-radio-group [(ngModel)]="reportType" required >
         <mat-radio-button class="example-margin" value="informe">Generar Informe</mat-radio-button>
         <mat-radio-button class="example-margin" value="grafico">Generar Gráfico</mat-radio-button>
       </mat-radio-group>
     </section>
 
     <div class="text-center">
-      <button id="btn-tracker-submit" [routerLink]="['/reports']" (click)="generar()">Generar</button>
+      <button id="btn-tracker-submit" [routerLink]="['/reports']" (click)="generar()" [disabled]="!isFormValid()">Generar</button>
     </div>
   </mat-card>
 </div>
