@@ -30,6 +30,15 @@ describe('GeneratorService', () => {
     service.setSleepTrackerData(sleepTracker);
     expect(service.getSleepTrackerData()).toEqual(sleepTracker);
   });
+  it('deberia setear el valor del sleeptracker cun un tamaño de 2', () => {
+    const sleepTracker= [
+      { id: 1, hours: 7, date: '2023-07-21' },
+      { id: 2, hours: 6, date: '2023-07-22' }
+    ];
+
+    service.setSleepTrackerData(sleepTracker);
+    expect(service.getSleepTrackerData().length).toEqual(sleepTracker.length);
+  });
 
   it('deberia setearme el moodTracker', () => {
     const moodData = [
@@ -50,4 +59,16 @@ describe('GeneratorService', () => {
     service.setSessionTherapyData(therapyData);
     expect(service.getSessionTherapyData()).toEqual(therapyData);
   });
+  it('deberia setearme el valor de las terapias', () => {
+    const therapyData = [
+      { id: 1, session_feel: 5, date: '2023-07-21' },
+      { id: 2, session_feel: 5, date: '2023-07-22' }
+    ];
+
+    service.setSessionTherapyData(therapyData);
+    expect(service.getSessionTherapyData().length).toEqual(2);
+  });
+
+
 });
+
