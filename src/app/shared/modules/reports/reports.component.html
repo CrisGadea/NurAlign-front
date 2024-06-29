@@ -1,9 +1,10 @@
 <app-header-session></app-header-session>
 
 <p>reports works!</p>
-<div class="contenedor">
+<div class="fondo">
+<div class="container">
   <mat-list>
-    <h1 class="descargas" id="titulo">Mis informes Generados</h1>
+    <h1 class="descargas text-uppercase text-center py-2" id="titulo">Mis informes Generados</h1>
     <div class="descargas" *ngFor="let nombre of descargas">
       <div class="textodesc">
         <a>{{nombre}}.pdf</a>
@@ -12,4 +13,5 @@
       <mat-divider></mat-divider>
     </div>
   </mat-list>
+</div>
 </div>
