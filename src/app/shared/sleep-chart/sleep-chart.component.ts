@@ -1,7 +1,7 @@
 import { CommonModule } from '@angular/common';
 import { Component, OnInit } from '@angular/core';
 import Chart from 'chart.js/auto';
-import { ChartsGeneratorService } from 'src/app/core/services/chartsGenerator.service';
+import { GeneratorService } from 'src/app/core/services/generator.service';
 
 @Component({
   selector: 'app-sleep-chart',
@@ -16,12 +16,12 @@ export class SleepChartComponent implements OnInit {
   horasSueno: number[] = [];
 
 
-  constructor(private chartsGeneratorService: ChartsGeneratorService) {} 
+  constructor(private generatorService: GeneratorService) {} 
 
   ngOnInit() {
     
 
-    this.sleepTracker = this.chartsGeneratorService.getSleepTrackerData(); // Obtener sessionTherapyData
+    this.sleepTracker = this.generatorService.getSleepTrackerData(); // Obtener sessionTherapyData
     this.fechas = this.sleepTracker.map(item => item.effectiveDate);
     this.horasSueno = this.sleepTracker.map(item => item.sleepHours);
 

@@ -51,5 +51,5 @@ export class LoginService {
     // Devuelve el estado de autenticación
     return this.isAuthenticatedStatus;
   }
-}
+};
 

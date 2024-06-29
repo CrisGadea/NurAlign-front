@@ -2,7 +2,7 @@ import { CommonModule } from '@angular/common';
 import { Component } from '@angular/core';
 import {Input, OnInit } from '@angular/core';
 import { Chart } from 'chart.js/auto';
-import { ChartsGeneratorService } from 'src/app/core/services/chartsGenerator.service';
+import { GeneratorService } from 'src/app/core/services/generator.service';
 
 @Component({
   selector: 'app-sesion-chart',
@@ -17,17 +17,17 @@ export class SesionChartComponent implements OnInit {
 
   
 
-constructor(private chartsGeneratorService: ChartsGeneratorService) {} 
+constructor(private generatorService: GeneratorService) {} 
   
   ngOnInit() {
 
    
-    console.log(this.chartsGeneratorService.getSessionTherapyData());
+    console.log(this.generatorService.getSessionTherapyData());
 
-    this.sessionTherapy = this.chartsGeneratorService.getSessionTherapyData(); // Obtener sessionTherapyData
+    this.sessionTherapy = this.generatorService.getSessionTherapyData(); // Obtener sessionTherapyData
     this.fechas = this.sessionTherapy.map(item => item.effectiveDate);
     this.animoSesion=this.sessionTherapy.map(item=>parseInt(item.sessionFeel,10));
-    console.log(this.chartsGeneratorService.getSessionTherapyData());
+    console.log(this.generatorService.getSessionTherapyData());
 
     const ctx = document.getElementById('myChart2') as HTMLCanvasElement;
 

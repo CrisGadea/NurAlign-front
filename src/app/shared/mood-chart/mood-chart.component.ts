@@ -1,7 +1,7 @@
 import { CommonModule } from '@angular/common';
 import { Component, OnInit } from '@angular/core';
 import { Chart, ChartOptions } from 'chart.js/auto';
-import { ChartsGeneratorService } from 'src/app/core/services/chartsGenerator.service';
+import { GeneratorService} from 'src/app/core/services/generator.service';
 
 @Component({
   selector: 'app-mood-chart',
@@ -20,10 +20,10 @@ export class MoodChartComponent implements OnInit {
   animoIrritable:number[]=[];
   
 
-  constructor(private chartsGeneratorService: ChartsGeneratorService) {} 
+  constructor(private generatorService: GeneratorService) {} 
   ngOnInit() {
 
-this.moodTracker=this.chartsGeneratorService.getMoodTrackerData();
+this.moodTracker=this.generatorService.getMoodTrackerData();
 this.fechas=this.moodTracker.map(item => item.effectiveDate);
 this.animoElevado=this.moodTracker.map(item=>item.highestValue);
 this.animoDeprimido=this.moodTracker.map(item=>item.lowestValue);

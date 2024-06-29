@@ -1,7 +1,7 @@
 import { Component, Input, OnInit } from '@angular/core';
 import { Chart } from 'chart.js';
 import jsPDF from 'jspdf';
-import { ChartsGeneratorService } from 'src/app/core/services/chartsGenerator.service';
+import { GeneratorService } from 'src/app/core/services/generator.service';
 
 @Component({
   selector: 'app-all-charts',
@@ -16,13 +16,13 @@ export class AllChartsComponent implements OnInit {
  // startDate: Date | null = null;
 //  endDate: Date | null = null;
 
-  constructor(private chartsGeneratorService: ChartsGeneratorService) {} // Asegúrate de inyectar ChartsGeneratorService
+  constructor(private generatorService: GeneratorService) {} // Asegúrate de inyectar ChartsGeneratorService
 
   ngOnInit(): void {
-    this.horassuenio = this.chartsGeneratorService.getData('horassuenio');
-    this.estadodanimo = this.chartsGeneratorService.getData('estadodanimo');
-    this.estadoanimosesion = this.chartsGeneratorService.getData('estadoanimosesion');
-    this.medicacion = this.chartsGeneratorService.getData('medicacion');
+    this.horassuenio = this.generatorService.getData('horassuenio');
+    this.estadodanimo = this.generatorService.getData('estadodanimo');
+    this.estadoanimosesion = this.generatorService.getData('estadoanimosesion');
+    this.medicacion = this.generatorService.getData('medicacion');
   //  this.startDate = this.chartsGeneratorService.getData('startDate');
    // this.endDate = this.chartsGeneratorService.getData('endDate');
 

@@ -1,6 +1,6 @@
 import { Component } from '@angular/core';
 import Chart from 'chart.js/auto';
-import { ChartsGeneratorService } from 'src/app/core/services/chartsGenerator.service';
+import { GeneratorService } from 'src/app/core/services/generator.service';
 
 @Component({
   selector: 'app-medication-chart',
@@ -11,7 +11,7 @@ export class MedicationChartComponent {
 
 
 
-  constructor(private chartsGeneratorService: ChartsGeneratorService) {} 
+  constructor(private generatorService: GeneratorService) {} 
   ngOnInit() {
     const ctx = document.getElementById('myChart') as HTMLCanvasElement;
 

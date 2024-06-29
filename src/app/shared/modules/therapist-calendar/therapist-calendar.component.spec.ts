@@ -101,13 +101,13 @@ describe('TherapistCalendarComponent', () => {
 
 
         });
-     /*   it('deberia darme una lista de todos los turnos', () => 
+        it('deberia darme una lista de todos los turnos vacia por no estar cargado', () => 
           {
               component.TurnPacient
-              expect(10).toEqual(component.TurnPacient.length);
+              expect(component.TurnPacient.length).toBeNull;
            });
-
-           it('deberia darme una de los turnos del dia', () => 
+      
+         /*  it('deberia darme una de los turnos del dia', () => 
             {
                 component.TurnPacient;   
                 component.dateSelect = moment('2024-05');

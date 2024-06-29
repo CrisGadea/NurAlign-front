@@ -4,7 +4,7 @@ import { Injectable } from '@angular/core';
 @Injectable({
   providedIn: 'root'
 })
-export class ChartsGeneratorService {
+export class GeneratorService {
     private data: any = {};
     private sessionTherapyData: any[] = [];
     private sleepTrackerData: any[] = [];
