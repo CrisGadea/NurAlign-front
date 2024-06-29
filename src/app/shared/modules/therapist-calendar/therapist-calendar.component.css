@@ -1,299 +1,240 @@
-*{
+* {
   outline: none !important
 }
 
-#fondo{
-
-  position: absolute;
+#fondo {
   width: 100%;
   height: 100%;
- /* height: 100%;*/
   background-color: #DFE3FF;
-
 }
-.wrapper-calendar{
-  margin:1rem;
+
+.wrapper-calendar {
+  margin: 1rem;
   padding: .5rem;
   border: solid 1px #eaeaea;
-  /*box-shadow: 0 0 10px #e4e4e4;*/
 }
-.Turn
-{ cursor: pointer;
 
+.Turn {
+  cursor: pointer;
   margin-top: 100px;
   border-radius: 10px;
   display: flex;
   align-items: center;
- justify-content: center;
+  justify-content: center;
   margin-left: auto;
   margin-right: auto;
-  
   height: 40px;
-  
-width: 60vw;
+  width: 60vw;
   background-color: #333B7B;
-}
-.TurnsAndCalendar
-{
-  display: flex;
-  justify-content: center;
-
 }
 
 #Calendario {
- /* 
- background-color: #888FC7;
- 
- */
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  background-color: white;
+  padding: 20px 30px;
+  text-align: center;
+  width: 50%;
+  max-width: 600px;
+  border-width: 1px;
+  border-radius: 20px;
+  border-color: #333B7B;
+  margin: 0 auto;
+}
 
- background-color: #DFE3FF;
-  margin-top: 40px;
-border-radius: 5px;
-  
+.flechita {
+  cursor: pointer;
+  width: 80px;
+  height: auto;
 
-    text-align: center;
-    width: 40vw;
-   height: 60vh;
-   border-width: 1px;
-   border-color: #333B7B;
+}
 
-  }
-  .flechita{
-    cursor: pointer;
-    background-color: #DFE3FF;
-  /*  border-width: 1px;
-    border-color: #333B7B;*/
-    border-radius: 5px;
-    width: 80px;
-height: auto;
+#boxes {
 
-  }
-
-  #boxes
-  {
-
-    border-radius: 5px;
-    display: flex;
-    align-items: center;
-   justify-content: center;
-  background-color: #888FC7;
+  border-radius: 5px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background-color: #dfe3ff;
   color: #333B7B;
-    border-style: solid;
-    border-width: 1px;
+  border-style: solid;
+  border-width: 1px;
+  padding: 5px 0;
+  font-size: 16px;
 
-    height: 4vh;
-    font-size: 25px;
+}
 
-  }
+ol {
+  list-style: none;
+  display: grid;
+  grid-template-columns: repeat(7, 1fr);
+  margin: 0;
+  padding: 0;
+}
 
-  ol {
-    list-style: none;
-    display: grid;
-    grid-template-columns: repeat(7, 1fr);
-    margin: 0;
-    padding: 0;
-  }
+li {
+  padding: .25rem;
+  font-size: 1.5ch;
+  cursor: pointer;
+}
 
-  li {
-    padding: .25rem;
-    font-size: 1.5ch;
-    cursor: pointer;
-  }  
-  li:hover{
-    font-weight: 600;
-  }  
+li:hover {
+  font-weight: 600;
+}
+
 /*  h2 {
     margin-bottom: 4px;
     padding: 0;
   }*/
-  
-  .first-day {
-    grid-column-start: var(--first-day-start, 0);
-  }
-  
-  .day-name {
-    background-color: #888FC7;
-    margin: 0px;
-   color: #333B7B;
- 
-    font-weight: bold;
-    
-    margin-bottom: 2px;
-    padding: 4px;
-    text-align: center;
-    font-size: 22px;
-  }
-  
-  .header-calendar {
-    display: flex;
-    color: #333B7B;
-    height: 100px;
-    justify-content: space-between;
-    align-items: center;
-    align-content: center;
-  }
-  
-  .header-calendar h1 {
-    width: 100%;
-    font-size: 40px;
-  }
-  
-  .header-calendar button {
-    cursor: pointer;
-    border-radius: 5px;
-    background-color: #888FC7;
-    font-size: 30px;
-    height: 80px;
-    border: 0;
-  }
-  .FutureTurns{
-    margin-top: 40px;
-    border-radius: 10px;
-    width: 40vw;
-background-color:   #DFE3FF;
-    height: 70vh;
-    border-width: 1px;
-    border-color: #333B7B;
-    color: #333B7B;
-  }
-  .TitleTurns
-  {
-    font-weight: bold;
-    font-size: 30px;
-    text-align: center;
-  }
-.ForFutureTurns
-{
+
+.first-day {
+  grid-column-start: var(--first-day-start, 0);
+}
+
+.day-name {
+  cursor: auto;
+  background-color: #888FC7;
+  margin: 0px;
+  color: #DFE3FF;
+  margin-bottom: 6px;
+  padding: 7px 0;
+  text-align: center;
+  font-size: 16px;
+  border: 1px solid #333b7b;
+}
+
+.header-calendar {
+  display: flex;
+  color: #333B7B;
+  padding: 15px 0;
+  justify-content: space-between;
+  align-items: center;
+  align-content: center;
+}
+
+.header-calendar h1 {
+  width: 100%;
+  font-size: 40px;
+}
+
+.header-calendar button {
+  cursor: pointer;
+  border-radius: 5px;
+  background-color: #888FC7;
+  font-size: 30px;
+  height: 80px;
+  border: 0;
+}
+
+.FutureTurns {
+  padding: 20px 30px;
+  width: 50%;
+  background-color: #DFE3FF;
+  color: #333B7B;
+}
+
+.TitleTurns {
+  font-weight: bold;
+  font-size: 25px;
+}
+
+.ForFutureTurns {
   list-style-type: none;
-  cursor:default;
-  font-size: 20px;
+  cursor: default;
+}
 
-
+.ForFutureTurns span {
+  font-size: 16px;
 }
 
 
-  .TextFutureTurn
-  {
+.TextFutureTurn {
 
   font-size: 20px;
   text-decoration: none;
   list-style-type: none;
   margin-left: 20px;
+}
+
+@media (max-width: 767px) {
+  #Calendario {
+    width: 90%;
   }
-  @media (max-width: 600px)  {
+}
 
-    .header-calendar
-    {
-      height: 70px;
-    }
-    .header-calendar h1 {
+@media (max-width: 600px) {
 
-      font-size: 20px;
-    }
-    
-    .TurnsAndCalendar
-    {
-      flex-direction: column;
-    }
-   #Calendario{
-    width: 80vw;
-    height: 40vh;
-    margin-left: auto;
-    margin-right: auto;
-   }
-   .FutureTurns{  
 
-  margin: auto;
+  .header-calendar h1 {
+    font-size: 20px;
+  }
+
+
+  .FutureTurns {
+    margin: auto;
     width: 80vw;
     height: 30vh;
- 
   }
-  .TitleTurns
-  {
-    font-size: 12px;
-  }
-  .TextFutureTurn
-  {
 
+
+
+
+
+  .flechita {
+    background-color: #DFE3FF;
+    /*  border-width: 1px;
+      border-color: #333B7B;*/
+    border-radius: 5px;
+    width: 40px;
+    height: auto;
+
+  }
+
+  #Calendario {
+    padding: 20px 10px;
+  }
+
+}
+
+@media (max-width: 400px) {
+
+  .tituloDelCalendario{
+    font-size: 20px !important;
+  }
+
+  .day-name {
     font-size: 10px;
   }
 
+  #boxes {
+    font-size: 12px;
+  }
+}
 
-    .flechita{
-      background-color: #DFE3FF;
-    /*  border-width: 1px;
-      border-color: #333B7B;*/
-      border-radius: 5px;
-      width: 40px;
-  height: auto;
-  
-    }
 
-    #boxes
-    {
-      font-size: 10px;
-      height: auto;
-    }
 
-    .header-calendar h1 {
-      width: 100%;
-      font-size: 15px;
-    }
-    .day-name{font-size: 10px;}
-   /* #Calendario{ 
-        height: 60vh;;
-    }*/
+
+@media (min-width: 601px)and (max-width: 900px) {
+
+  .flechita {
+    width: 60px;
+    height: auto;
+
   }
 
+}
 
 
+@media (min-width: 1200px) {
 
-  @media (min-width: 601px)and (max-width: 900px)  {
-    .header-calendar h1 {
-
-      font-size: 30px;
-    }
-    
-   
-
-
-    .flechita{
-      background-color: #DFE3FF;
-    /*  border-width: 1px;
-      border-color: #333B7B;*/
-      border-radius: 5px;
-      width: 60px;
-  height: auto;
-  
-    }
-
-    #boxes
-    {
-      font-size: 15px;
-      height: auto;
-    }
-
-    .header-calendar h1 {
-      width: 100%;
-      font-size: 20px;
-    }
-    .day-name{font-size: 15px;}
-   /* #Calendario{ 
-        height: 60vh;;
-    }*/
-  }
-  @media (min-width: 1200px)
-  {
-
-    .TextFutureTurn
-    {
-  
+  .TextFutureTurn {
     font-size: 20px;
     text-decoration: none;
     list-style-type: none;
     margin-left: 20px;
-    }
   }
+}
 
 
 
@@ -303,49 +244,60 @@ background-color:   #DFE3FF;
 
 
 
-  .popup {
-    display: none;
-    position: fixed;
-    z-index: 1;
-    left: 0;
-    top: 0;
-    width: 100%;
-    height: 100%;
-    overflow: auto;
-    background-color: rgba(0, 0, 0, 0.4);
-    padding-top: 60px;
-    align-items: center;
-    justify-content: center; /* Centra horizontalmente el contenido */
-  }
-  
-  
-  .popup.show {
-    display: block;
-  }
-  
-  .popup-content {
-    background-color: #888FC7;
-    margin: 5% auto;
-    padding: 20px;
-    color: #333B7B;
+.popup {
+  opacity: 0;
+  visibility: hidden;
+  display: flex;
+  position: fixed;
+  z-index: 1;
+  left: 0;
+  top: 0;
+  width: 100%;
+  height: 100%;
+  overflow: auto;
+  background-color: rgba(0, 0, 0, 0.4);
+  padding-top: 60px;
+  align-items: center;
+  justify-content: center;
+  transition: opacity 0.5s ease, visibility 0.5s ease;
+  /* Centra horizontalmente el contenido */
+}
 
-    border: 1px solid #888;
-    width: 80%;
-  }
-  
-  .close {
-    color: #333B7B;
-    float: right;
-    font-size: 28px;
-    font-weight: bold;
-  }
-  
-  .close:hover,
-  .close:focus {
-    color: black;
-    text-decoration: none;
-    cursor: pointer;
-  }
+
+.popup.show {
+  opacity: 1;
+  visibility: visible;
+}
+
+
+.popup-content {
+  background-color: #DFE3FF;
+  margin: 5% auto;
+  padding: 20px;
+  color: #333B7B;
+  border-radius: 20px;
+  border: 1px solid #333B7B;
+  width: 80%;
+}
+
+.close {
+  color: black;
+  padding: 0 20px;
+  font-size: 28px;
+  font-weight: bold;
+}
+
+.close:hover,
+.close:focus {
+  color: black;
+  text-decoration: none;
+  cursor: pointer;
+}
+
+.mat-mdc-form-field{
+  display: block;
+  padding:0 5px;
+}
 
 
 /*
@@ -356,25 +308,37 @@ background-color:   #DFE3FF;
     align-items: flex-start;
   }
   */
-.tituloDelCalendario
-{margin-top: 30px;
+.tituloDelCalendario {
+  margin: 30px auto 20px;
   font-weight: bold;
+  font-size: 25px;
+  text-transform: uppercase;
   text-align: center;
   color: #333B7B;
 }
+
 .botondeSubmit {
-  background-color: #333B7B; /* Color de fondo */
-  color: #ffffff; /* Color del texto */
-  border-radius: 5px; /* Bordes redondeados */
-  border: none; /* Sin borde */
-  padding: 10px 20px; /* Espaciado interno */
-  font-size: 16px; /* Tamaño del texto */
-  cursor: pointer; /* Cambia el cursor al pasar sobre el botón */
-  transition: background-color 0.3s; /* Transición suave para el cambio de color de fondo */
+  background-color: #333B7B;
+  /* Color de fondo */
+  color: #ffffff;
+  /* Color del texto */
+  border-radius: 5px;
+  /* Bordes redondeados */
+  border: none;
+  /* Sin borde */
+  padding: 10px 20px;
+  /* Espaciado interno */
+  font-size: 16px;
+  /* Tamaño del texto */
+  cursor: pointer;
+  /* Cambia el cursor al pasar sobre el botón */
+  transition: background-color 0.3s;
+  /* Transición suave para el cambio de color de fondo */
 }
 
 .botondeSubmit:hover {
-  background-color: #1E2555; /* Cambia el color de fondo al pasar el mouse */
+  background-color: #1E2555;
+  /* Cambia el color de fondo al pasar el mouse */
 }
 
 /*
