@@ -1,103 +1,111 @@
-
 <div id="fondo">
 	<app-header-session></app-header-session>
-<h3 class="tituloDelCalendario">Seleccione un día para agregar o ver  turnos </h3>
-	<div class="TurnsAndCalendar">
+	<h1 class="tituloDelCalendario">Seleccione un día para agregar o ver turnos </h1>
+	<div class="d-flex flex-column flex-md-row pb-4 px-3">
 
-<div id="Calendario" class="wrapper-calendar">
-	<div class="header-calendar">
-		<div>
-		
-			<a (click)="changeMonth(-1)" ><img class="flechita" src="../../assets/Image/flechita-izq.png"></a>
+		<div id="Calendario" class="wrapper-calendar container">
+			<div class="header-calendar">
+				<div>
+
+					<a (click)="changeMonth(-1)"><img class="flechita" src="../../assets/Image/flechita-izq.png"></a>
+				</div>
+				<h2>{{dateSelect | date:'MMMM, yyyy'}}</h2>
+				<div>
+
+					<a (click)="changeMonth(1)"> <img class="flechita" src="../../assets/Image/flechita-der.png"> </a>
+
+				</div>
+			</div>
+			<ol>
+				<li *ngFor="let day of week" class="day-name">{{day |
+					slice:0:3}}<!--te permite seleccionar los 3 primeros caracteres de la semana --></li>
+
+				<!--para establecer cuando empieza a generar los dias y no los ponga en cualquier lado -->
+				<li (click)="clickDay(day)" [style.gridColumnStart]="first ? day?.indexWeek : 'auto'"
+					*ngFor="let day of monthSelect;let first = first">
+					<div id="boxes"><span>{{day?.value}}</span></div>
+				</li>
+			</ol>
 		</div>
-		<h1>{{dateSelect | date:'MMMM, yyyy'}}</h1>
-		<div>
 
-			<a (click)="changeMonth(1)"> <img class="flechita" src="../../assets/Image/flechita-der.png"> </a>
-		
+
+
+		<div class="FutureTurns">
+
+			<h3 class="TitleTurns">Turnos:</h3>
+			<li class="ForFutureTurns" *ngFor="let turno of UltimosTurnos">
+				<span class="TextFutureTurn">
+					Turno de {{ turno.namePacient }}
+					el dia {{ turno.effectiveDate }}
+					a las {{ turno.turnTime }}</span>
+			</li>
+
+		</div>
+
+	</div>
+
+
+	<div class="popup" [ngClass]="{ 'show': isPopupVisible }">
+		<div class="popup-content">
+			<div class="d-flex flex-row justify-content-between">
+				<h2>Turnos del día: {{ popupDate }}</h2>
+				<span class="close" (click)="closePopup()">&times;</span>
+			</div>
+			<li class="ForFutureTurns" *ngFor="let turno of popUpTurnByFecha">
+				<a>
+					Turno de {{ turno.namePacient }}
+					el dia {{ turno.effectiveDate }}
+					a las {{ turno.turnTime }}</a>
+			</li>
+
+			<div>
+				<form class="d-flex flex-column flex-md-row justify-content-around" [formGroup]="turnForm" (ngSubmit)="generateTurn()">
+					<div class="col-12 col-md-4">
+						<mat-form-field>
+							<mat-label>Nombre del paciente</mat-label>
+							<input matInput formControlName="namePacient">
+						</mat-form-field>
+					</div>
+					<div class="col-12 col-md-4">
+						<mat-form-field>
+							<mat-label>Hora</mat-label>
+							<mat-select formControlName="turnTime">
+								<mat-option value="00:00">00:00</mat-option>
+								<mat-option value="01:00">01:00</mat-option>
+								<mat-option value="02:00">02:00</mat-option>
+								<mat-option value="03:00">03:00</mat-option>
+								<mat-option value="04:00">04:00</mat-option>
+								<mat-option value="05:00">05:00</mat-option>
+								<mat-option value="06:00">06:00</mat-option>
+								<mat-option value="07:00">07:00</mat-option>
+								<mat-option value="08:00">08:00</mat-option>
+								<mat-option value="09:00">09:00</mat-option>
+								<mat-option value="10:00">10:00</mat-option>
+								<mat-option value="11:00">11:00</mat-option>
+								<mat-option value="12:00">12:00</mat-option>
+								<mat-option value="13:00">13:00</mat-option>
+								<mat-option value="14:00">14:00</mat-option>
+								<mat-option value="15:00">15:00</mat-option>
+								<mat-option value="16:00">16:00</mat-option>
+								<mat-option value="17:00">17:00</mat-option>
+								<mat-option value="18:00">18:00</mat-option>
+								<mat-option value="19:00">19:00</mat-option>
+								<mat-option value="20:00">20:00</mat-option>
+								<mat-option value="21:00">21:00</mat-option>
+								<mat-option value="22:00">22:00</mat-option>
+								<mat-option value="23:00">23:00</mat-option>
+							</mat-select>
+						</mat-form-field>
+					</div>
+					<div class="col-12 col-md-4 text-center">
+						<button class="botondeSubmit h-75 w-75" type="submit">Crear Turno</button>
+					</div>
+				</form>
+			</div>
+
+
+
+
 		</div>
 	</div>
-	<ol>
-		<li *ngFor="let day of week" class="day-name">{{day | slice:0:3}}<!--te permite seleccionar los 3 primeros caracteres de la semana --></li>
-
-		<!--para establecer cuando empieza a generar los dias y no los ponga en cualquier lado -->
-    <li (click)="clickDay(day)" [style.gridColumnStart]="first ? day?.indexWeek : 'auto'"
-         *ngFor="let day of monthSelect;let first = first">
-			<div id="boxes"><span >{{day?.value}}</span></div>
-		</li>
-	</ol>
-</div>
-
-
-
-<div class="FutureTurns">
-
-	<p class="TitleTurns">Turnos:</p>
-	<li class="ForFutureTurns" *ngFor="let turno of UltimosTurnos">
-		<a class="TextFutureTurn">
-		Turno de {{ turno.namePacient }}
-		el dia {{ turno.effectiveDate }}
-		a las {{ turno.turnTime }}</a>
-	  </li>
-
-</div>
-
-</div>
-
-
-<div class="popup" [ngClass]="{ 'show': isPopupVisible }">
-    <div class="popup-content">
-      <span class="close" (click)="closePopup()">&times;</span>
-      <h2>Turnos del día: {{ popupDate }}</h2>
-
-	  <li class="ForFutureTurns" *ngFor="let turno of popUpTurnByFecha">
-		<a>
-			Turno de {{ turno.namePacient }}
-		el dia {{ turno.effectiveDate }}
-		a las {{ turno.turnTime }}</a>
-	  </li>
-	  <div>
-		<form [formGroup]="turnForm" (ngSubmit)="generateTurn()">
-			<mat-form-field>
-				<mat-label>Nombre del paciente</mat-label>
-				<input matInput formControlName="namePacient">
-			  </mat-form-field>
-			  <mat-form-field>
-				<mat-label>Hora</mat-label>
-				<mat-select formControlName="turnTime">
-				  <mat-option value="00:00">00:00</mat-option>
-				  <mat-option value="01:00">01:00</mat-option>
-				  <mat-option value="02:00">02:00</mat-option>
-				  <mat-option value="03:00">03:00</mat-option>
-				  <mat-option value="04:00">04:00</mat-option>
-				  <mat-option value="05:00">05:00</mat-option>
-				  <mat-option value="06:00">06:00</mat-option>
-				  <mat-option value="07:00">07:00</mat-option>
-				  <mat-option value="08:00">08:00</mat-option>
-				  <mat-option value="09:00">09:00</mat-option>
-				  <mat-option value="10:00">10:00</mat-option>
-				  <mat-option value="11:00">11:00</mat-option>
-				  <mat-option value="12:00">12:00</mat-option>
-				  <mat-option value="13:00">13:00</mat-option>
-				  <mat-option value="14:00">14:00</mat-option>
-				  <mat-option value="15:00">15:00</mat-option>
-				  <mat-option value="16:00">16:00</mat-option>
-				  <mat-option value="17:00">17:00</mat-option>
-				  <mat-option value="18:00">18:00</mat-option>
-				  <mat-option value="19:00">19:00</mat-option>
-				  <mat-option value="20:00">20:00</mat-option>
-				  <mat-option value="21:00">21:00</mat-option>
-				  <mat-option value="22:00">22:00</mat-option>
-				  <mat-option value="23:00">23:00</mat-option>
-			
-			
-				</mat-select>
-			  </mat-form-field>
-			  <button class="botondeSubmit" type="submit">Crear Turno</button>
-		</form>
-	  </div>
-
-
-  
-
 </div>
