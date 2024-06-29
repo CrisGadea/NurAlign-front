@@ -1,10 +1,11 @@
 import { Component, OnInit } from '@angular/core';
 import { GeneratorPdfService } from 'src/app/core/services/generatorPdf.service';
 import { InformService } from 'src/app/core/services/inform.service';
-import { forkJoin } from 'rxjs';
+import { forkJoin, lastValueFrom } from 'rxjs';
 import { Router } from '@angular/router';
 import { ChartsGeneratorService } from 'src/app/core/services/chartsGenerator.service';
 import { map, tap } from 'rxjs/operators';
+import { DatePipe } from '@angular/common';
 
 
 @Component({
@@ -41,7 +42,8 @@ export class PacientsComponent implements OnInit  {
   constructor(  private router: Router,
     private generatorPdfService: GeneratorPdfService,
               private informService: InformService,
-              private chartsGeneratorService: ChartsGeneratorService ) { }
+              private chartsGeneratorService: ChartsGeneratorService,
+              private datePipe: DatePipe ) { }
   ngOnInit(): void {
     this.userId = localStorage.getItem('userId');
  console.log(this.userId);
@@ -62,8 +64,18 @@ export class PacientsComponent implements OnInit  {
       );
     }}
 
+    isFormValid(): boolean {
+      const checkboxesValid = this.horassuenio || this.estadodanimo || this.estadoanimosesion || this.medicacion;
+      return this.selectedPatient && this.startDate && this.endDate && this.reportType && checkboxesValid;
+    }
+  
   generar()
   {
+
+    if (!this.isFormValid()) {
+      alert("Por favor, complete todos los campos obligatorios.");
+      return;
+    }
 
     if(this.reportType=="informe")
       {
@@ -84,42 +96,35 @@ export class PacientsComponent implements OnInit  {
 
   }
   CargaDatosGrafico() {
-    // Configurar todos los datos en el servicio ChartsGeneratorService
-    this.chartsGeneratorService.setData('horassuenio', this.horassuenio);
-    this.chartsGeneratorService.setData('estadodanimo', this.estadodanimo);
-    this.chartsGeneratorService.setData('estadoanimosesion', this.estadoanimosesion);
-    this.chartsGeneratorService.setData('medicacion', this.medicacion);
+    this.SetearDatos();
+    
     const pacienteId = this.selectedPatient.id;
+    const formattedStartDate = this.datePipe.transform(this.startDate, 'yyyy-MM-dd')!;
+    const formattedEndDate = this.datePipe.transform(this.endDate, 'yyyy-MM-dd')!;
   
     // Crear un array de observables para combinar
     const observables = [];
-   
-    // Ejemplo: Obtener datos de sleepTracker
+  
+    // Obtener datos de moodTracker
     if (this.estadodanimo) {
-      observables.push(this.informService.getMoodTracker(pacienteId).pipe(
-        map(data => this.validarFecha(data)),
-        tap(filteredData => this.chartsGeneratorService.setMoodTrackerData(filteredData))
-      ));
-    }
-
-
-    if (this.horassuenio) {
-      observables.push(this.informService.getSleepTracker(pacienteId).pipe(
-        map(data => this.validarFecha(data)),
-        tap(filteredData => this.chartsGeneratorService.setSleepTrackerData(filteredData))
-      ));
-    }
-
-    // Ejemplo: Obtener datos de therapySession
-    if (this.estadoanimosesion) {
-      observables.push(this.informService.getTherapySession(pacienteId).pipe(
-        map(data => this.validarFecha(data)),
-        tap(filteredData => this.chartsGeneratorService.setSessionTherapyData(filteredData))
+      observables.push(this.informService.getMoodTrackerByIdAndRange(pacienteId, formattedStartDate, formattedEndDate).pipe(
+        tap(data => this.chartsGeneratorService.setMoodTrackerData(data))
       ));
     }
   
-    // Ejemplo: Obtener datos de moodTracker (si es necesario)
-    // Puedes agregar más lógica según los datos que necesites obtener
+    // Obtener datos de sleepTracker
+    if (this.horassuenio) {
+      observables.push(this.informService.getSleepTrackerByIdAndRange(pacienteId, formattedStartDate, formattedEndDate).pipe(
+        tap(data => this.chartsGeneratorService.setSleepTrackerData(data))
+      ));
+    }
+  
+    // Obtener datos de therapySession
+    if (this.estadoanimosesion) {
+      observables.push(this.informService.getTherapySessionByIdAndRange(pacienteId, formattedStartDate, formattedEndDate).pipe(
+        tap(data => this.chartsGeneratorService.setSessionTherapyData(data))
+      ));
+    }
   
     // Combinar todos los observables usando forkJoin
     forkJoin(observables).subscribe(
@@ -133,7 +138,7 @@ export class PacientsComponent implements OnInit  {
       }
     );
   }
-
+/*
   validarFecha(algunarray: any[]) {
     if (!this.startDate || !this.endDate) {
       // Si no se han seleccionado fechas, ordenar el array sin filtrar por fechas
@@ -149,65 +154,54 @@ export class PacientsComponent implements OnInit  {
         return effectiveDate >= start && effectiveDate <= end;
       })
       .sort((a, b) => new Date(a.effectiveDate).getTime() - new Date(b.effectiveDate).getTime());
-  }
+  }*/
 
   generarYDescargarPdf() {
-    let moodTrackerPromise: Promise<any>;
-    let sleepTrackerPromise: Promise<any>;
-    let therapySessionPromise: Promise<any>;
     const pacienteId = this.selectedPatient.id;
-   
-    //creo las promesas
-    if (this.estadodanimo) {
-      moodTrackerPromise = this.informService.getMoodTracker(pacienteId).toPromise();
-    } else {
-      moodTrackerPromise = Promise.resolve(null);
-    }
-
-    if(this.horassuenio)
-      {sleepTrackerPromise=this.informService.getSleepTracker(pacienteId).toPromise();
-      }else{
-        sleepTrackerPromise=Promise.resolve(null);
-
+  
+    const formattedStartDate = this.datePipe.transform(this.startDate, 'yyyy-MM-dd')!;
+    const formattedEndDate = this.datePipe.transform(this.endDate, 'yyyy-MM-dd')!;
+  
+    const moodTrackerPromise = this.estadodanimo
+      ? lastValueFrom(this.informService.getMoodTrackerByIdAndRange(pacienteId, formattedStartDate, formattedEndDate))
+      : Promise.resolve(null);
+  
+    const sleepTrackerPromise = this.horassuenio
+      ? lastValueFrom(this.informService.getSleepTrackerByIdAndRange(pacienteId, formattedStartDate, formattedEndDate))
+      : Promise.resolve(null);
+  
+    const therapySessionPromise = this.estadoanimosesion
+      ? lastValueFrom(this.informService.getTherapySessionByIdAndRange(pacienteId, formattedStartDate, formattedEndDate))
+      : Promise.resolve(null);
+  
+    forkJoin([moodTrackerPromise, sleepTrackerPromise, therapySessionPromise]).subscribe(
+      ([moodTrackerData, sleepTrackerData, therapySessionData]) => {
+        this.moodTracker = moodTrackerData || [];
+        this.sleepTracker = sleepTrackerData || [];
+        this.sessionTherapy = therapySessionData || [];
+  
+        // Generar el PDF utilizando los datos obtenidos (puede ser vacío si no hay datos)
+        this.generatorPdfService.generatePdfFromEntities(this.moodTracker, this.sleepTracker, this.sessionTherapy);
+      },
+      (error) => {
+        console.error("Error obteniendo datos:", error);
+        // Aunque ocurra un error, intentamos generar el PDF con los datos actuales (pueden ser vacíos)
+        this.generatorPdfService.generatePdfFromEntities(this.moodTracker, this.sleepTracker, this.sessionTherapy);
       }
-
-
-
-      if(this.estadoanimosesion)
-        {
-          therapySessionPromise=this.informService.getTherapySession(pacienteId).toPromise();
-        }else
-        {
-          therapySessionPromise=Promise.resolve(null);
-        }
+    );
+  }
 
 
 
 
+ SetearDatos() {
+  this.chartsGeneratorService.setData('horassuenio', this.horassuenio);
+  this.chartsGeneratorService.setData('estadodanimo', this.estadodanimo);
+  this.chartsGeneratorService.setData('estadoanimosesion', this.estadoanimosesion);
+  this.chartsGeneratorService.setData('medicacion', this.medicacion);
+}
 
-    
-        forkJoin([moodTrackerPromise, sleepTrackerPromise, therapySessionPromise]).subscribe(
-          ([moodTrackerData, sleepTrackerData, therapySessionData]) => {
-            console.log(moodTrackerData);  console.log(moodTrackerData);  console.log(moodTrackerData);  console.log(moodTrackerData);  console.log(moodTrackerData);
-           this.moodTracker = moodTrackerData ? this.validarFecha(moodTrackerData) : [];   
-            this.sleepTracker = sleepTrackerData ? this.validarFecha(sleepTrackerData) : [];
-            this.sessionTherapy = therapySessionData ? this.validarFecha(therapySessionData) : [];
-      
-            // Generar el PDF utilizando los datos obtenidos (puede ser vacío si no hay datos)
-            this.generatorPdfService.generatePdfFromEntities(this.moodTracker, this.sleepTracker, this.sessionTherapy);
-          },
-          (error) => {
-            console.error("Error obteniendo datos:", error);
-            // Aunque ocurra un error, intentamos generar el PDF con los datos actuales (pueden ser vacíos)
-            this.generatorPdfService.generatePdfFromEntities(this.moodTracker, this.sleepTracker, this.sessionTherapy);
-          }
-        );
-         }}
-
-
-
-
-
+}
 
 
 
