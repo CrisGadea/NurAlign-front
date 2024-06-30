@@ -43,6 +43,10 @@ export class PacientsComponent implements OnInit {
   ngOnInit(): void {
     this.userId = localStorage.getItem('userId');
     this.loadPatients();
+    this.horassuenio = false;
+this.estadodanimo = false;
+this.estadoanimosesion = false;
+this.medicacion = false;
   }
 
   loadPatients() {
@@ -70,6 +74,37 @@ export class PacientsComponent implements OnInit {
     }
 
     if (this.reportType === "informe") {
+
+      const reportData = {
+   
+        therapistId:  this.userId , // Ejemplo de cómo usar getData en GeneratorService
+        initialDate: this.startDate,
+        endDate: this.endDate,
+        effectiveDate: new Date().toISOString().slice(0, 10),
+        moodFlag: this.estadodanimo,
+        sleepFlag: this.horassuenio,
+        therapyFlag: this.estadoanimosesion,
+        medicationFlag: this.medicacion,
+        patientName:  this.selectedPatient.name,
+        patientId: this.selectedPatient.id
+      };
+  
+      // Llamada a InformService para guardar el reporte
+      this.informService.createReport(reportData).subscribe(
+        (response) => {
+          console.log('Datos del informe a enviar:', reportData);
+          console.log('Datos del informe a enviar:', reportData);
+          console.log('Datos del informe a enviar:', reportData);
+          console.log('Datos del informe a enviar:', reportData);
+          console.log('Reporte guardado exitosamente en el servidor:', response);
+        },
+        (error) => {
+          console.error('Error al guardar el reporte en el servidor:', error);
+  
+          console.log('Datos del informe a enviar:', reportData);
+        }
+      );
+
       this.generarYDescargarPdf();
     } else if (this.reportType === "grafico") {
       this.CargaDatosGrafico();
@@ -132,6 +167,11 @@ export class PacientsComponent implements OnInit {
   }
 
   generarYDescargarPdf() {
+    this.SetearDatos();
+    
+    this.generatorService.setData('therapistId', this.userId);
+    this.generatorService.setData('startDate', this.startDate);
+    this.generatorService.setData('endDate', this.endDate);
     const pacienteId = this.selectedPatient.id;
     const nombre = this.selectedPatient.name;
     this.generatorService.setData('nombre', nombre);

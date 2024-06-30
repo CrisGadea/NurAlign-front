@@ -2,13 +2,14 @@ import { Injectable } from '@angular/core';
 import jsPDF from 'jspdf';
 import autoTable from 'jspdf-autotable';
 import { GeneratorService } from './generator.service';
+import { InformService } from './inform.service';
 
 @Injectable({
   providedIn: 'root'
 })
 export class GeneratorPdfService {
 
-  constructor(private generatorService: GeneratorService) { }
+  constructor(private generatorService: GeneratorService, private informService: InformService) { }
 
   generatePdfFromEntities(nombre: string, moodTracker: any[], sleepTracker: any[], sessionTherapy: any[]) {
     const pdf = new jsPDF();
@@ -98,6 +99,9 @@ export class GeneratorPdfService {
       });
     }
     pdf.save('Informe de Carlos.pdf');
+
+
+   
   }
 
   darFormatoAnimo(level: number): string {
