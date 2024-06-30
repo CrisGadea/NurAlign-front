@@ -19,10 +19,10 @@ const routes: Routes = [
   {path:'reports', component:ReportsComponent, canActivate: [LoginGuard]},
   {path:'allcharts',component:AllChartsComponent, canActivate: [LoginGuard]},
   {path:'payment',component:PaymentComponent, canActivate: [LoginGuard]},
- // { path: 'payment-success', component: DashboardComponent },
-  //{ path: 'payment-failure', component: DashboardComponent },
-  //{ path: 'payment-pending', component: DashboardComponent },
-  { path: 'dashboard', component: DashboardComponent },
+  // { path: 'payment-success', component: DashboardComponent },
+  // { path: 'payment-failure', component: DashboardComponent },
+  // { path: 'payment-pending', component: DashboardComponent },
+  { path: 'dashboard', component: DashboardComponent, canActivate: [LoginGuard]},
   { path: '**', component: HomeComponent },
 ];
 

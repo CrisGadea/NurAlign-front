@@ -10,28 +10,14 @@ export class PaymentComponent {
   constructor(private paymentService: CheckoutService) { }
 
   initiatePayment() {
-    this.paymentService.createPreference('Suscripción NurAlign', 1, 1).subscribe(
+    this.paymentService.createPreference('Suscripción NurAlign', 1, 9000).subscribe(
       (response: any) => {
-        window.location.href = response.init_point;
+        window.location.href = response;
       },
       (error) => {
         console.error('Error creating preference:', error)
       }
       //url => window.location.href = url,
-
-
-      // (response: any) => {
-      //   console.log("Response from backend:", response); // Añade esta línea
-      //   if (response) {
-      //     window.location.href = response.init_point;
-      //   } else {
-      //     console.error("init_point is undefined");
-      //     alert("Error generating payment link. Please try again.");
-      //   }
-      // }, (error) => {
-      //   console.error("Error:", error);
-      //   alert("Error generating payment link. Please try again.");
-      // }
     );
   }
 }
