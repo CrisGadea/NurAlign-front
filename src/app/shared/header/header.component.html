@@ -28,24 +28,24 @@
       </div>
       <div class="modal-body">
         <div class="register-form h-75 p-3 m-auto d-flex align-items-center justify-content-center">
-          <form class="w-100" action="#" method="post">
+          <form [formGroup]="registerForm" (ngSubmit)="register()" class="w-100" action="#" method="post">
             <label for="email">Email</label>
-            <input class="form-control" type="email" id="email" name="email" required>
+            <input formControlName="email" class="form-control" type="email" id="email" name="email" required>
 
             <label for="nombre">Nombre</label>
-            <input class="form-control" type="text" id="nombre" name="nombre" required>
+            <input formControlName="name" class="form-control" type="text" id="nombre" name="nombre" required>
 
             <label for="apellido">Apellido</label>
-            <input class="form-control" type="text" id="apellido" name="apellido" required>
+            <input formControlName="lastName" class="form-control" type="text" id="apellido" name="apellido" required>
 
             <label for="contrasena">Contraseña</label>
-            <input class="form-control" type="password" id="contrasena" name="contrasena" required>
+            <input formControlName="password" class="form-control" type="password" id="contrasena" name="contrasena" required>
 
             <label for="contrasena2">Repetir contraseña</label>
             <input class="form-control" type="password" id="contrasena2" name="contrasena2" required>
 
             <label for="telefono">Telefono</label>
-            <input class="form-control" type="tel" id="telefono" name="telefono" required>
+            <input formControlName="phoneNumber" class="form-control" type="tel" id="telefono" name="telefono" required>
 
             <div class="text-center py-2">
               <input class="btn w-100 text-light hover-size" type="submit" value="Registrarse">
