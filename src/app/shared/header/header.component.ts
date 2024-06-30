@@ -31,6 +31,7 @@ export class HeaderComponent {
     this.service.register(this.registerForm.value).subscribe(
       (data: any)=>{
         alert("El usuario " + data.name + ", con email: " + data.email + " ha sido registrado con éxito");
+        window.location.reload();
         console.log(data);
       },
       (error)=>{
