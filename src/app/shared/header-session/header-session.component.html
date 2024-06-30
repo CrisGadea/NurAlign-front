@@ -18,8 +18,9 @@
         <div class="navbar-nav">
             <a class="nav-link" href="calendar">Calendario</a>
             <a class="nav-link" href="report">Informes</a>
-            <a class="nav-link" href="reports">Archivos</a>            
-            <button class="nav-link text-start" data-bs-toggle="modal" data-bs-target="#exampleModal">Suscripción</button>
+            <a class="nav-link" href="reports">Archivos</a>
+            <button class="nav-link text-start" data-bs-toggle="modal"
+                data-bs-target="#modalSuscripcion">Suscripción</button>
         </div>
         <div class="spacer-header">
 
@@ -32,19 +33,30 @@
     </div>
 </div>
 
-<div class="modal fade" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+<div class="modal fade" id="modalSuscripcion" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
     <div class="modal-dialog">
-      <div class="modal-content">
-        <div class="modal-header">
-          <h1 class="modal-title fs-5 text-dark" id="exampleModalLabel">Dale flaco suscribite o te pego</h1>
-          <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+        <div class="modal-content">
+            <div class="modal-header">
+                <h1 class="modal-title fs-5 text-dark" id="exampleModalLabel">Suscríbete y disfruta de beneficios
+                    exclusivos</h1>
+                <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+            </div>
+            <div class="modal-body">
+                <ul class="mb-0 py-2">
+                    <li>Acceso ilimitado a todas las funcionalidades</li>
+                    <li>Herramientas de análisis</li>
+                    <li>Gráficos estadísticos</li>
+                    <li>Reportes detallados</li>
+                </ul>
+                <div class="d-flex flex-row justify-content-center align-items-center">
+                    <span class="precio">$9000</span><span> por mes</span>
+                </div>
+            </div>
+            <div class="modal-footer">
+                <div class="boton-suscribirse">
+                    <a href="#" class="text-center">Suscribirse</a>
+                </div>
+            </div>
         </div>
-        <div class="modal-body">
-          ...
-        </div>
-        <div class="modal-footer">
-          <a href="#" class="text-center fs-4">Suscribirse</a>
-        </div>
-      </div>
     </div>
-  </div>
+</div>
