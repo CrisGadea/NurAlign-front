@@ -98,7 +98,7 @@ export class GeneratorPdfService {
         sessionFeel: 'Animo de la sesion'
       });
     }
-    pdf.save('Informe de Carlos.pdf');
+    pdf.save(nombre+'.pdf');
 
 
    
