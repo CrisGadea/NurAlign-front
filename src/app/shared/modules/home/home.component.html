@@ -85,21 +85,16 @@
                       <h2 class="m-0 pt-2">¿Sos terapeuta? Inicia sesion</h2>
                   </div>
                   <div class="login-form h-75 p-3 m-auto d-flex align-items-center justify-content-center">
-                      <form class="w-100" action="/dashboard">
-                          <label for="usuario">Usuario</label>
-                          <input class="form-control" type="text" id="usuario" name="usuario" required>
+                      <form [formGroup]="loginForm" (ngSubmit)="login()" class="w-100">
+                          <label for="usuario">Email</label>
+                          <input formControlName="email" class="form-control" type="text" id="usuario" name="usuario" required>
                   
                           <label for="contrasena">Contraseña</label>
-                          <input class="form-control" type="password" id="contrasena" name="contrasena" required>
+                          <input formControlName="password" class="form-control" type="password" id="contrasena" name="contrasena" required>
                           <div class="text-center py-2">
-                                  <input class="btn w-100 text-light hover-size" type="submit" (click)="goToDashboard()" value="Iniciar Sesión">
+                                  <input class="btn w-100 text-light hover-size" type="submit" value="Iniciar Sesión">
                           </div>
-                          <div class="text-center forgot-password">
-                              <span><a href="#">¿Olvidaste tu contraseña?</a></span>
-                          </div>
-                          <div class="text-center register">
-                              <span>¿No tienes cuenta? <a href="#">Regístrate</a></span>
-                          </div>
+                          
                       </form>
                   </div>
               </div>
@@ -116,7 +111,7 @@
                     <div class="col-11 py-4 align-content-center">
                         <div class="card card-custom m-auto">
                             <div class="card-header">
-                                Servicio Premium - $100
+                                Servicio Premium - $9000
                             </div>
                             <div class="card-body card-body-custom text-start">
                                 <h5 class="card-title">Beneficios Incluidos:</h5>

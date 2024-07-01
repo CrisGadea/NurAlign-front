@@ -20,38 +20,68 @@ import {MatSelectModule} from '@angular/material/select';
 import {MatInputModule} from '@angular/material/input';
 import {MatFormFieldModule} from '@angular/material/form-field';
 import { NoopAnimationsModule } from '@angular/platform-browser/animations';
-import { FormsModule, ReactiveFormsModule } from '@angular/forms'; 
+import { FormsModule, ReactiveFormsModule } from '@angular/forms';
+import { PacientsComponent } from './shared/modules/pacients/pacients.component';
+import {MatCardModule} from '@angular/material/card';
+import {MatCheckboxModule} from '@angular/material/checkbox';
+import {MatDatepickerModule} from '@angular/material/datepicker';
+import { MatNativeDateModule } from '@angular/material/core';
+import { ReportsComponent } from './shared/modules/reports/reports.component';
+
+
+import {MatListModule} from '@angular/material/list';
+import { SleepChartComponent } from './shared/sleep-chart/sleep-chart.component';
+import { MoodChartComponent } from './shared/mood-chart/mood-chart.component';
+import { SesionChartComponent } from './shared/sesion-chart/sesion-chart.component';
+import { MedicationChartComponent } from './shared/medication-chart/medication-chart.component';
+import { AllChartsComponent } from './shared/modules/all-charts/all-charts.component';
+
+import{MatRadioModule} from '@angular/material/radio'
+import { DatePipe } from '@angular/common';
+import { PaymentComponent } from './shared/modules/payment/payment.component';
+
 
 @NgModule({
   declarations: [
     AppComponent,
     HomeComponent,
-  
     DashboardComponent,
-    
-  
-    TherapistCalendarComponent
-           
+    TherapistCalendarComponent,
+    PacientsComponent,
+    ReportsComponent,
+    AllChartsComponent,
+    PaymentComponent,
   ],
   imports: [
     BrowserModule,
     AppRoutingModule,
     HttpClientModule,
-  HeaderComponent, 
-  FooterComponent,
-  HeaderSessionComponent,
-  FooterSessionComponent,
-  MatButtonModule,
-   MatDividerModule,
-  MatIconModule,
-  MatFormFieldModule, 
-  MatInputModule, 
-  MatSelectModule, NoopAnimationsModule,
-  FormsModule,ReactiveFormsModule
-
+    HeaderComponent, 
+    FooterComponent,
+    HeaderSessionComponent,
+    FooterSessionComponent,
+    SleepChartComponent,
+    MoodChartComponent,
+    SesionChartComponent,
+    MatButtonModule,
+    MatDividerModule,
+    MatIconModule,
+    MatFormFieldModule, 
+    MatInputModule, 
+    MatSelectModule,
+    NoopAnimationsModule,
+    FormsModule,
+    ReactiveFormsModule,
+    MatCardModule,
+    MatCheckboxModule,
+    MatDatepickerModule,
+    MatNativeDateModule,
+    MatDividerModule,
+    MatDividerModule,
+    MatListModule,
+    MatRadioModule,
   ],
- 
-  providers: [],
+  providers: [DatePipe],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

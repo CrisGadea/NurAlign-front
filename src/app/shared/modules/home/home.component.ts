@@ -1,13 +1,25 @@
 import { Component, AfterViewInit } from '@angular/core';
+import { FormBuilder, FormGroup, Validators } from '@angular/forms';
+import { Router } from '@angular/router';
+import { AuthService } from 'src/app/core/services/auth.service';
+import { LoginService } from 'src/app/core/services/login.service';
 
 @Component({
   selector: 'app-home',
   templateUrl: './home.component.html',
   styleUrls: ['./home.component.css','./home-squares.component.css']
 })
-export class HomeComponent implements AfterViewInit { 
+export class HomeComponent implements AfterViewInit {
 
-  constructor() {}
+  loginForm: FormGroup;
+
+  constructor(private fb: FormBuilder, private loginService: LoginService,
+     private router: Router, private authService:AuthService){
+    this.loginForm = this.fb.group({
+      email: ['', [Validators.required, Validators.email]],
+      password: ['', Validators.required]
+    });
+  }
 
   ngAfterViewInit() {
     
@@ -85,5 +97,30 @@ export class HomeComponent implements AfterViewInit {
   goToDashboard(){
     window.location.href = '/dashboard';
   }
+
+  login() {
+
+    const data = {
+      email: this.loginForm.get('email')?.value,
+      password: this.loginForm.get('password')?.value
+    }
+
+    this.loginService.login(data).subscribe(
+      (response: any) => {
+        this.authService.setToken(response.token);
+        localStorage.setItem('isAuthenticated', 'true');
+        if (this.authService.isAuthenticated()) {
+          this.router.navigate(['/dashboard']);
+        }
+        else{
+          this.router.navigate(['/']);
+        }
+      },
+      (error: any) => {
+        console.error(error);
+        alert('Usuario o contraseña incorrectos');
+      }
+    );
   }
+}
 

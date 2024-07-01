@@ -1,6 +1,6 @@
 <nav class="navbar navbar-expand-lg fixed-top w-100">
     <div class="container-fluid">
-        <a class="navbar-brand" href="#"><img class="logo-nuralign-header"
+        <a class="navbar-brand" href="/dashboard"><img class="logo-nuralign-header"
                 src="../../assets/Image/header/Logobackground.png"></a>
         <button class="navbar-toggler collapsed d-block" type="button" data-bs-toggle="offcanvas"
             data-bs-target="#offcanvasExample" aria-controls="offcanvasExample">
@@ -10,14 +10,57 @@
 </nav>
 <div class="spacer-header">
 </div>
-<div class="offcanvas offcanvas-start bg-transparent show" data-bs-backdrop="false" tabindex="-1" id="offcanvasExample" aria-labelledby="offcanvasExampleLabel">
-    <div class="spacer-header">
-    </div>
+<div class="offcanvas offcanvas-start bg-transparent border-0 " data-bs-backdrop="false" tabindex="-1" id="offcanvasExample"
+    aria-labelledby="offcanvasExampleLabel">
+    <a href="/dashboard">
+        <div class="spacer-header">
+        </div>
+    </a>
     <div class="offcanvas-body">
         <div class="navbar-nav">
-            <a class="nav-link" href="Calendar">Calendario</a>
-            <a class="nav-link" href="Pacient">Pacientes</a>
-            <a class="nav-link" href="Informs">Informes</a>
+            <a class="nav-link" href="calendar">Calendario</a>
+            <a class="nav-link" href="report">Informes</a>
+            <a class="nav-link" href="reports">Archivos</a>
+            <button class="nav-link text-start" data-bs-toggle="modal"
+                data-bs-target="#modalSuscripcion">Suscripción</button>
+        </div>
+
+        <div class="spacer-header">
+
+
+        </div>
+
+        <div class="d-flex">
+            <a class=" nav-link" (click)="logout()">Cerrar sesion</a>
+        </div>
+
+    </div>
+</div>
+
+<div class="modal fade" id="modalSuscripcion" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+    <div class="modal-dialog">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h1 class="modal-title fs-5 text-dark" id="exampleModalLabel">Suscríbete y disfruta de beneficios
+                    exclusivos</h1>
+                <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+            </div>
+            <div class="modal-body">
+                <ul class="mb-0 py-2">
+                    <li>Acceso ilimitado a todas las funcionalidades</li>
+                    <li>Herramientas de análisis</li>
+                    <li>Gráficos estadísticos</li>
+                    <li>Reportes detallados</li>
+                </ul>
+                <div class="d-flex flex-row justify-content-center align-items-center">
+                    <span class="precio">$9000</span><span> por mes</span>
+                </div>
+            </div>
+            <div class="modal-footer align-content-center">
+                <button class="boton-suscribirse text-center" (click)="initiatePayment()">
+                    Suscribirse
+                </button>
+            </div>
         </div>
     </div>
 </div>

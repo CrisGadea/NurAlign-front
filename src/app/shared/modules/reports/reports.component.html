@@ -1,0 +1,15 @@
+<app-header-session></app-header-session>
+
+<p>reports works!</p>
+<div class="fondo">
+  <div class="container">
+    <h1 class="descargas text-uppercase text-center py-2" id="titulo">Mis informes Generados</h1>
+    <div *ngFor="let informe of informes" (click)="selectReport(informe)" class="clickable-report">
+      <div class="textodesc">
+        <a>{{ informe.patientName }} {{ informe.effectiveDate | date: 'dd/MM/yyyy' }}.pdf</a>
+        <img class="icon" src="../../../../assets/Image/informsDowload/download.png" alt="">
+      </div>
+      <mat-divider></mat-divider>
+    </div>
+  </div>
+</div>
