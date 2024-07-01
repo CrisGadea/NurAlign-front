@@ -93,10 +93,10 @@ this.medicacion = false;
       // Llamada a InformService para guardar el reporte
       this.informService.createReport(reportData).subscribe(
         (response) => {
-          alert('Reporte guardado exitosamente en el servidor.');
+       //   alert('Reporte guardado exitosamente en el servidor.');
         },
         (error) => {
-          console.error('Error al guardar el reporte en el servidor:', error);
+      //    console.error('Error al guardar el reporte en el servidor:', error);
         }
       );
 
