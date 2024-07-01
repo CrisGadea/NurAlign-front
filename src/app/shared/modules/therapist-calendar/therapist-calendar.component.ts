@@ -55,19 +55,15 @@ export class TherapistCalendarComponent implements OnInit {
   ngOnInit(): void {
 
       this.userId = localStorage.getItem('userId');
-   console.log(this.userId);
- 
-   this.turns= this.service.getTurns(this.userId).subscribe(
-      data => {
-        console.log(data);
-        
-        this.TurnPacient = data;
-        this.dameTurnosFuturos();
-      },
-      error => {
-        console.error("no se encontro los turnos del terapeuta",error);
-      }
-    );
+     this.turns= this.service.getTurns(this.userId).subscribe(
+        data => {        
+          this.TurnPacient = data;
+          this.dameTurnosFuturos();
+        },
+        error => {
+          console.error("no se encontro los turnos del terapeuta",error);
+        }
+      );
     const currentDate = moment();
     //se le suma uno para que el rango sea de 1 a 12
     this.getDaysFromDate(currentDate.month() + 1, currentDate.year());
@@ -189,15 +185,7 @@ export class TherapistCalendarComponent implements OnInit {
         effectiveDate: effectiveDate
     });
 
-
-
-    console.log(formValues.namePacient);
-   // console.log(formValues.effectiveDate);//falla
-    console.log(formValues.turnTime);
-    //console.log(formValues.therapistId='6');//falla
-
     if (this.turnForm.valid) {
-      console.log("Formulario válido. Enviando datos...");
       this.service.generateTurn(this.turnForm.value).subscribe(
         turn => {
           alert("Turno creado con éxito");
@@ -209,8 +197,6 @@ export class TherapistCalendarComponent implements OnInit {
         }
       );
     } else {
-      console.log("Formulario no válido:", this.turnForm);
-      console.log("Controles del formulario:", this.turnForm.controls);
       Object.keys(this.turnForm.controls).forEach(key => {
         const control = this.turnForm.get(key);
         if (control) {

@@ -27,24 +27,8 @@ export class ReportsComponent implements OnInit {
     if (therapistId) {
       this.informService.getInformsByTherapistId(therapistId).subscribe(
         (data: any) => {
-          if (Array.isArray(data)) {
-            // Ordenar por fecha descendente y luego por ID en caso de fechas iguales
-            this.informes = data.sort((a, b) => {
-              const dateComparison = new Date(b.effectiveDate).getTime() - new Date(a.effectiveDate).getTime();
-              
-              if (dateComparison === 0) {
-                // Ordenar por ID si las fechas son iguales
-                
-                
-                return b.id- a.id;
-              }
-  
-              return dateComparison;
-            });
-            console.log(this.informes);
-          } else {
-            console.error('Los datos recibidos no son un array válido:', data);
-          }
+          this.informes = data;
+          console.log(this.informes);
         },
         error => {
           console.error('Error al obtener los informes:', error);
@@ -64,7 +48,6 @@ export class ReportsComponent implements OnInit {
     const nombre = informe.patientName;
     const formattedStartDate = informe.initialDate;
     const formattedEndDate = informe.endDate;
-console.log(pacienteId, formattedStartDate, formattedEndDate);
     const observables = [];
 
     if (informe.moodFlag) {

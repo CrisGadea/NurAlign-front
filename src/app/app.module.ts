@@ -38,6 +38,7 @@ import { AllChartsComponent } from './shared/modules/all-charts/all-charts.compo
 
 import{MatRadioModule} from '@angular/material/radio'
 import { DatePipe } from '@angular/common';
+import { PaymentComponent } from './shared/modules/payment/payment.component';
 
 
 @NgModule({
@@ -49,6 +50,7 @@ import { DatePipe } from '@angular/common';
     PacientsComponent,
     ReportsComponent,
     AllChartsComponent,
+    PaymentComponent,
   ],
   imports: [
     BrowserModule,

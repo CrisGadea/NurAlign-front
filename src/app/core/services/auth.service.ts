@@ -17,7 +17,6 @@ import { Injectable } from "@angular/core";
       return this.token;
     }
     isAuthenticated() {
-      //console.log(this.getToken())
       return this.token!=undefined || this.token != null; // Verifica si el token está presente
     }
   }
