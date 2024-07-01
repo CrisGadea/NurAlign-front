@@ -28,7 +28,6 @@ export class ReportsComponent implements OnInit {
       this.informService.getInformsByTherapistId(therapistId).subscribe(
         (data: any) => {
           this.informes = data;
-          console.log(this.informes);
         },
         error => {
           console.error('Error al obtener los informes:', error);
@@ -46,7 +45,6 @@ export class ReportsComponent implements OnInit {
     const nombre = informe.patientName;
     const formattedStartDate = informe.initialDate;
     const formattedEndDate = informe.endDate;
-console.log(pacienteId, formattedStartDate, formattedEndDate);
     const observables = [];
 
     if (informe.moodFlag) {

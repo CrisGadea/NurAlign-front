@@ -21,13 +21,9 @@ constructor(private generatorService: GeneratorService) {}
   
   ngOnInit() {
 
-   
-    console.log(this.generatorService.getSessionTherapyData());
-
     this.sessionTherapy = this.generatorService.getSessionTherapyData(); // Obtener sessionTherapyData
     this.fechas = this.sessionTherapy.map(item => item.effectiveDate);
     this.animoSesion=this.sessionTherapy.map(item=>parseInt(item.sessionFeel,10));
-    console.log(this.generatorService.getSessionTherapyData());
 
     const ctx = document.getElementById('myChart2') as HTMLCanvasElement;
 
@@ -36,7 +32,7 @@ constructor(private generatorService: GeneratorService) {}
       data: {
         labels: this.fechas,
         datasets: [{
-          label: 'Estado de animo Post Session',
+          label: 'Estado de animo Post Sesión',
           data: this.animoSesion,
           backgroundColor: 'rgba(54, 162, 235, 0.5)', // Sombreado bajo la línea
           borderColor: 'rgba(54, 162, 235, 1)',
