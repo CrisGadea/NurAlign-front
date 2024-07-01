@@ -75,7 +75,29 @@ this.animoIrritable=this.moodTracker.map(item=>item.irritableValue);
           beginAtZero: true
         },
         y: {
-          beginAtZero: true
+          beginAtZero: true,
+          type: 'linear', // Asegura que el tipo de escala sea lineal para valores numéricos
+          ticks: {
+            precision: 0, // Precisión de cero decimales
+            callback: function(value) {
+              // Asignar las etiquetas personalizadas
+              switch (value) {
+                case 1:
+                  return 'Nulo';
+                case 2:
+                  return 'Leve';
+                case 3:
+                  return 'Moderado';
+                case 4:
+                  return 'Alto';
+                case 5:
+                  return 'Severo';
+                default:
+                  // Formatear el valor con comas para separador de miles
+                  return value.toString().replace(/\B(?=(\d{3})+(?!\d))/g, ",");
+              }
+            }
+          }
         }
       },
       plugins: {

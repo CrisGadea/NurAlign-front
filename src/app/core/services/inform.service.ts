@@ -63,7 +63,14 @@ export class InformService{
     getInformsByTherapistId(therapistId:any){
       return this.http.get(this.apiUrl + '/reports/'+therapistId);
     }
-
+    getMedicationByPatientId(patientId:any){
+      return this.http.get(this.apiUrl + '/medications/patient/'+patientId);
+    }
+    getMedicationTrackerByMedicationId(medicationId: any, fromDate: string, toDate: string): Observable<any>
+    {
+      const params = { fromDate, toDate };
+      return this.http.get(this.apiUrl + `/reports/${medicationId}`, { params });
+    }
 
 }
 

@@ -35,35 +35,60 @@ export class GeneratorPdfService {
     pdf.setLineWidth(0.5);
     pdf.line(10, yPos, pdf.internal.pageSize.width - 10, yPos);
     yPos += 5;
+    pdf.setFontSize(20);
     pdf.text(`Paciente: ${nombre}`, 10, 45);
     yPos += 25;
 
     const addDataToPdf = (title: string, data: any[], fieldMapping: Record<string, string>) => {
-      if (!Array.isArray(data)) {
-        console.error(`${title} is not an array`);
-        return;
+      if (!Array.isArray(data) || data.length === 0) {
+        return; // No hacer nada si los datos no son un array o están vacíos
       }
+      
+      pdf.setFontSize(18);
+      // Imprimir el título solo una vez
       pdf.text(`${title}:`, 10, yPos);
-      yPos += 10;
+    
+      yPos += 10; // Ajuste para la siguiente línea después del título
+      pdf.setFontSize(14);
       data.forEach((item, index) => {
+        // Iterar sobre las propiedades del objeto 'item'
         for (const key in item) {
           if (item.hasOwnProperty(key) && fieldMapping[key]) {
             let value = item[key];
+    
+            // Dar formato especial a ciertos valores
             if (key === 'highestValue' || key === 'lowestValue' || key === 'anxiousValue' || key === 'irritableValue') {
               value = this.darFormatoAnimo(value);
             }
             if (key === 'sessionFeel') {
-              value = this.darFormatoAnimo(parseInt(value));
+              value = this.darFormatoSession(parseInt(value));
             }
-            pdf.text(`${fieldMapping[key]}: ${value}`, 10, yPos);
-            yPos += 10;
-            checkPageHeight();
+
+            if (key === 'anxiousFlag'||key === 'negativeThoughtsFlag'||key === 'sleepStraightFlag') {
+              value = this.darFormatoSueño(parseInt(value));
+            }
+    
+    
+            // Ajustar posición y controlar altura de página
+            const textLines = pdf.splitTextToSize(`${fieldMapping[key]}: ${value}`, pdf.internal.pageSize.width - 40);
+            textLines.forEach((line: string) => {
+              if (yPos + 10 > pageHeight - marginBottom) {
+                pdf.addPage();
+                yPos = marginTop;
+              //  pdf.text(`${title}:`, 10, yPos); // Volver a imprimir el título en la nueva página
+                yPos += 10; // Ajuste para la siguiente línea después del título en la nueva página
+              }
+              pdf.text(line, 20, yPos);
+              yPos += 10; // Espacio entre líneas
+            });
           }
         }
-        yPos += 10;
+        yPos += 10; // Espacio entre elementos
         checkPageHeight();
       });
     };
+    
+    
 
     if (Array.isArray(moodTracker) && moodTracker.length !== 0) {
       addDataToPdf('Seguimiento estado de animo', moodTracker, {
@@ -95,7 +120,7 @@ export class GeneratorPdfService {
         sessionTime: 'Duración de la sesión',
         preSessionNotes: 'Notas previas a la sesion',
         postSessionNotes: 'Notas post-sesion',
-        sessionFeel: 'Animo de la sesion'
+        sessionFeel: 'Como se sintio'
       });
     }
     pdf.save(nombre+'.pdf');
@@ -119,5 +144,37 @@ export class GeneratorPdfService {
       default:
         return 'Desconocido';
     }
+    
   }
+
+
+  darFormatoSession(level: number): string {
+    switch (level) {
+      case 5:
+        return 'Muy bien';
+      case 4:
+        return 'Bien';
+      case 3:
+        return 'Regular';
+      case 2:
+        return 'Mal';
+      case 1:
+        return 'Muy mal';
+      default:
+        return 'Desconocido';
+    }
+    
+  }
+  darFormatoSueño(level: number): string {
+    switch (level) {
+      case 1:
+        return 'si';
+      case 0:
+        return 'no';
+      default:
+        return 'valor desconocido'; // Manejar cualquier otro valor que no sea 1 o 0
+    }
+  }
+  
+
 }

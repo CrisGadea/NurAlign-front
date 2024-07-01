@@ -30,6 +30,7 @@ export class PacientsComponent implements OnInit {
   moodTracker: any[] = [];
   sleepTracker: any[] = [];
   sessionTherapy: any[] = [];
+  medicationTrackers: any[] = [];
   userId!: string | null;
 
   constructor(
@@ -179,6 +180,9 @@ this.medicacion = false;
     const formattedStartDate = this.datePipe.transform(this.startDate, 'yyyy-MM-dd')!;
     const formattedEndDate = this.datePipe.transform(this.endDate, 'yyyy-MM-dd')!;
 
+
+
+
     const moodTrackerPromise = this.estadodanimo
       ? lastValueFrom(this.informService.getMoodTrackerByIdAndRange(pacienteId, formattedStartDate, formattedEndDate))
       : Promise.resolve(null);
@@ -191,6 +195,7 @@ this.medicacion = false;
       ? lastValueFrom(this.informService.getTherapySessionByIdAndRange(pacienteId, formattedStartDate, formattedEndDate))
       : Promise.resolve(null);
 
+      
     forkJoin([moodTrackerPromise, sleepTrackerPromise, therapySessionPromise]).subscribe(
       ([moodTrackerData, sleepTrackerData, therapySessionData]) => {
         this.moodTracker = moodTrackerData || [];

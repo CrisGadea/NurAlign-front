@@ -23,12 +23,28 @@ export class ReportsComponent implements OnInit {
 
   ngOnInit(): void {
     const therapistId = localStorage.getItem('userId');
-
+  
     if (therapistId) {
       this.informService.getInformsByTherapistId(therapistId).subscribe(
         (data: any) => {
-          this.informes = data;
-          console.log(this.informes);
+          if (Array.isArray(data)) {
+            // Ordenar por fecha descendente y luego por ID en caso de fechas iguales
+            this.informes = data.sort((a, b) => {
+              const dateComparison = new Date(b.effectiveDate).getTime() - new Date(a.effectiveDate).getTime();
+              
+              if (dateComparison === 0) {
+                // Ordenar por ID si las fechas son iguales
+                
+                
+                return b.id- a.id;
+              }
+  
+              return dateComparison;
+            });
+            console.log(this.informes);
+          } else {
+            console.error('Los datos recibidos no son un array válido:', data);
+          }
         },
         error => {
           console.error('Error al obtener los informes:', error);
@@ -38,6 +54,8 @@ export class ReportsComponent implements OnInit {
       console.error('Therapist ID no encontrado en localStorage');
     }
   }
+  
+
 
   selectReport(informe: any) {
     this.selectedReport = informe;
