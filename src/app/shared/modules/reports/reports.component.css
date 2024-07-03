@@ -32,6 +32,8 @@
   .textodesc {
     display: flex;
     justify-content: space-between;
+    padding-left: 1em;
+    padding-right: 1em;
     align-items: center;
     margin: 10px auto;
   }

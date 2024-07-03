@@ -23,7 +23,7 @@ export class ReportsComponent implements OnInit {
 
   ngOnInit(): void {
     const therapistId = localStorage.getItem('userId');
-
+  
     if (therapistId) {
       this.informService.getInformsByTherapistId(therapistId).subscribe(
         (data: any) => {
@@ -38,6 +38,8 @@ export class ReportsComponent implements OnInit {
       console.error('Therapist ID no encontrado en localStorage');
     }
   }
+  
+
 
   selectReport(informe: any) {
     this.selectedReport = informe;
@@ -46,7 +48,6 @@ export class ReportsComponent implements OnInit {
     const nombre = informe.patientName;
     const formattedStartDate = informe.initialDate;
     const formattedEndDate = informe.endDate;
-console.log(pacienteId, formattedStartDate, formattedEndDate);
     const observables = [];
 
     if (informe.moodFlag) {

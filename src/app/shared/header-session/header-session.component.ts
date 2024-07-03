@@ -28,7 +28,6 @@ export class HeaderSessionComponent {
       (error) => {
         console.error('Error creating preference:', error)
       }
-      //url => window.location.href = url,
     );
   }
 }

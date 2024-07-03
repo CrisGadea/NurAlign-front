@@ -30,6 +30,7 @@ export class PacientsComponent implements OnInit {
   moodTracker: any[] = [];
   sleepTracker: any[] = [];
   sessionTherapy: any[] = [];
+  medicationTrackers: any[] = [];
   userId!: string | null;
 
   constructor(
@@ -92,16 +93,10 @@ this.medicacion = false;
       // Llamada a InformService para guardar el reporte
       this.informService.createReport(reportData).subscribe(
         (response) => {
-          console.log('Datos del informe a enviar:', reportData);
-          console.log('Datos del informe a enviar:', reportData);
-          console.log('Datos del informe a enviar:', reportData);
-          console.log('Datos del informe a enviar:', reportData);
-          console.log('Reporte guardado exitosamente en el servidor:', response);
+       //   alert('Reporte guardado exitosamente en el servidor.');
         },
         (error) => {
-          console.error('Error al guardar el reporte en el servidor:', error);
-  
-          console.log('Datos del informe a enviar:', reportData);
+      //    console.error('Error al guardar el reporte en el servidor:', error);
         }
       );
 
@@ -179,6 +174,9 @@ this.medicacion = false;
     const formattedStartDate = this.datePipe.transform(this.startDate, 'yyyy-MM-dd')!;
     const formattedEndDate = this.datePipe.transform(this.endDate, 'yyyy-MM-dd')!;
 
+
+
+
     const moodTrackerPromise = this.estadodanimo
       ? lastValueFrom(this.informService.getMoodTrackerByIdAndRange(pacienteId, formattedStartDate, formattedEndDate))
       : Promise.resolve(null);
@@ -191,6 +189,7 @@ this.medicacion = false;
       ? lastValueFrom(this.informService.getTherapySessionByIdAndRange(pacienteId, formattedStartDate, formattedEndDate))
       : Promise.resolve(null);
 
+      
     forkJoin([moodTrackerPromise, sleepTrackerPromise, therapySessionPromise]).subscribe(
       ([moodTrackerData, sleepTrackerData, therapySessionData]) => {
         this.moodTracker = moodTrackerData || [];
