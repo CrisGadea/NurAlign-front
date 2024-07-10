@@ -13,7 +13,7 @@
             <mat-label>Pacientes</mat-label>
             <mat-select [(ngModel)]="selectedPatient" required>
               <mat-option *ngFor="let paciente of pacientes" [value]="paciente">
-                {{ paciente.name }}
+                {{ paciente.name }}{{' '}}{{ paciente.lastName }}
               </mat-option>
             </mat-select>
           </mat-form-field>
