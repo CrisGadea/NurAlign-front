@@ -25,10 +25,10 @@ export class MoodChartComponent implements OnInit {
 
 this.moodTracker=this.generatorService.getMoodTrackerData();
 this.fechas=this.moodTracker.map(item => item.effectiveDate);
-this.animoElevado=this.moodTracker.map(item=>item.highestValue);
-this.animoDeprimido=this.moodTracker.map(item=>item.lowestValue);
-this.animoAnsioso=this.moodTracker.map(item=>item.anxiousValue);
-this.animoIrritable=this.moodTracker.map(item=>item.irritableValue);
+this.animoElevado = this.moodTracker.map(item => this.adjustZeroValue(item.highestValue));
+this.animoDeprimido = this.moodTracker.map(item => this.adjustZeroValue(item.lowestValue));
+this.animoAnsioso = this.moodTracker.map(item => this.adjustZeroValue(item.anxiousValue));
+this.animoIrritable = this.moodTracker.map(item => this.adjustZeroValue(item.irritableValue));
 
     
     const ctx = document.getElementById('myChart') as HTMLCanvasElement;
@@ -117,5 +117,8 @@ this.animoIrritable=this.moodTracker.map(item=>item.irritableValue);
       data: data,
       options: options
     });
+  }
+  adjustZeroValue(value: number): number {
+    return value === 0 ? 0.05 : value;
   }
 }
