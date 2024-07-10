@@ -86,7 +86,7 @@ this.medicacion = false;
         sleepFlag: this.horassuenio,
         therapyFlag: this.estadoanimosesion,
         medicationFlag: this.medicacion,
-        patientName:  this.selectedPatient.name,
+        patientName:  this.selectedPatient.name+' '+this.selectedPatient.lastName,
         patientId: this.selectedPatient.id
       };
   
@@ -108,7 +108,7 @@ this.medicacion = false;
   CargaDatosGrafico() {
     this.SetearDatos();
     const pacienteId = this.selectedPatient.id;
-    const nombre = this.selectedPatient.name;
+    const nombre = this.selectedPatient.name+ this.selectedPatient.lastName;
     const formattedStartDate = this.datePipe.transform(this.startDate, 'yyyy-MM-dd')!;
     const formattedEndDate = this.datePipe.transform(this.endDate, 'yyyy-MM-dd')!;
   
@@ -168,7 +168,7 @@ this.medicacion = false;
     this.generatorService.setData('startDate', this.startDate);
     this.generatorService.setData('endDate', this.endDate);
     const pacienteId = this.selectedPatient.id;
-    const nombre = this.selectedPatient.name;
+    const nombre = this.selectedPatient.name+' '+ this.selectedPatient.lastName;
     this.generatorService.setData('nombre', nombre);
    
     const formattedStartDate = this.datePipe.transform(this.startDate, 'yyyy-MM-dd')!;

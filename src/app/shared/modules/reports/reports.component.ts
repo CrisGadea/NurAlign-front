@@ -12,8 +12,8 @@ import { GeneratorPdfService } from 'src/app/core/services/generatorPdf.service'
 export class ReportsComponent implements OnInit {
 
   informes: any[] = [];
-  selectedReport: any = null; // Solo un objeto, no necesitas un arreglo para un solo informe
-  estadodanimo: any; // Asegúrate de definir esto según sea necesario en tu contexto
+  selectedReport: any = null; 
+  estadodanimo: any; 
 
   constructor(
     private informService: InformService,
@@ -28,6 +28,21 @@ export class ReportsComponent implements OnInit {
       this.informService.getInformsByTherapistId(therapistId).subscribe(
         (data: any) => {
           this.informes = data;
+
+       
+          this.informes.sort((a, b) => {
+            const dateA = new Date(a.effectiveDate).getTime();
+            const dateB = new Date(b.effectiveDate).getTime();
+
+            if (dateA > dateB) return -1;
+            if (dateA < dateB) return 1;
+
+            if (a.id > b.id) return -1;
+            if (a.id < b.id) return 1;
+
+            return 0;
+          });
+
           console.log(this.informes);
         },
         error => {
@@ -38,8 +53,6 @@ export class ReportsComponent implements OnInit {
       console.error('Therapist ID no encontrado en localStorage');
     }
   }
-  
-
 
   selectReport(informe: any) {
     this.selectedReport = informe;

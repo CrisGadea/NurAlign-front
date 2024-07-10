@@ -25,10 +25,10 @@ export class MoodChartComponent implements OnInit {
 
 this.moodTracker=this.generatorService.getMoodTrackerData();
 this.fechas=this.moodTracker.map(item => item.effectiveDate);
-this.animoElevado=this.moodTracker.map(item=>item.highestValue);
-this.animoDeprimido=this.moodTracker.map(item=>item.lowestValue);
-this.animoAnsioso=this.moodTracker.map(item=>item.anxiousValue);
-this.animoIrritable=this.moodTracker.map(item=>item.irritableValue);
+this.animoElevado = this.moodTracker.map(item => this.adjustZeroValue(item.highestValue));
+this.animoDeprimido = this.moodTracker.map(item => this.adjustZeroValue(item.lowestValue));
+this.animoAnsioso = this.moodTracker.map(item => this.adjustZeroValue(item.anxiousValue));
+this.animoIrritable = this.moodTracker.map(item => this.adjustZeroValue(item.irritableValue));
 
     
     const ctx = document.getElementById('myChart') as HTMLCanvasElement;
@@ -82,16 +82,17 @@ this.animoIrritable=this.moodTracker.map(item=>item.irritableValue);
             callback: function(value) {
               // Asignar las etiquetas personalizadas
               switch (value) {
-                case 1:
-                  return 'Nulo';
-                case 2:
-                  return 'Leve';
-                case 3:
-                  return 'Moderado';
+                
                 case 4:
-                  return 'Alto';
-                case 5:
                   return 'Severo';
+                case 3:
+                  return 'Alto';
+                case 2:
+                  return 'Moderado';
+                case 1:
+                  return 'Leve';
+                case 0:
+                  return 'Nulo';
                 default:
                   // Formatear el valor con comas para separador de miles
                   return value.toString().replace(/\B(?=(\d{3})+(?!\d))/g, ",");
@@ -116,5 +117,8 @@ this.animoIrritable=this.moodTracker.map(item=>item.irritableValue);
       data: data,
       options: options
     });
+  }
+  adjustZeroValue(value: number): number {
+    return value === 0 ? 0.05 : value;
   }
 }

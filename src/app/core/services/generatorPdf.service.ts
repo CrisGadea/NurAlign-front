@@ -65,7 +65,7 @@ export class GeneratorPdfService {
             }
 
             if (key === 'anxiousFlag'||key === 'negativeThoughtsFlag'||key === 'sleepStraightFlag') {
-              value = this.darFormatoSueño(parseInt(value));
+              value = this.darFormatoSueño(value);
             }
     
     
@@ -131,16 +131,16 @@ export class GeneratorPdfService {
 
   darFormatoAnimo(level: number): string {
     switch (level) {
-      case 5:
-        return 'Muy elevado';
       case 4:
-        return 'Elevado';
+        return 'Severo';
       case 3:
-        return 'Normal';
+        return 'Alto';
       case 2:
-        return 'Levemente bajo';
+        return 'Moderado';
       case 1:
-        return 'Bajo';
+        return 'Leve';
+      case 0:
+        return 'Nulo';
       default:
         return 'Desconocido';
     }
@@ -165,11 +165,11 @@ export class GeneratorPdfService {
     }
     
   }
-  darFormatoSueño(level: number): string {
+  darFormatoSueño(level: String): string {
     switch (level) {
-      case 1:
+      case 'Y':
         return 'si';
-      case 0:
+      case 'N':
         return 'no';
       default:
         return 'valor desconocido'; // Manejar cualquier otro valor que no sea 1 o 0
