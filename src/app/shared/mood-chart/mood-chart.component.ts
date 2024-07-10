@@ -82,16 +82,17 @@ this.animoIrritable=this.moodTracker.map(item=>item.irritableValue);
             callback: function(value) {
               // Asignar las etiquetas personalizadas
               switch (value) {
-                case 1:
-                  return 'Nulo';
-                case 2:
-                  return 'Leve';
-                case 3:
-                  return 'Moderado';
+                
                 case 4:
-                  return 'Alto';
-                case 5:
                   return 'Severo';
+                case 3:
+                  return 'Alto';
+                case 2:
+                  return 'Moderado';
+                case 1:
+                  return 'Leve';
+                case 0:
+                  return 'Nulo';
                 default:
                   // Formatear el valor con comas para separador de miles
                   return value.toString().replace(/\B(?=(\d{3})+(?!\d))/g, ",");
